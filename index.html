@@ -82,19 +82,30 @@
 			Requirements
 		</h2>
 
-		<p>VersionOne:</p>
 		<ul>
-			<li>7.3 and above, including Team Edition</li>
-		</ul>
-
-		<p>Integration Server Operating System:</p>
-		<ul>
-			<li>Windows 2003, 2008 with .NET Framework 4.0</li>
-		</ul>
-
-		<p>Atlassian JIRA:</p>
-		<ul>
-			<li>Tested with JIRA 3.12.3 - 6.3</li>
+			<li>VersionOne:
+				<ul>
+					<li>Tested with VersionOne 14.2.2.6056. Expected to work with any version higher than 7.3.</li>
+					<li>Compatible with all VersionOne Editions.</li>
+					<li>Compatible with all Methodology choices.</li>
+					<li>VersionOne Authentication or Windows Integrated Authentication. (Does not work with other forms of SSO.)</li>
+					<li>A member with <a href="http://community.versionone.com/Help-Center/Version101/Current/Administration/Roles-Project-Membership">Team Member role</a>, or higher, on integrated projects.</li>
+				</ul>
+			</li>
+			<li>Atlassian JIRA:
+				<ul>
+					<li>Tested with 6.3.1. Expected to work with any version higher than 3.12.3.</li>
+					<li>Requires JIRA RPC Plugin.</li>
+				</ul>
+			</li>
+			<li>Integration Server Operating System:
+				<ul>
+					<li>Tested with Windows Server 2012. Expected to work with Windows Server 2008 or higher, provided the required version of .NET Framework can be installed (see below)</li>
+					<li>Tested with .NET Framework 4.5. Expected to work with any subsequent version.</li>
+					<li>Bi-directional network access between this Integration and JIRA. This usually means TCP/IP port 443 for https.</li>
+					<li>Bi-directional network access between this Integration and VersionOne. This usually means TCP/IP port 443 for https.</li>
+				</ul>
+			</li>
 		</ul>
 
 		<h2>
