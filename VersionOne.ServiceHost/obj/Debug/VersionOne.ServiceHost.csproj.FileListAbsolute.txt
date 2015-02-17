@@ -1,0 +1,25 @@
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\profile.xml
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\License.rtf
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\App.config
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\Ninject.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\log4net.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\bin\Debug\Ninject.xml
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\obj\Debug\VersionOne.ServiceHost.csprojResolveAssemblyReference.cache
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\obj\Debug\VersionOne.ServiceHost.exe
+C:\Code .NET\JiraSource\VersionOne.ServiceHost\obj\Debug\VersionOne.ServiceHost.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\profile.xml
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\App.config
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.exe.config
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.exe
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\Ninject.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\log4net.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\obj\Debug\VersionOne.ServiceHost.csprojResolveAssemblyReference.cache
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\obj\Debug\VersionOne.ServiceHost.exe
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost\obj\Debug\VersionOne.ServiceHost.pdb

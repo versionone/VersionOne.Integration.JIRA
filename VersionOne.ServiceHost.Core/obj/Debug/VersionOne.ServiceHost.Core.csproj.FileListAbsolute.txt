@@ -1,0 +1,15 @@
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\bin\Debug\log4net.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\bin\Debug\Ninject.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\bin\Debug\Ninject.xml
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\obj\Debug\VersionOne.ServiceHost.Core.csprojResolveAssemblyReference.cache
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\obj\Debug\VersionOne.ServiceHost.Core.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.Core\obj\Debug\VersionOne.ServiceHost.Core.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.Core\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.Core\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.Core\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.Core\obj\Debug\VersionOne.ServiceHost.Core.csprojResolveAssemblyReference.cache
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.Core\obj\Debug\VersionOne.ServiceHost.Core.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.Core\obj\Debug\VersionOne.ServiceHost.Core.pdb

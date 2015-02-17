@@ -1,0 +1,24 @@
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.WorkitemServices.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.WorkitemServices.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\Ninject.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServerConnector.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\log4net.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServerConnector.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\bin\Debug\Ninject.xml
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\obj\Debug\VersionOne.ServiceHost.WorkitemServices.csprojResolveAssemblyReference.cache
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\obj\Debug\VersionOne.ServiceHost.WorkitemServices.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceHost.WorkitemServices\obj\Debug\VersionOne.ServiceHost.WorkitemServices.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.WorkitemServices.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.WorkitemServices.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServerConnector.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\log4net.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServerConnector.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\obj\Debug\VersionOne.ServiceHost.WorkitemServices.csprojResolveAssemblyReference.cache
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\obj\Debug\VersionOne.ServiceHost.WorkitemServices.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.WorkitemServices\obj\Debug\VersionOne.ServiceHost.WorkitemServices.pdb

@@ -1,0 +1,25 @@
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\profile.xml
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceExecutor.exe.config
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceExecutor.exe
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceExecutor.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\Ninject.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\log4net.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\bin\Debug\Ninject.xml
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\obj\Debug\VersionOne.ServiceExecutor.csprojResolveAssemblyReference.cache
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\obj\Debug\VersionOne.ServiceExecutor.exe
+C:\Code .NET\JiraSource\VersionOne.ServiceExecutor\obj\Debug\VersionOne.ServiceExecutor.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\profile.xml
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceExecutor.exe.config
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceExecutor.exe
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceExecutor.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceHost.Core.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\Ninject.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\log4net.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\VersionOne.SDK.APIClient.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\bin\Debug\VersionOne.ServiceHost.Core.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\obj\Debug\VersionOne.ServiceExecutor.csprojResolveAssemblyReference.cache
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\obj\Debug\VersionOne.ServiceExecutor.exe
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceExecutor\obj\Debug\VersionOne.ServiceExecutor.pdb
