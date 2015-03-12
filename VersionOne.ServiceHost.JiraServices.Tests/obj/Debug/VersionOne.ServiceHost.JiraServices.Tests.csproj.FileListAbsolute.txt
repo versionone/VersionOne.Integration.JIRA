@@ -1,4 +1,3 @@
-C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\obj\Debug\VersionOne.ServiceHost.JiraServices.Tests.csprojResolveAssemblyReference.cache
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\bin\Debug\VersionOne.ServiceHost.JiraServices.Tests.dll
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\bin\Debug\VersionOne.ServiceHost.JiraServices.Tests.pdb
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\bin\Debug\Rhino.Mocks.dll
@@ -15,5 +14,6 @@ C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.Se
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\bin\Debug\VersionOne.ServiceHost.JiraServices.pdb
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\bin\Debug\VersionOne.ServiceHost.WorkitemServices.pdb
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\bin\Debug\VersionOne.ServerConnector.pdb
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\obj\Debug\VersionOne.ServiceHost.JiraServices.Tests.csprojResolveAssemblyReference.cache
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\obj\Debug\VersionOne.ServiceHost.JiraServices.Tests.dll
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.JiraServices.Tests\obj\Debug\VersionOne.ServiceHost.JiraServices.Tests.pdb

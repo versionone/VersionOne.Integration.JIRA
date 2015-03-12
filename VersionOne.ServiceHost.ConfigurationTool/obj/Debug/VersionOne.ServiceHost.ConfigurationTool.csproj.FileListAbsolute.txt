@@ -35,6 +35,7 @@ C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.Se
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\ServiceHostConfigTool.exe
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\ServiceHostConfigTool.pdb
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\VersionOne.JiraConnector.dll
+C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\VersionOne.SDK.APIClient.dll
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\VersionOne.ServerConnector.dll
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\VersionOne.ServiceHost.Core.dll
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\VersionOne.ServiceHost.JiraServices.dll
@@ -52,4 +53,3 @@ C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.Se
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\obj\Debug\VersionOne.ServiceHost.ConfigurationTool.csproj.GenerateResource.Cache
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\obj\Debug\ServiceHostConfigTool.exe
 C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\obj\Debug\ServiceHostConfigTool.pdb
-C:\V1_GITHUB_REPOSITORIES\Integrations\VersionOne.Integration.JIRA\VersionOne.ServiceHost.ConfigurationTool\bin\Debug\VersionOne.SDK.APIClient.dll
