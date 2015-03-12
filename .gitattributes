@@ -1,20 +1,16 @@
-# Handle line endings automatically for files detected as text
-# and leave all files detected as binary untouched.
+# Auto detect text files and perform LF normalization
 * text=auto
+# Normalize crlf => lf
+*.cs		text diff=csharp
+*.sln		text merge=union
+*.csproj	text merge=union
+*.nuspec	text merge=union
+*.config	text
+*.md		text
 
-#
-# The above will handle all files NOT found below
-#
-# These files are text and should be normalized (Convert crlf => lf)
-pom.xml			text merge=union
-*.iml			text merge=union
-.project		text merge=union
-.classpath		text merge=union
-*.java			text diff=java
-*.html			text
-*.xml			text
-*.md			text
-*.properties	text
+# *nix only
+*.sh			eol=lf
+*.properties	eol=lf
 
 # Binary files
 *.png		binary
