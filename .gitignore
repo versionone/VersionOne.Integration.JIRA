@@ -3,9 +3,6 @@
 *.dll
 
 ## Visual Studio files ##
-settings.ini
-error-*.xml
-*.ncrunchsolution
 *.[Oo]bj
 *.user
 *.aps
@@ -44,7 +41,7 @@ _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
 packages/
-*ncrunch*
+*.nupkg
 
 ## Temp Files##
 *.tmp
@@ -52,7 +49,6 @@ packages/
 ~$*
 [Tt]humbs.db
 *.DS_Store
-/Resources/*
 
 ## Subversion files ##
 .svn
