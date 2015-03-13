@@ -4,6 +4,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{F63D59D3-0F9F-4E3C-9C9F-9CEE01E9DEF8}"
 	ProjectSection(SolutionItems) = preProject
+		Dependencies\log4net.dll = Dependencies\log4net.dll
 		Dependencies\Microsoft.Practices.EnterpriseLibrary.Common.dll = Dependencies\Microsoft.Practices.EnterpriseLibrary.Common.dll
 		Dependencies\Microsoft.Practices.EnterpriseLibrary.Validation.dll = Dependencies\Microsoft.Practices.EnterpriseLibrary.Validation.dll
 		Dependencies\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.dll = Dependencies\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.dll
