@@ -41,7 +41,6 @@ _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
 packages/
-*.nupkg
 
 ## Temp Files##
 *.tmp
