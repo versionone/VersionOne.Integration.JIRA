@@ -1,6 +1,6 @@
 ## Compiled ##
 *.exe
-*.dll
+##*.dll
 
 ## Visual Studio files ##
 *.[Oo]bj
