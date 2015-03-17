@@ -4,14 +4,15 @@ using Rhino.Mocks;
 using VersionOne.JiraConnector.Exceptions;
 using VersionOne.ServiceHost.JiraServices.StartupValidation;
 
-namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
-
+namespace VersionOne.ServiceHost.JiraServices.Tests
+{
     [TestClass]
-    public class JiraConnectionValidatorTester : BaseJiraTester {
-
+    public class JiraConnectionValidatorTester : BaseJiraTester
+    {
         [TestMethod]
-        public void ValidConnection() {
-            var validator = new JiraConnectionValidator { JiraConnector = ConnectorMock, Logger = LoggerMock};
+        public void ValidConnection()
+        {
+            var validator = new JiraConnectionValidator { JiraConnector = ConnectorMock, Logger = LoggerMock };
 
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.Logout);
@@ -23,8 +24,9 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void InvalidConnection() {
-            var validator = new JiraConnectionValidator { JiraConnector = ConnectorMock, Logger = LoggerMock};
+        public void InvalidConnection()
+        {
+            var validator = new JiraConnectionValidator { JiraConnector = ConnectorMock, Logger = LoggerMock };
 
             Expect.Call(ConnectorMock.Login).Throw(new Exception());
 
@@ -35,8 +37,9 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void LoginFailure() {
-            var validator = new JiraConnectionValidator { JiraConnector = ConnectorMock, Logger = LoggerMock};
+        public void LoginFailure()
+        {
+            var validator = new JiraConnectionValidator { JiraConnector = ConnectorMock, Logger = LoggerMock };
 
             Expect.Call(ConnectorMock.Login).Throw(new JiraLoginException());
 

@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VersionOne.JiraConnector;
-using VersionOne.ServiceHost.JiraServices.StartupValidation;
-using VersionOne.ServiceHost.Core.Configuration;
 using Rhino.Mocks;
+using VersionOne.JiraConnector;
+using VersionOne.ServiceHost.Core.Configuration;
+using VersionOne.ServiceHost.JiraServices.StartupValidation;
 
-namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
-
+namespace VersionOne.ServiceHost.JiraServices.Tests
+{
     [TestClass]
-    public class JiraProjectValidatorTester : BaseJiraTester {
-
+    public class JiraProjectValidatorTester : BaseJiraTester
+    {
         [TestMethod]
-        public void ProjectsExist() {
+        public void ProjectsExist()
+        {
             var projects = new List<MappingInfo> {
                 new MappingInfo("1", "Name 1"),
                 new MappingInfo("2", "Name 2"),
@@ -20,7 +21,7 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
                 new Item("1", "Name 1"),
                 new Item("2", "Name 2"),
             };
-            var validator = new JiraProjectValidator(projects) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraProjectValidator(projects) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.GetProjects()).Return(existingProjects);
@@ -34,7 +35,8 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void ProjectsDoNotExist() {
+        public void ProjectsDoNotExist()
+        {
             var projects = new List<MappingInfo> {
                 new MappingInfo("1", "Name 1"),
                 new MappingInfo("2", "Name 2"),
@@ -43,7 +45,7 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
                 new Item("2", "Name 2"),
                 new Item("3", "Name 3"),
             };
-            var validator = new JiraProjectValidator(projects) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraProjectValidator(projects) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.GetProjects()).Return(existingProjects);

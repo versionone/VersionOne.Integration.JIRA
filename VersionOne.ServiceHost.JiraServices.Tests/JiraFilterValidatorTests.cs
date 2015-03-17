@@ -1,22 +1,22 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
-using VersionOne.ServiceHost.JiraServices;
 using VersionOne.ServiceHost.JiraServices.StartupValidation;
 
-namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
-
+namespace VersionOne.ServiceHost.JiraServices.Tests
+{
     [TestClass]
-    public class JiraFilterValidatorTester : BaseJiraTester {
-
+    public class JiraFilterValidatorTester : BaseJiraTester
+    {
         [TestMethod]
-        public void FilterExists() {
+        public void FilterExists()
+        {
             const string filterId = "1";
             var filter = new JiraFilter(filterId, true);
-            var validator = new JiraFilterValidator(filter) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraFilterValidator(filter) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login);
-            Expect.Call(ConnectorMock.GetIssuesFromFilter(filterId)).Return(null);            
+            Expect.Call(ConnectorMock.GetIssuesFromFilter(filterId)).Return(null);
             Expect.Call(ConnectorMock.Logout);
 
             Repository.ReplayAll();
@@ -27,10 +27,11 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void FilterDoesNotExist() {
+        public void FilterDoesNotExist()
+        {
             const string filterId = "1";
             var filter = new JiraFilter(filterId, true);
-            var validator = new JiraFilterValidator(filter) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraFilterValidator(filter) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.GetIssuesFromFilter(filterId)).Throw(new Exception());
@@ -43,8 +44,9 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void FilterIsNull() {
-            var validator = new JiraFilterValidator(null) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+        public void FilterIsNull()
+        {
+            var validator = new JiraFilterValidator(null) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login).Repeat.Never();
             Expect.Call(ConnectorMock.GetIssuesFromFilter(null)).IgnoreArguments().Repeat.Never();
@@ -57,10 +59,11 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void FilterDisabled() {
+        public void FilterDisabled()
+        {
             const string filterId = "1";
             var filter = new JiraFilter(filterId, false);
-            var validator = new JiraFilterValidator(filter) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraFilterValidator(filter) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Repository.ReplayAll();
             var result = validator.Validate();

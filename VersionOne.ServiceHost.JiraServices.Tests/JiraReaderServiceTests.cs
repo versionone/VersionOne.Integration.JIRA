@@ -1,32 +1,34 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 using VersionOne.JiraConnector;
 using VersionOne.JiraConnector.Exceptions;
-using VersionOne.ServiceHost.JiraServices;
 using VersionOne.ServiceHost.WorkitemServices;
-using System.Collections.Generic;
 
-namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
-
+namespace VersionOne.ServiceHost.JiraServices.Tests
+{
     [TestClass]
-    public class JiraReaderServiceTester : BaseJiraTester {
-        private JiraIssueReaderUpdater reader;
-        private JiraServiceConfiguration config;
+    public class JiraReaderServiceTester : BaseJiraTester
+    {
         private const string ExternalId = "external id";
 
-        [ClassInitialize]
-        public override void SetUp() {
+        private JiraIssueReaderUpdater reader;
+        private JiraServiceConfiguration config;
 
+        [TestInitialize]
+        public override void SetUp()
+        {
             base.SetUp();
 
-            config = new JiraServiceConfiguration {
-                OnCreateFieldName = "oncreate_field_name", 
-                OnCreateFieldValue = "oncreate_field_value", 
+            config = new JiraServiceConfiguration
+            {
+                OnCreateFieldName = "oncreate_field_name",
+                OnCreateFieldValue = "oncreate_field_value",
                 OnStateChangeFieldName = "onchange_field_name",
                 OnStateChangeFieldValue = "onchange_field_value",
-                ProgressWorkflow = "workflow 1", 
-                WorkitemLinkField = "LinkField", 
+                ProgressWorkflow = "workflow 1",
+                WorkitemLinkField = "LinkField",
                 ProgressWorkflowStateChanged = "workflow 2",
                 AssigneeStateChanged = "-1",
                 Url = Url,
@@ -37,10 +39,12 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
         }
 
         [TestMethod]
-        public void OnWorkitemCreated() {
+        public void OnWorkitemCreated()
+        {
             var workitem = new Story("Title", "description", "project", "owners");
-            var workitemResult = new WorkitemCreationResult(workitem) {
-                Source = { ExternalId = ExternalId, }, 
+            var workitemResult = new WorkitemCreationResult(workitem)
+            {
+                Source = { ExternalId = ExternalId, },
                 Permalink = "link",
             };
             workitemResult.Messages.Add("external id");
@@ -53,14 +57,16 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
             Repository.VerifyAll();
         }
 
-        private void UpdateWorkitemLinkInJira(WorkitemCreationResult workitemResult) {
+        private void UpdateWorkitemLinkInJira(WorkitemCreationResult workitemResult)
+        {
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.UpdateIssue(workitemResult.Source.ExternalId, config.WorkitemLinkField, workitemResult.Permalink)).Return(null);
             Expect.Call(ConnectorMock.Logout);
         }
 
         [TestMethod]
-        public void OnWorkitemStateChanged() {
+        public void OnWorkitemStateChanged()
+        {
             const string workitemId = "D-00001";
             var workitemResult = new WorkitemStateChangeResult(ExternalId, workitemId);
             workitemResult.Messages.Add("message 1");
@@ -70,10 +76,11 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
 
             Repository.ReplayAll();
             reader.OnWorkitemStateChanged(workitemResult);
-            Repository.VerifyAll();            
+            Repository.VerifyAll();
         }
 
-        private void FullUpdateJiraIssue(string externalId, string fieldName, string fieldValue, List<string> messages, string workflowId, string assignee) {
+        private void FullUpdateJiraIssue(string externalId, string fieldName, string fieldValue, List<string> messages, string workflowId, string assignee)
+        {
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.UpdateIssue(externalId, fieldName, fieldValue)).Return(null);
             Expect.Call(() => ConnectorMock.AddComment(externalId, messages[0])).Repeat.Once();
@@ -83,7 +90,8 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
         }
 
         [TestMethod]
-        public void OnWorkitemStateChangedWithoutWorkflowProgress() {
+        public void OnWorkitemStateChangedWithoutWorkflowProgress()
+        {
             const string workitemId = "D-00001";
             var workitemResult = new WorkitemStateChangeResult(ExternalId, workitemId);
             workitemResult.Messages.Add("message 1");
@@ -96,11 +104,12 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
 
             Repository.ReplayAll();
             reader.OnWorkitemStateChanged(workitemResult);
-            Repository.VerifyAll();             
+            Repository.VerifyAll();
         }
 
         [TestMethod]
-        public void OnWorkitemStateChangedWithEmptyData() {
+        public void OnWorkitemStateChangedWithEmptyData()
+        {
             const string workitemId = "D-00001";
             var workitemResult = new WorkitemStateChangeResult(ExternalId, workitemId);
             var localReader = new JiraIssueReaderUpdater(new JiraServiceConfiguration(), LoggerMock, ConnectorMock);
@@ -110,13 +119,15 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira {
 
             Repository.ReplayAll();
             localReader.OnWorkitemStateChanged(workitemResult);
-            Repository.VerifyAll();               
+            Repository.VerifyAll();
         }
 
         [TestMethod]
-        public void OnWorkitemCreatedInsufficientPermissions() {
+        public void OnWorkitemCreatedInsufficientPermissions()
+        {
             var workitem = new Story("Title", "description", "project", "owners");
-            var workitemResult = new WorkitemCreationResult(workitem) {
+            var workitemResult = new WorkitemCreationResult(workitem)
+            {
                 Source = { ExternalId = ExternalId, },
                 Permalink = "link",
             };

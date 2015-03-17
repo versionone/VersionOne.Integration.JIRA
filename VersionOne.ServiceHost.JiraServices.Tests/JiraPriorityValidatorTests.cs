@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VersionOne.JiraConnector;
-using VersionOne.ServiceHost.JiraServices.StartupValidation;
-using VersionOne.ServiceHost.Core.Configuration;
 using Rhino.Mocks;
+using VersionOne.JiraConnector;
+using VersionOne.ServiceHost.Core.Configuration;
+using VersionOne.ServiceHost.JiraServices.StartupValidation;
 
-namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
-
+namespace VersionOne.ServiceHost.JiraServices.Tests
+{
     [TestClass]
-    public class JiraPriorityValidatorTester : BaseJiraTester {
-
+    public class JiraPriorityValidatorTester : BaseJiraTester
+    {
         [TestMethod]
-        public void PriorityExist() {
+        public void PriorityExist()
+        {
             var priorities = new List<MappingInfo> {
                 new MappingInfo("1", "Name 1"),
                 new MappingInfo("2", "Name 2"),
@@ -20,7 +21,7 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
                 new Item("1", "Name 1"),
                 new Item("2", "Name 2"),
             };
-            var validator = new JiraPriorityValidator(priorities) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraPriorityValidator(priorities) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.GetPriorities()).Return(existPriorities);
@@ -34,7 +35,8 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
         }
 
         [TestMethod]
-        public void PriorityDoesntExist() {
+        public void PriorityDoesntExist()
+        {
             var priorities = new List<MappingInfo> {
                 new MappingInfo("1", "Name 1"),
                 new MappingInfo("2", "Name 2"),
@@ -43,7 +45,7 @@ namespace VersionOne.ServiceHost.Tests.WorkitemServices.Jira.StartupValidation {
                 new Item("2", "Name 2"),
                 new Item("3", "Name 3"),
             };
-            var validator = new JiraPriorityValidator(priorities) { JiraConnector = ConnectorMock, Logger = LoggerMock};;
+            var validator = new JiraPriorityValidator(priorities) { JiraConnector = ConnectorMock, Logger = LoggerMock }; ;
 
             Expect.Call(ConnectorMock.Login);
             Expect.Call(ConnectorMock.GetPriorities()).Return(existPriorities);
