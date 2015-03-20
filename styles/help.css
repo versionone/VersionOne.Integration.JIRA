@@ -123,7 +123,7 @@ a {
 	color: #07496B;
     text-decoration: none;
     padding-bottom: 0px;
-    border-bottom: 1px solid #ebb229;
+    /* border-bottom: 1px solid #ebb229; */
 }
 /* Links: #07496B; or #1777A4 */
 
@@ -132,7 +132,7 @@ a:hover {
 	color: #009FF2;
     text-decoration: none;
     padding-bottom: 0px;
-    border-bottom: 1px solid #cb632a;
+    /* border-bottom: 1px solid #cb632a; */
 }
 
 /* But thumbnails don't */
@@ -226,7 +226,7 @@ table.info td {
 
 .info {
     padding: 0.2em 0.5em 0.2em 30px;
-    background: #ebb229 url(../images/icons/emoticons/information.gif) no-repeat 5px 3px;
+    background: #ebb229 url(../images/information.gif) no-repeat 5px 3px;
    	color: #78082d;
 	margin-top: 0px;
 	margin-bottom: 10px;
