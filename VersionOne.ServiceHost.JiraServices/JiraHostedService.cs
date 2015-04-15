@@ -17,14 +17,16 @@ using VersionOne.ServiceHost.WorkitemServices;
 using ConfigurationException = VersionOne.ServiceHost.Core.Utility.ConfigurationException;
 using StartupChecker = VersionOne.ServiceHost.JiraServices.StartupValidation.StartupChecker;
 
-namespace VersionOne.ServiceHost.JiraServices {
+namespace VersionOne.ServiceHost.JiraServices
+{
     /// <summary>
     /// A service that:
     ///		1) Polls JIRA on a configurable interval for Issues to create in VersionOne.
     ///		2) Listens for Defects created in VersionOne and updates the corresponding issues in JIRA.
     /// </summary>
-    public class JiraHostedService : IHostedService, IComponentProvider {
-        public class IntervalSync {}
+    public class JiraHostedService : IHostedService, IComponentProvider
+    {
+        public class IntervalSync { }
 
         private IJiraIssueProcessor jiraProcessor;
         private IEventManager eventManager;
@@ -34,31 +36,38 @@ namespace VersionOne.ServiceHost.JiraServices {
 
         private StartupChecker startupChecker;
 
-        public void Initialize(XmlElement config, IEventManager eventManager, IProfile profile) {
+        public void Initialize(XmlElement config, IEventManager eventManager, IProfile profile)
+        {
             this.eventManager = eventManager;
             this.config = config;
             logger = new Logger(eventManager);
 
-            try {
+            try
+            {
                 jiraConfig = GetValuesFromConfiguration();
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 logger.Log(LogMessage.SeverityType.Error, "Error during reading settings from configuration file.", ex);
                 return;
             }
 
-            if(jiraConfig.Url == null) {
+            if (jiraConfig.Url == null)
+            {
                 throw new ConfigurationException("Cannot initialize JIRA Service without a URL");
             }
         }
 
-        public void Start() {
+        public void Start()
+        {
             startupChecker.Initialize();
             eventManager.Subscribe(typeof(IntervalSync), OnInterval);
             eventManager.Subscribe(typeof(WorkitemCreationResult), OnWorkitemCreated);
             eventManager.Subscribe(typeof(WorkitemStateChangeCollection), OnWorkitemStateChanged);
         }
 
-        private JiraServiceConfiguration GetValuesFromConfiguration() {
+        private JiraServiceConfiguration GetValuesFromConfiguration()
+        {
             jiraConfig = new JiraServiceConfiguration();
 
             ConfigurationReader.ReadConfigurationValues(jiraConfig, config);
@@ -77,10 +86,12 @@ namespace VersionOne.ServiceHost.JiraServices {
             return jiraConfig;
         }
 
-        private JiraFilter GetFilterFromConfiguration(string nodeName) {
+        private JiraFilter GetFilterFromConfiguration(string nodeName)
+        {
             var node = config[nodeName];
-            
-            if(node == null) {
+
+            if (node == null)
+            {
                 throw new JiraConfigurationException("Can't read filter information");
             }
 
@@ -97,37 +108,47 @@ namespace VersionOne.ServiceHost.JiraServices {
         /// Timer interval on which to poll JIRA. See app config file for time in milliseconds.
         /// </summary>
         /// <param name="pubobj">Not used</param>
-        private void OnInterval(object pubobj) {
+        private void OnInterval(object pubobj)
+        {
             logger.Log(LogMessage.SeverityType.Info, "Starting processing...");
             IList<Workitem> workitems = new List<Workitem>();
 
-            try {
+            try
+            {
                 logger.Log(LogMessage.SeverityType.Info, "Getting issues from JIRA.");
 
-                if(jiraConfig.OpenDefectFilter.Enabled) {
+                if (jiraConfig.OpenDefectFilter.Enabled)
+                {
                     var bugs = jiraProcessor.GetIssues<Defect>(jiraConfig.OpenDefectFilter.Id);
 
-                    if(bugs.Count > 0) {
+                    if (bugs.Count > 0)
+                    {
                         logger.Log(string.Format("Found {0} defects in JIRA to create in VersionOne.", bugs.Count));
                     }
 
-                    foreach(var bug in bugs) {
+                    foreach (var bug in bugs)
+                    {
                         workitems.Add(bug);
                     }
                 }
 
-                if(jiraConfig.OpenStoryFilter.Enabled) {
+                if (jiraConfig.OpenStoryFilter.Enabled)
+                {
                     var stories = jiraProcessor.GetIssues<Story>(jiraConfig.OpenStoryFilter.Id);
 
-                    if(stories.Count > 0) {
+                    if (stories.Count > 0)
+                    {
                         logger.Log(string.Format("Found {0} stories in JIRA to create in VersionOne.", stories.Count));
                     }
 
-                    foreach(var story in stories) {
+                    foreach (var story in stories)
+                    {
                         workitems.Add(story);
                     }
                 }
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 logger.Log(LogMessage.SeverityType.Error, string.Format("Error getting Issues from JIRA: {0}", ex.Message));
                 return;
             }
@@ -136,7 +157,8 @@ namespace VersionOne.ServiceHost.JiraServices {
             workitems = workitems.Distinct().ToList();
 
             // Create Workitem in V1 
-            foreach(var item in workitems) {
+            foreach (var item in workitems)
+            {
                 item.ExternalSystemName = jiraConfig.SourceFieldValue;
                 eventManager.Publish(item);
             }
@@ -153,32 +175,39 @@ namespace VersionOne.ServiceHost.JiraServices {
         /// We update the Issue in JIRA to reflect that.
         /// </summary>
         /// <param name="pubobj">WorkitemCreationResult of created defect.</param>
-        private void OnWorkitemCreated(object pubobj) {
+        private void OnWorkitemCreated(object pubobj)
+        {
             var creationResult = pubobj as WorkitemCreationResult;
 
-            if(creationResult != null) {
+            if (creationResult != null)
+            {
                 jiraProcessor.OnWorkitemCreated(creationResult);
             }
         }
 
-        private void OnWorkitemStateChanged(object pubobj) {
+        private void OnWorkitemStateChanged(object pubobj)
+        {
             var stateChangeCollection = pubobj as WorkitemStateChangeCollection;
 
-            if(stateChangeCollection == null) {
+            if (stateChangeCollection == null)
+            {
                 return;
             }
 
-            foreach(var stateChangeResult in stateChangeCollection) {
+            foreach (var stateChangeResult in stateChangeCollection)
+            {
                 stateChangeResult.ChangesProcessed = true;
 
-                if(!jiraProcessor.OnWorkitemStateChanged(stateChangeResult)) {
+                if (!jiraProcessor.OnWorkitemStateChanged(stateChangeResult))
+                {
                     stateChangeResult.ChangesProcessed = false;
                 }
             }
         }
 
-        public void RegisterComponents(IKernel container) {
-            var connector = new JiraConnectorFactory(JiraConnectorType.Soap).Create(jiraConfig.Url, jiraConfig.UserName, jiraConfig.Password);
+        public void RegisterComponents(IKernel container)
+        {
+            var connector = new JiraConnectorFactory(JiraConnectorType.Rest).Create(jiraConfig.Url, jiraConfig.UserName, jiraConfig.Password);
 
             container.Rebind<IEventManager>().ToConstant(eventManager);
             container.Rebind<ILogger>().ToConstant(logger);
