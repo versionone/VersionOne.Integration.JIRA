@@ -28,6 +28,20 @@ namespace VersionOne.JiraConnector.Rest
             }
         }
 
+        public bool Validate()
+        {
+            var request = new RestRequest
+            {
+                Method = Method.GET,
+                Resource = "myself",
+                RequestFormat = DataFormat.Json
+            };
+
+            var response = client.Execute(request);
+
+            return response.StatusCode.Equals(HttpStatusCode.OK);
+        }
+
         public void Login()
         {
             //throw new NotImplementedException();

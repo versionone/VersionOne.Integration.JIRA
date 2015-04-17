@@ -1,9 +1,12 @@
 /*(c) Copyright 2012, VersionOne, Inc. All rights reserved. (c)*/
 using System.Collections.Generic;
 
-namespace VersionOne.JiraConnector {
+namespace VersionOne.JiraConnector
+{
     // TODO impl IDisposable when login token in SOAP connector is properly encapsulated?
-    public interface IJiraConnector {
+    public interface IJiraConnector
+    {
+        bool Validate();
         void Login();
         void Logout();
         Issue[] GetIssuesFromFilter(string issueFilterId);

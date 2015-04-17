@@ -2,25 +2,21 @@ using System;
 using VersionOne.JiraConnector;
 using VersionOne.ServiceHost.ConfigurationTool.Entities;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.DL {
-    public class JiraConnectionValidator : IConnectionValidator {
+namespace VersionOne.ServiceHost.ConfigurationTool.DL
+{
+    public class JiraConnectionValidator : IConnectionValidator
+    {
         private readonly JiraServiceEntity entity;
 
-        public JiraConnectionValidator(JiraServiceEntity entity) {
+        public JiraConnectionValidator(JiraServiceEntity entity)
+        {
             this.entity = entity;
         }
 
-        public bool Validate() {
+        public bool Validate()
+        {
             var proxy = new JiraConnectorFactory(JiraConnectorType.Rest).Create(entity.Url, entity.UserName, entity.Password);
-
-            try {
-                proxy.Login();
-                proxy.Logout();
-                return true;
-            } catch(Exception) {
-                // TODO too generic exception type, probably should be changed to JiraLoginException; but how do we handle cases with invalid URL?
-                return false;
-            }
+            return proxy.Validate();
         }
     }
 }
