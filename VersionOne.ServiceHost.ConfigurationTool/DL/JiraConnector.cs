@@ -7,7 +7,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL {
         private readonly IJiraConnector connector;
         
         public JiraConnector(string url, string username, string password) {
-            connector = new JiraConnectorFactory(JiraConnectorType.Soap).Create(url, username, password);
+            connector = new JiraConnectorFactory(JiraConnectorType.Rest).Create(url, username, password);
         }
 
         public void Login() {

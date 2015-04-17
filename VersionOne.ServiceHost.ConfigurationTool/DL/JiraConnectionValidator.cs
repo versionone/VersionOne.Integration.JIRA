@@ -11,7 +11,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL {
         }
 
         public bool Validate() {
-            var proxy = new JiraConnectorFactory(JiraConnectorType.Soap).Create(entity.Url, entity.UserName, entity.Password);
+            var proxy = new JiraConnectorFactory(JiraConnectorType.Rest).Create(entity.Url, entity.UserName, entity.Password);
 
             try {
                 proxy.Login();
