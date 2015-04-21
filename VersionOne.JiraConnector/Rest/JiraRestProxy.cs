@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Net;
+using Newtonsoft.Json.Linq;
 using RestSharp;
-using System.Web.Helpers;
 using VersionOne.JiraConnector.Exceptions;
 
 namespace VersionOne.JiraConnector.Rest
@@ -66,8 +66,8 @@ namespace VersionOne.JiraConnector.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                dynamic data = Json.Decode(response.Content);
-                return ((IEnumerable<dynamic>)data.issues).Select(i => (Issue)CreateIssue(i)).ToArray();
+                dynamic data = JObject.Parse(response.Content);
+                return ((JArray)data.issues).Select(CreateIssue).ToArray();
             }
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
@@ -81,7 +81,9 @@ namespace VersionOne.JiraConnector.Rest
 
             if (fieldMeta == null)
                 throw new JiraException("Field metadata is missing", null);
-            if (fieldMeta.schema.type == null)
+
+            var type = fieldMeta.schema["type"];
+            if (type == null)
                 throw new JiraException("Field metadata is missing a type", null);
 
             var request = new RestRequest
@@ -93,7 +95,7 @@ namespace VersionOne.JiraConnector.Rest
             request.AddUrlSegment("issueIdOrKey", issueKey);
 
             dynamic body;
-            if (fieldMeta.schema.type.Equals("array"))
+            if (type.ToString().Equals("array"))
             {
                 dynamic operation = new ExpandoObject();
                 ((IDictionary<string, object>)operation).Add(fieldName, new List<dynamic>
@@ -135,8 +137,8 @@ namespace VersionOne.JiraConnector.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                dynamic data = Json.Decode(response.Content);
-                return ((IEnumerable<dynamic>)data).Select(i => new Item(i.id, i.name)).ToList();
+                var data = JArray.Parse(response.Content);
+                return data.Select(i => new Item(i["id"].Value<string>(), i["name"].Value<string>())).ToList();
             }
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
@@ -156,8 +158,8 @@ namespace VersionOne.JiraConnector.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                dynamic data = Json.Decode(response.Content);
-                return ((IEnumerable<dynamic>)data).Select(i => new Item(i.id, i.name)).ToList();
+                var data = JArray.Parse(response.Content);
+                return data.Select(i => new Item(i["id"].Value<string>(), i["name"].Value<string>())).ToList();
             }
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
@@ -224,8 +226,8 @@ namespace VersionOne.JiraConnector.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                dynamic data = Json.Decode(response.Content);
-                return ((IEnumerable<dynamic>)data.transitions).Select(i => new Item(i.id, i.name)).ToList();
+                dynamic data = JObject.Parse(response.Content);
+                return ((JArray)data.transitions).Select(i => new Item(i["id"].Value<string>(), i["name"].Value<string>())).ToList();
             }
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
@@ -245,8 +247,8 @@ namespace VersionOne.JiraConnector.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                dynamic data = Json.Decode(response.Content);
-                return ((IEnumerable<dynamic>)data).Where(i => i.custom).Select(i => new Item(i.id, i.name)).ToList();
+                var data = JArray.Parse(response.Content);
+                return data.Where(i => i["custom"].Value<bool>()).Select(i => new Item(i["id"].Value<string>(), i["name"].Value<string>())).ToList();
             }
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
@@ -266,7 +268,7 @@ namespace VersionOne.JiraConnector.Rest
             var response = client.Execute(request);
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
-                return Json.Decode(response.Content);
+                return JObject.Parse(response.Content);
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
             throw new JiraException(response.StatusDescription, new Exception(response.Content));
@@ -286,7 +288,7 @@ namespace VersionOne.JiraConnector.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                dynamic data = Json.Decode(response.Content);
+                dynamic data = JObject.Parse(response.Content);
                 return CreateIssue(data);
             }
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
