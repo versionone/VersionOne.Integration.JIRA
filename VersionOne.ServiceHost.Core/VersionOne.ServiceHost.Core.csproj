@@ -73,7 +73,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\Dependencies\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\Dependencies\Ninject.dll</HintPath>
@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonModeFactory.cs" />
+    <Compile Include="Configuration\AuthenticationTypes.cs" />
     <Compile Include="Configuration\InstallerConfiguration.cs" />
     <Compile Include="Configuration\ProxySettings.cs" />
     <Compile Include="Configuration\VersionOneSettings.cs" />
@@ -165,6 +166,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

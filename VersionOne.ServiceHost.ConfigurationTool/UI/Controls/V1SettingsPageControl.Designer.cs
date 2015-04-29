@@ -31,7 +31,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtServerUrl = new System.Windows.Forms.TextBox();
             this.lblServerUrl = new System.Windows.Forms.Label();
-            this.chkUseIntegratedAuth = new System.Windows.Forms.CheckBox();
             this.chkUseProxy = new System.Windows.Forms.CheckBox();
             this.lblProxyUri = new System.Windows.Forms.Label();
             this.lblProxyUserName = new System.Windows.Forms.Label();
@@ -41,13 +40,21 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             this.txtProxyPassword = new System.Windows.Forms.TextBox();
             this.lblProxyDomain = new System.Windows.Forms.Label();
             this.txtProxyDomain = new System.Windows.Forms.TextBox();
+            this.lblAccessToken = new System.Windows.Forms.Label();
+            this.txtAccessToken = new System.Windows.Forms.TextBox();
+            this.gbAuthentication = new System.Windows.Forms.GroupBox();
+            this.rbtnIntegratedWithCredentialsAuth = new System.Windows.Forms.RadioButton();
+            this.rbtnAccessTokenAuth = new System.Windows.Forms.RadioButton();
+            this.rbtnIntegratedAuth = new System.Windows.Forms.RadioButton();
+            this.rbtnBasicAuth = new System.Windows.Forms.RadioButton();
+            this.gbAuthentication.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblV1ConnectionValidationResult
             // 
             this.lblV1ConnectionValidationResult.AutoSize = true;
             this.lblV1ConnectionValidationResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblV1ConnectionValidationResult.Location = new System.Drawing.Point(17, 354);
+            this.lblV1ConnectionValidationResult.Location = new System.Drawing.Point(17, 371);
             this.lblV1ConnectionValidationResult.Name = "lblV1ConnectionValidationResult";
             this.lblV1ConnectionValidationResult.Size = new System.Drawing.Size(153, 13);
             this.lblV1ConnectionValidationResult.TabIndex = 16;
@@ -56,7 +63,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // btnVerifyV1Connection
             // 
-            this.btnVerifyV1Connection.Location = new System.Drawing.Point(394, 347);
+            this.btnVerifyV1Connection.Location = new System.Drawing.Point(394, 364);
             this.btnVerifyV1Connection.Name = "btnVerifyV1Connection";
             this.btnVerifyV1Connection.Size = new System.Drawing.Size(87, 27);
             this.btnVerifyV1Connection.TabIndex = 17;
@@ -65,15 +72,16 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(106, 117);
+            this.txtPassword.Location = new System.Drawing.Point(106, 155);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(375, 20);
             this.txtPassword.TabIndex = 6;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(17, 120);
+            this.lblPassword.Location = new System.Drawing.Point(17, 158);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 5;
@@ -81,7 +89,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(106, 77);
+            this.txtUsername.Location = new System.Drawing.Point(106, 120);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(375, 20);
             this.txtUsername.TabIndex = 4;
@@ -89,7 +97,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(17, 80);
+            this.lblUsername.Location = new System.Drawing.Point(17, 123);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 3;
@@ -97,7 +105,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // txtServerUrl
             // 
-            this.txtServerUrl.Location = new System.Drawing.Point(106, 37);
+            this.txtServerUrl.Location = new System.Drawing.Point(106, 50);
             this.txtServerUrl.Name = "txtServerUrl";
             this.txtServerUrl.Size = new System.Drawing.Size(375, 20);
             this.txtServerUrl.TabIndex = 2;
@@ -105,28 +113,17 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // lblServerUrl
             // 
             this.lblServerUrl.AutoSize = true;
-            this.lblServerUrl.Location = new System.Drawing.Point(17, 40);
+            this.lblServerUrl.Location = new System.Drawing.Point(17, 53);
             this.lblServerUrl.Name = "lblServerUrl";
             this.lblServerUrl.Size = new System.Drawing.Size(63, 13);
             this.lblServerUrl.TabIndex = 1;
             this.lblServerUrl.Text = "Server URL";
             // 
-            // chkUseIntegratedAuth
-            // 
-            this.chkUseIntegratedAuth.AutoSize = true;
-            this.chkUseIntegratedAuth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkUseIntegratedAuth.Location = new System.Drawing.Point(267, 10);
-            this.chkUseIntegratedAuth.Name = "chkUseIntegratedAuth";
-            this.chkUseIntegratedAuth.Size = new System.Drawing.Size(214, 17);
-            this.chkUseIntegratedAuth.TabIndex = 0;
-            this.chkUseIntegratedAuth.Text = "Use Windows Integrated Authentication";
-            this.chkUseIntegratedAuth.UseVisualStyleBackColor = true;
-            // 
             // chkUseProxy
             // 
             this.chkUseProxy.AutoSize = true;
             this.chkUseProxy.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkUseProxy.Location = new System.Drawing.Point(332, 157);
+            this.chkUseProxy.Location = new System.Drawing.Point(332, 197);
             this.chkUseProxy.Name = "chkUseProxy";
             this.chkUseProxy.Size = new System.Drawing.Size(149, 17);
             this.chkUseProxy.TabIndex = 7;
@@ -136,7 +133,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // lblProxyUri
             // 
             this.lblProxyUri.AutoSize = true;
-            this.lblProxyUri.Location = new System.Drawing.Point(17, 183);
+            this.lblProxyUri.Location = new System.Drawing.Point(17, 223);
             this.lblProxyUri.Name = "lblProxyUri";
             this.lblProxyUri.Size = new System.Drawing.Size(58, 13);
             this.lblProxyUri.TabIndex = 8;
@@ -145,7 +142,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // lblProxyUserName
             // 
             this.lblProxyUserName.AutoSize = true;
-            this.lblProxyUserName.Location = new System.Drawing.Point(17, 221);
+            this.lblProxyUserName.Location = new System.Drawing.Point(17, 259);
             this.lblProxyUserName.Name = "lblProxyUserName";
             this.lblProxyUserName.Size = new System.Drawing.Size(84, 13);
             this.lblProxyUserName.TabIndex = 10;
@@ -154,7 +151,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // lblProxyPassword
             // 
             this.lblProxyPassword.AutoSize = true;
-            this.lblProxyPassword.Location = new System.Drawing.Point(17, 257);
+            this.lblProxyPassword.Location = new System.Drawing.Point(17, 295);
             this.lblProxyPassword.Name = "lblProxyPassword";
             this.lblProxyPassword.Size = new System.Drawing.Size(82, 13);
             this.lblProxyPassword.TabIndex = 12;
@@ -162,21 +159,21 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // txtProxyUri
             // 
-            this.txtProxyUri.Location = new System.Drawing.Point(106, 180);
+            this.txtProxyUri.Location = new System.Drawing.Point(106, 220);
             this.txtProxyUri.Name = "txtProxyUri";
             this.txtProxyUri.Size = new System.Drawing.Size(375, 20);
             this.txtProxyUri.TabIndex = 9;
             // 
             // txtProxyUsername
             // 
-            this.txtProxyUsername.Location = new System.Drawing.Point(106, 218);
+            this.txtProxyUsername.Location = new System.Drawing.Point(106, 256);
             this.txtProxyUsername.Name = "txtProxyUsername";
             this.txtProxyUsername.Size = new System.Drawing.Size(375, 20);
             this.txtProxyUsername.TabIndex = 11;
             // 
             // txtProxyPassword
             // 
-            this.txtProxyPassword.Location = new System.Drawing.Point(106, 254);
+            this.txtProxyPassword.Location = new System.Drawing.Point(106, 292);
             this.txtProxyPassword.Name = "txtProxyPassword";
             this.txtProxyPassword.Size = new System.Drawing.Size(375, 20);
             this.txtProxyPassword.TabIndex = 13;
@@ -184,7 +181,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // lblProxyDomain
             // 
             this.lblProxyDomain.AutoSize = true;
-            this.lblProxyDomain.Location = new System.Drawing.Point(17, 292);
+            this.lblProxyDomain.Location = new System.Drawing.Point(17, 331);
             this.lblProxyDomain.Name = "lblProxyDomain";
             this.lblProxyDomain.Size = new System.Drawing.Size(72, 13);
             this.lblProxyDomain.TabIndex = 14;
@@ -192,15 +189,91 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // txtProxyDomain
             // 
-            this.txtProxyDomain.Location = new System.Drawing.Point(106, 289);
+            this.txtProxyDomain.Location = new System.Drawing.Point(106, 328);
             this.txtProxyDomain.Name = "txtProxyDomain";
             this.txtProxyDomain.Size = new System.Drawing.Size(375, 20);
             this.txtProxyDomain.TabIndex = 15;
+            // 
+            // lblAccessToken
+            // 
+            this.lblAccessToken.AutoSize = true;
+            this.lblAccessToken.Location = new System.Drawing.Point(17, 88);
+            this.lblAccessToken.Name = "lblAccessToken";
+            this.lblAccessToken.Size = new System.Drawing.Size(76, 13);
+            this.lblAccessToken.TabIndex = 18;
+            this.lblAccessToken.Text = "Access Token";
+            // 
+            // txtAccessToken
+            // 
+            this.txtAccessToken.Location = new System.Drawing.Point(106, 85);
+            this.txtAccessToken.Name = "txtAccessToken";
+            this.txtAccessToken.Size = new System.Drawing.Size(375, 20);
+            this.txtAccessToken.TabIndex = 19;
+            // 
+            // gbAuthentication
+            // 
+            this.gbAuthentication.Controls.Add(this.rbtnIntegratedWithCredentialsAuth);
+            this.gbAuthentication.Controls.Add(this.rbtnAccessTokenAuth);
+            this.gbAuthentication.Controls.Add(this.rbtnIntegratedAuth);
+            this.gbAuthentication.Controls.Add(this.rbtnBasicAuth);
+            this.gbAuthentication.Location = new System.Drawing.Point(20, 8);
+            this.gbAuthentication.Name = "gbAuthentication";
+            this.gbAuthentication.Size = new System.Drawing.Size(461, 36);
+            this.gbAuthentication.TabIndex = 23;
+            this.gbAuthentication.TabStop = false;
+            this.gbAuthentication.Text = "Authentication";
+            // 
+            // rbtnIntegratedWithCredentialsAuth
+            // 
+            this.rbtnIntegratedWithCredentialsAuth.AutoSize = true;
+            this.rbtnIntegratedWithCredentialsAuth.Location = new System.Drawing.Point(329, 13);
+            this.rbtnIntegratedWithCredentialsAuth.Name = "rbtnIntegratedWithCredentialsAuth";
+            this.rbtnIntegratedWithCredentialsAuth.Size = new System.Drawing.Size(132, 17);
+            this.rbtnIntegratedWithCredentialsAuth.TabIndex = 23;
+            this.rbtnIntegratedWithCredentialsAuth.TabStop = true;
+            this.rbtnIntegratedWithCredentialsAuth.Text = "NTLM with Credentials";
+            this.rbtnIntegratedWithCredentialsAuth.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAccessTokenAuth
+            // 
+            this.rbtnAccessTokenAuth.AutoSize = true;
+            this.rbtnAccessTokenAuth.Location = new System.Drawing.Point(86, 13);
+            this.rbtnAccessTokenAuth.Name = "rbtnAccessTokenAuth";
+            this.rbtnAccessTokenAuth.Size = new System.Drawing.Size(94, 17);
+            this.rbtnAccessTokenAuth.TabIndex = 20;
+            this.rbtnAccessTokenAuth.TabStop = true;
+            this.rbtnAccessTokenAuth.Text = "Access Token";
+            this.rbtnAccessTokenAuth.UseVisualStyleBackColor = true;
+            // 
+            // rbtnIntegratedAuth
+            // 
+            this.rbtnIntegratedAuth.AutoSize = true;
+            this.rbtnIntegratedAuth.Location = new System.Drawing.Point(259, 13);
+            this.rbtnIntegratedAuth.Name = "rbtnIntegratedAuth";
+            this.rbtnIntegratedAuth.Size = new System.Drawing.Size(55, 17);
+            this.rbtnIntegratedAuth.TabIndex = 22;
+            this.rbtnIntegratedAuth.TabStop = true;
+            this.rbtnIntegratedAuth.Text = "NTLM";
+            this.rbtnIntegratedAuth.UseVisualStyleBackColor = true;
+            // 
+            // rbtnBasicAuth
+            // 
+            this.rbtnBasicAuth.AutoSize = true;
+            this.rbtnBasicAuth.Location = new System.Drawing.Point(194, 13);
+            this.rbtnBasicAuth.Name = "rbtnBasicAuth";
+            this.rbtnBasicAuth.Size = new System.Drawing.Size(51, 17);
+            this.rbtnBasicAuth.TabIndex = 21;
+            this.rbtnBasicAuth.TabStop = true;
+            this.rbtnBasicAuth.Text = "Basic";
+            this.rbtnBasicAuth.UseVisualStyleBackColor = true;
             // 
             // V1SettingsPageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gbAuthentication);
+            this.Controls.Add(this.txtAccessToken);
+            this.Controls.Add(this.lblAccessToken);
             this.Controls.Add(this.txtProxyDomain);
             this.Controls.Add(this.lblProxyDomain);
             this.Controls.Add(this.txtProxyPassword);
@@ -218,9 +291,10 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtServerUrl);
             this.Controls.Add(this.lblServerUrl);
-            this.Controls.Add(this.chkUseIntegratedAuth);
             this.Name = "V1SettingsPageControl";
-            this.Size = new System.Drawing.Size(540, 391);
+            this.Size = new System.Drawing.Size(540, 400);
+            this.gbAuthentication.ResumeLayout(false);
+            this.gbAuthentication.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,7 +310,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtServerUrl;
         private System.Windows.Forms.Label lblServerUrl;
-        private System.Windows.Forms.CheckBox chkUseIntegratedAuth;
         private System.Windows.Forms.CheckBox chkUseProxy;
         private System.Windows.Forms.Label lblProxyUri;
         private System.Windows.Forms.Label lblProxyUserName;
@@ -246,5 +319,12 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
         private System.Windows.Forms.TextBox txtProxyPassword;
         private System.Windows.Forms.Label lblProxyDomain;
         private System.Windows.Forms.TextBox txtProxyDomain;
+        private System.Windows.Forms.Label lblAccessToken;
+        private System.Windows.Forms.TextBox txtAccessToken;
+        private System.Windows.Forms.GroupBox gbAuthentication;
+        private System.Windows.Forms.RadioButton rbtnAccessTokenAuth;
+        private System.Windows.Forms.RadioButton rbtnIntegratedAuth;
+        private System.Windows.Forms.RadioButton rbtnBasicAuth;
+        private System.Windows.Forms.RadioButton rbtnIntegratedWithCredentialsAuth;
     }
 }
