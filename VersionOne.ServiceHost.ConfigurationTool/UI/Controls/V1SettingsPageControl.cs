@@ -37,18 +37,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
 
         public override void DataBind()
         {
-            AddControlBinding(txtServerUrl, Model.Settings, VersionOneSettings.ApplicationUrlProperty);
-            AddControlBinding(txtAccessToken, Model.Settings, VersionOneSettings.AccessTokenProperty);
-            AddControlBinding(txtUsername, Model.Settings, VersionOneSettings.UsernameProperty);
-            AddControlBinding(txtPassword, Model.Settings, VersionOneSettings.PasswordProperty);
-            AddControlBinding(chkUseProxy, Model.ProxySettings, ProxyConnectionSettings.EnabledProperty);
-            AddControlBinding(txtProxyUri, Model.ProxySettings, ProxyConnectionSettings.UriProperty);
-            AddControlBinding(txtProxyUsername, Model.ProxySettings, ProxyConnectionSettings.UsernameProperty);
-            AddControlBinding(txtProxyPassword, Model.ProxySettings, ProxyConnectionSettings.PasswordProperty);
-            AddControlBinding(txtProxyDomain, Model.ProxySettings, ProxyConnectionSettings.DomainProperty);
-
-            BindHelpStrings();
-
             switch (Model.Settings.AuthenticationType)
             {
                 case AuthenticationTypes.AccessToken:
@@ -66,6 +54,18 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 default:
                     throw new Exception("You must set an authentication type in config file"); // TODO: check error message
             }
+
+            AddControlBinding(txtServerUrl, Model.Settings, VersionOneSettings.ApplicationUrlProperty);
+            AddControlBinding(txtAccessToken, Model.Settings, VersionOneSettings.AccessTokenProperty);
+            AddControlBinding(txtUsername, Model.Settings, VersionOneSettings.UsernameProperty);
+            AddControlBinding(txtPassword, Model.Settings, VersionOneSettings.PasswordProperty);
+            AddControlBinding(chkUseProxy, Model.ProxySettings, ProxyConnectionSettings.EnabledProperty);
+            AddControlBinding(txtProxyUri, Model.ProxySettings, ProxyConnectionSettings.UriProperty);
+            AddControlBinding(txtProxyUsername, Model.ProxySettings, ProxyConnectionSettings.UsernameProperty);
+            AddControlBinding(txtProxyPassword, Model.ProxySettings, ProxyConnectionSettings.PasswordProperty);
+            AddControlBinding(txtProxyDomain, Model.ProxySettings, ProxyConnectionSettings.DomainProperty);
+
+            BindHelpStrings();
         }
 
         private void BindHelpStrings()
@@ -148,6 +148,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 RemoveControlValidation<VersionOneSettings>(txtUsername);
                 RemoveControlValidation<VersionOneSettings>(txtPassword);
                 Model.Settings.AuthenticationType = AuthenticationTypes.AccessToken;
+                Model.Settings.Username = string.Empty;
+                Model.Settings.Password = string.Empty;
             }
             else if (rbtnBasicAuth.Checked)
             {
@@ -155,6 +157,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
                 RemoveControlValidation<VersionOneSettings>(txtAccessToken);
                 Model.Settings.AuthenticationType = AuthenticationTypes.Basic;
+                Model.Settings.AccessToken = string.Empty;
             }
             else if (rbtnIntegratedAuth.Checked)
             {
@@ -162,6 +165,9 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 RemoveControlValidation<VersionOneSettings>(txtUsername);
                 RemoveControlValidation<VersionOneSettings>(txtPassword);
                 Model.Settings.AuthenticationType = AuthenticationTypes.Integrated;
+                Model.Settings.AccessToken = string.Empty;
+                Model.Settings.Username = string.Empty;
+                Model.Settings.Password = string.Empty;
             }
             else if (rbtnIntegratedWithCredentialsAuth.Checked)
             {
@@ -169,6 +175,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
                 RemoveControlValidation<VersionOneSettings>(txtAccessToken);
                 Model.Settings.AuthenticationType = AuthenticationTypes.IntegratedWithCredentials;
+                Model.Settings.AccessToken = string.Empty;
             }
 
             ErrorProvider.Clear();

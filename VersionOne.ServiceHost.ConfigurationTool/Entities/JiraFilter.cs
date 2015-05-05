@@ -3,22 +3,42 @@ using System.Xml.Serialization;
 using VersionOne.ServiceHost.ConfigurationTool.Attributes;
 using VersionOne.ServiceHost.ConfigurationTool.Validation;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
-    public class JiraFilter {
-        public const string DisabledProperty = "Disabled";
+namespace VersionOne.ServiceHost.ConfigurationTool.Entities
+{
+    public class JiraFilter : BaseEntity
+    {
         public const string IdProperty = "Id";
+
+        private string id;
 
         [HelpString(HelpResourceKey = "JiraFilterId")]
         [XmlAttribute("id")]
         [ConditionalNonEmptyStringValidator(DisabledProperty, false)]
-        public string Id { get; set; }
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraFilterDisabled")]
         [XmlIgnore]
-        public bool Disabled { get; set; }
+        public override bool Disabled
+        {
+            get { return disabled; }
+            set
+            {
+                disabled = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlAttribute("disabled")]
-        public int DisabledNumeric {
+        public int DisabledNumeric
+        {
             get { return Convert.ToInt32(Disabled); }
             set { Disabled = Convert.ToBoolean(value); }
         }

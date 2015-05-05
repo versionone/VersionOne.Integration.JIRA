@@ -1,5 +1,7 @@
-namespace VersionOne.ServiceHost.ConfigurationTool {
-    partial class ConfigurationForm {
+namespace VersionOne.ServiceHost.ConfigurationTool
+{
+    partial class ConfigurationForm
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -9,8 +11,10 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -22,7 +26,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             this.msMenu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miNewFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +53,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.lblHeader = new System.Windows.Forms.Label();
             this.msMenu.SuspendLayout();
             this.tsMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctlSplitContainer)).BeginInit();
             this.ctlSplitContainer.Panel1.SuspendLayout();
             this.ctlSplitContainer.Panel2.SuspendLayout();
             this.ctlSplitContainer.SuspendLayout();
@@ -77,7 +83,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.miSeparator2,
             this.miExit});
             this.miFile.Name = "miFile";
-            this.miFile.Size = new System.Drawing.Size(35, 20);
+            this.miFile.Size = new System.Drawing.Size(37, 20);
             this.miFile.Text = "&File";
             // 
             // miNewFile
@@ -86,7 +92,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.miNewFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.miNewFile.Name = "miNewFile";
             this.miNewFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.miNewFile.Size = new System.Drawing.Size(151, 22);
+            this.miNewFile.Size = new System.Drawing.Size(146, 22);
             this.miNewFile.Text = "&New";
             // 
             // miOpenFile
@@ -95,13 +101,13 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.miOpenFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.miOpenFile.Name = "miOpenFile";
             this.miOpenFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.miOpenFile.Size = new System.Drawing.Size(151, 22);
+            this.miOpenFile.Size = new System.Drawing.Size(146, 22);
             this.miOpenFile.Text = "&Open";
             // 
             // miSeparator1
             // 
             this.miSeparator1.Name = "miSeparator1";
-            this.miSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.miSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // miSaveFile
             // 
@@ -109,24 +115,24 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.miSaveFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.miSaveFile.Name = "miSaveFile";
             this.miSaveFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.miSaveFile.Size = new System.Drawing.Size(151, 22);
+            this.miSaveFile.Size = new System.Drawing.Size(146, 22);
             this.miSaveFile.Text = "&Save";
             // 
             // miSaveFileAs
             // 
             this.miSaveFileAs.Name = "miSaveFileAs";
-            this.miSaveFileAs.Size = new System.Drawing.Size(151, 22);
+            this.miSaveFileAs.Size = new System.Drawing.Size(146, 22);
             this.miSaveFileAs.Text = "Save &As";
             // 
             // miSeparator2
             // 
             this.miSeparator2.Name = "miSeparator2";
-            this.miSeparator2.Size = new System.Drawing.Size(148, 6);
+            this.miSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(151, 22);
+            this.miExit.Size = new System.Drawing.Size(146, 22);
             this.miExit.Text = "E&xit";
             // 
             // miTools
@@ -136,24 +142,24 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.miSeparator3,
             this.miOptions});
             this.miTools.Name = "miTools";
-            this.miTools.Size = new System.Drawing.Size(44, 20);
+            this.miTools.Size = new System.Drawing.Size(48, 20);
             this.miTools.Text = "&Tools";
             // 
             // miGenerateSnapshot
             // 
             this.miGenerateSnapshot.Name = "miGenerateSnapshot";
-            this.miGenerateSnapshot.Size = new System.Drawing.Size(206, 22);
+            this.miGenerateSnapshot.Size = new System.Drawing.Size(203, 22);
             this.miGenerateSnapshot.Text = "Create settings snapshot";
             // 
             // miSeparator3
             // 
             this.miSeparator3.Name = "miSeparator3";
-            this.miSeparator3.Size = new System.Drawing.Size(203, 6);
+            this.miSeparator3.Size = new System.Drawing.Size(200, 6);
             // 
             // miOptions
             // 
             this.miOptions.Name = "miOptions";
-            this.miOptions.Size = new System.Drawing.Size(206, 22);
+            this.miOptions.Size = new System.Drawing.Size(203, 22);
             this.miOptions.Text = "&Options";
             // 
             // miHelp
@@ -161,13 +167,13 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miAbout});
             this.miHelp.Name = "miHelp";
-            this.miHelp.Size = new System.Drawing.Size(40, 20);
+            this.miHelp.Size = new System.Drawing.Size(44, 20);
             this.miHelp.Text = "&Help";
             // 
             // miAbout
             // 
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(126, 22);
+            this.miAbout.Size = new System.Drawing.Size(116, 22);
             this.miAbout.Text = "&About...";
             // 
             // tsMenu
@@ -228,9 +234,9 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             // 
             // pnlControlHolder
             // 
-            this.pnlControlHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlControlHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlControlHolder.Location = new System.Drawing.Point(0, 29);
             this.pnlControlHolder.Name = "pnlControlHolder";
             this.pnlControlHolder.Size = new System.Drawing.Size(501, 747);
@@ -275,6 +281,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
             this.tsMenu.PerformLayout();
             this.ctlSplitContainer.Panel1.ResumeLayout(false);
             this.ctlSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ctlSplitContainer)).EndInit();
             this.ctlSplitContainer.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
@@ -287,8 +294,9 @@ namespace VersionOne.ServiceHost.ConfigurationTool {
 
         // There is known bug in code generation for SplitContainer, the order of generated statements makes it fail.
         // That's why this part should be extracted to separate method to be called just after InitializeComponent.
-        private void PostInitializeComponent() {
-            ctlSplitContainer.Panel1MinSize = 100; 
+        private void PostInitializeComponent()
+        {
+            ctlSplitContainer.Panel1MinSize = 100;
             ctlSplitContainer.Panel2MinSize = 450;
             ctlSplitContainer.SplitterDistance = 208;
         }

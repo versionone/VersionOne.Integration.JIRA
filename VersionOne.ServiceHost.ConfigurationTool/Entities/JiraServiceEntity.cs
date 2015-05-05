@@ -1,16 +1,19 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using VersionOne.ServiceHost.ConfigurationTool.Attributes;
 using VersionOne.ServiceHost.ConfigurationTool.Validation;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
+namespace VersionOne.ServiceHost.ConfigurationTool.Entities
+{
     [DependsOnVersionOne]
     [DependsOnService(typeof(WorkitemWriterEntity))]
     [XmlRoot("JiraHostedService")]
     [HasSelfValidation]
-    public class JiraServiceEntity : BaseServiceEntity {
+    public class JiraServiceEntity : BaseServiceEntity
+    {
         private const string jiraServiceFactory = "VersionOne.Jira.SoapProxy.JiraSoapServiceFactory, VersionOne.Jira.SoapProxy";
 
         public const string UrlProperty = "Url";
@@ -33,123 +36,296 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
         public const string ProjectMappingsProperty = "ProjectMappings";
         public const string PriorityMappingsProperty = "PriorityMappings";
 
-        public JiraServiceEntity () {
+        private string url;
+        private string userName;
+        private string password;
+        private ObservableCollection<JiraProjectMapping> projectMappings;
+        private ObservableCollection<JiraPriorityMapping> priorityMappings;
+        private JiraFilter createDefectFilter;
+        private JiraFilter createStoryFilter;
+        private string createFieldId;
+        private string createFieldValue;
+        private string closeFieldId;
+        private string closeFieldValue;
+        private NullableInt progressWorkflow;
+        private NullableInt progressWorkflowClosed;
+        private string assigneeStateChanged;
+        private string urlTemplate;
+        private string urlTitle;
+        private string sourceName;
+        private string linkField;
+
+        public JiraServiceEntity()
+        {
             CreateTimer(TimerEntity.DefaultTimerIntervalMinutes);
             CreateDefectFilter = new JiraFilter();
             CreateStoryFilter = new JiraFilter();
             ProgressWorkflow = new NullableInt();
             ProgressWorkflowClosed = new NullableInt();
-            ProjectMappings = new List<JiraProjectMapping>();
-            PriorityMappings = new List<JiraPriorityMapping>();
+            ProjectMappings = new ObservableCollection<JiraProjectMapping>();
+            PriorityMappings = new ObservableCollection<JiraPriorityMapping>();
         }
 
         [XmlElement("JIRAServiceFactory")]
-        public string JiraServiceFactory {
+        public string JiraServiceFactory
+        {
             get { return jiraServiceFactory; }
-            set {}
+            set { }
         }
 
         [NonEmptyStringValidator]
         [XmlElement("JIRAUrl")]
-        public string Url { get; set; }
+        public string Url
+        {
+            get { return url; }
+            set
+            {
+                url = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
         [XmlElement("JIRAUserName")]
-        public string UserName { get; set; }
+        public string UserName
+        {
+            get { return userName; }
+            set
+            {
+                userName = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
         [XmlElement("JIRAPassword")]
-        public string Password { get; set; }
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlArray("ProjectMappings")]
         [XmlArrayItem("Mapping")]
         [HelpString(HelpResourceKey = "JiraProjectMappings")]
-        public List<JiraProjectMapping> ProjectMappings { get; set; }
+        public ObservableCollection<JiraProjectMapping> ProjectMappings
+        {
+            get { return projectMappings; }
+            set
+            {
+                projectMappings = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlArray("PriorityMappings")]
         [XmlArrayItem("Mapping")]
         [HelpString(HelpResourceKey = "JiraPriorityMappings")]
-        public List<JiraPriorityMapping> PriorityMappings { get; set; }
+        public ObservableCollection<JiraPriorityMapping> PriorityMappings
+        {
+            get { return priorityMappings; }
+            set
+            {
+                priorityMappings = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlElement("CreateDefectFilter")]
         [ObjectValidator]
-        public JiraFilter CreateDefectFilter { get; set; }
+        public JiraFilter CreateDefectFilter
+        {
+            get { return createDefectFilter; }
+            set
+            {
+                createDefectFilter = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlElement("CreateStoryFilter")]
         [ObjectValidator]
-        public JiraFilter CreateStoryFilter { get; set; }
+        public JiraFilter CreateStoryFilter
+        {
+            get { return createStoryFilter; }
+            set
+            {
+                createStoryFilter = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraCreateFieldId")]
-        public string CreateFieldId { get; set; }
+        public string CreateFieldId
+        {
+            get { return createFieldId; }
+            set
+            {
+                createFieldId = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraCreateFieldValue")]
-        public string CreateFieldValue { get; set; }
+        public string CreateFieldValue
+        {
+            get { return createFieldValue; }
+            set
+            {
+                createFieldValue = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraCloseFieldId")]
-        public string CloseFieldId { get; set; }
+        public string CloseFieldId
+        {
+            get { return closeFieldId; }
+            set
+            {
+                closeFieldId = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraCloseFieldValue")]
-        public string CloseFieldValue { get; set; }
+        public string CloseFieldValue
+        {
+            get { return closeFieldValue; }
+            set
+            {
+                closeFieldValue = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraProgressWorkflow")]
-        public NullableInt ProgressWorkflow { get; set; }
+        public NullableInt ProgressWorkflow
+        {
+            get { return progressWorkflow; }
+            set
+            {
+                progressWorkflow = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraProgressWorkflowClosed")]
-        public NullableInt ProgressWorkflowClosed { get; set; }
+        public NullableInt ProgressWorkflowClosed
+        {
+            get { return progressWorkflowClosed; }
+            set
+            {
+                progressWorkflowClosed = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [HelpString(HelpResourceKey = "JiraAssigneeStateChanged")]
-        public string AssigneeStateChanged { get; set; }
+        public string AssigneeStateChanged
+        {
+            get { return assigneeStateChanged; }
+            set
+            {
+                assigneeStateChanged = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
         [RegexValidator(@"^[a-z]+:\/\/.+?\#key\#$", MessageTemplate = "URL must be valid and end with #key# pattern.")]
         [XmlElement("JIRAIssueUrlTemplate")]
         [HelpString(HelpResourceKey = "JiraIssueUrlTemplate")]
-        public string UrlTemplate { get; set; }
+        public string UrlTemplate
+        {
+            get { return urlTemplate; }
+            set
+            {
+                urlTemplate = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlElement("JIRAIssueUrlTitle")]
-        public string UrlTitle { get; set; }
+        public string UrlTitle
+        {
+            get { return urlTitle; }
+            set
+            {
+                urlTitle = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
         [XmlElement("SourceFieldValue")]
         [HelpString(HelpResourceKey = "JiraSourceFieldValue")]
-        public string SourceName { get; set; }
+        public string SourceName
+        {
+            get { return sourceName; }
+            set
+            {
+                sourceName = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [XmlElement("WorkitemLinkFieldId")]
         [HelpString(HelpResourceKey = "JiraWorkitemLinkFieldId")]
-        public string LinkField { get; set; }
+        public string LinkField
+        {
+            get { return linkField; }
+            set
+            {
+                linkField = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [SelfValidation]
-        public void CheckProjectMappings(ValidationResults results) {
+        public void CheckProjectMappings(ValidationResults results)
+        {
             var validator = ValidationFactory.CreateValidator<JiraProjectMapping>();
 
-            foreach(var mapping in ProjectMappings) {
+            foreach (var mapping in ProjectMappings)
+            {
                 var mappingValidationResults = validator.Validate(mapping);
 
-                if(!mappingValidationResults.IsValid) {
+                if (!mappingValidationResults.IsValid)
+                {
                     results.AddAllResults(mappingValidationResults);
                 }
             }
         }
 
         [SelfValidation]
-        public void CheckPriorityMappings(ValidationResults results) {
+        public void CheckPriorityMappings(ValidationResults results)
+        {
             var validator = ValidationFactory.CreateValidator<JiraPriorityMapping>();
 
-            foreach (var mapping in PriorityMappings) {
+            foreach (var mapping in PriorityMappings)
+            {
                 var mappingValidationResults = validator.Validate(mapping);
 
-                if(!mappingValidationResults.IsValid) {
+                if (!mappingValidationResults.IsValid)
+                {
                     results.AddAllResults(mappingValidationResults);
                 }
             }
         }
 
-        public override bool Equals(object obj) {
-            if (obj == null || GetType() != obj.GetType()) {
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
                 return false;
             }
 
-            var other = (JiraServiceEntity) obj;
+            var other = (JiraServiceEntity)obj;
 
             return string.Equals(other.AssigneeStateChanged, AssigneeStateChanged) &&
                 string.Equals(other.CloseFieldId, CloseFieldId) && string.Equals(other.CloseFieldValue, CloseFieldValue) &&
@@ -167,7 +343,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
                 string.Equals(other.UrlTitle, UrlTitle);
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             return base.GetHashCode();
         }
     }

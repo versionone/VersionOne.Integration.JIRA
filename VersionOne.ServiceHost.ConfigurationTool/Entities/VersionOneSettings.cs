@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using VersionOne.ServiceHost.ConfigurationTool.Validation;
 using VersionOne.ServiceHost.ConfigurationTool.Attributes;
@@ -9,7 +11,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
     /// VersionOne connection settings node backing class.
     /// </summary>
     [XmlRoot("Settings")]
-    public class VersionOneSettings
+    public class VersionOneSettings : INotifyPropertyChanged
     {
         public const string AccessTokenAuthProperty = "AccessTokenAuth";
         public const string BasicAuthProperty = "BasicAuth";
@@ -19,6 +21,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
         public const string AccessTokenProperty = "AccessToken";
         public const string UsernameProperty = "Username";
         public const string PasswordProperty = "Password";
+
+        private string applicationUrl;
+        private string accessToken;
+        private string username;
+        private string password;
 
         public VersionOneSettings()
         {
@@ -36,17 +43,59 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
 
         [HelpString(HelpResourceKey = "V1PageVersionOneUrl")]
         [NonEmptyStringValidator]
-        public string ApplicationUrl { get; set; }
+        public string ApplicationUrl
+        {
+            get { return applicationUrl; }
+            set
+            {
+                applicationUrl = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
-        public string AccessToken { get; set; }
+        public string AccessToken
+        {
+            get { return accessToken; }
+            set
+            {
+                accessToken = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
-        public string Username { get; set; }
+        public string Username
+        {
+            get { return username; }
+            set
+            {
+                username = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         [NonEmptyStringValidator]
-        public string Password { get; set; }
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public ProxyConnectionSettings ProxySettings { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

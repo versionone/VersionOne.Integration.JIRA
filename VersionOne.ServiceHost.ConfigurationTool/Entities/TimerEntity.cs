@@ -3,27 +3,32 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using VersionOne.ServiceHost.ConfigurationTool.Attributes;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
+namespace VersionOne.ServiceHost.ConfigurationTool.Entities
+{
     /// <summary>
     /// Entity representing Timer triggering Services operations in ServiceHost system.
     /// </summary>
     [XmlRoot("TimePublisherService")]
-    public sealed class TimerEntity : BaseEntity {
+    public sealed class TimerEntity : BaseServiceEntity
+    {
         public const int DefaultTimerIntervalMinutes = 5;
         public const int MinimumTimerIntervalMinutes = 1;
         private const int minutesToMillisRatio = 60000;
         private const int minimumTimerIntervalMillis = minutesToMillisRatio * MinimumTimerIntervalMinutes;
 
+        public const string TimerProperty = "TimeoutMinutes";
+
         [DefaultValue(DefaultTimerIntervalMinutes * minutesToMillisRatio)]
         private long timeoutMilliseconds;
 
-        public const string TimerProperty = "TimeoutMinutes";
-
         [XmlElement("Interval")]
-        public long TimeoutMilliseconds {
+        public long TimeoutMilliseconds
+        {
             get { return timeoutMilliseconds; }
-            set {
+            set
+            {
                 timeoutMilliseconds = Math.Max(value, minimumTimerIntervalMillis);
+                NotifyPropertyChanged();
             }
         }
 
@@ -32,7 +37,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
         /// </summary>
         [XmlIgnore]
         [HelpString(HelpResourceKey = "CommonPollInterval")]
-        public long TimeoutMinutes {
+        public long TimeoutMinutes
+        {
             get { return TimeoutMilliseconds / minutesToMillisRatio; }
             set { TimeoutMilliseconds = value * minutesToMillisRatio; }
         }
@@ -42,7 +48,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
         /// </summary>
         public string PublishClass { get; set; }
 
-        public TimerEntity() {
+        public TimerEntity()
+        {
             TimeoutMinutes = DefaultTimerIntervalMinutes;
         }
     }

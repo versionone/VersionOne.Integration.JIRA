@@ -1,40 +1,48 @@
 using System.Xml.Serialization;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
-    public class NullableInt {
+namespace VersionOne.ServiceHost.ConfigurationTool.Entities
+{
+    public class NullableInt : BaseEntity
+    {
         public const string StringValueProperty = "StringValue";
 
         [XmlIgnore]
         public int? NumberValue { get; set; }
 
         [XmlText]
-        public string StringValue {
+        public string StringValue
+        {
             get { return NumberValue.HasValue ? NumberValue.ToString() : null; }
-            set {
+            set
+            {
                 int parsedValue;
-                if(int.TryParse(value, out parsedValue)) {
+                if (int.TryParse(value, out parsedValue))
                     NumberValue = parsedValue;
-                } else {
+                else
                     NumberValue = null;
-                }
+                NotifyPropertyChanged();
             }
         }
 
-        public override bool Equals(object obj) {
-            if(obj == null || obj.GetType() != typeof(NullableInt)) {
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != typeof(NullableInt))
+            {
                 return false;
             }
 
-            var other = (NullableInt) obj;
+            var other = (NullableInt)obj;
             return NumberValue == other.NumberValue ||
                 (NumberValue.HasValue && other.NumberValue.HasValue && NumberValue.Value == other.NumberValue.Value);
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             return base.GetHashCode();
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return StringValue;
         }
     }

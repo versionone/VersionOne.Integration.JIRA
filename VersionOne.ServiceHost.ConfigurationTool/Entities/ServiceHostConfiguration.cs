@@ -1,59 +1,73 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using VersionOne.ServiceHost.ConfigurationTool.UI.Interfaces;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
+namespace VersionOne.ServiceHost.ConfigurationTool.Entities
+{
 
     /// <summary>
     /// Container entity for all services settings.
     /// </summary>
     [HasSelfValidation]
-    public class ServiceHostConfiguration {
+    public class ServiceHostConfiguration
+    {
         private readonly List<BaseServiceEntity> services = new List<BaseServiceEntity>();
 
         private ProxyConnectionSettings proxySettings = new ProxyConnectionSettings();
 
         public VersionOneSettings Settings { get; private set; }
 
-        public ProxyConnectionSettings ProxySettings {
+        public ProxyConnectionSettings ProxySettings
+        {
             get { return proxySettings; }
             private set { proxySettings = value; }
         }
 
         public bool HasChanged { get; set; }
 
-        public IEnumerable<BaseServiceEntity> Services {
+        public IEnumerable<BaseServiceEntity> Services
+        {
             get { return services; }
         }
 
-        public ServiceHostConfiguration() {
-            HasChanged = true;
+        public ServiceHostConfiguration()
+        {
         }
 
-        public ServiceHostConfiguration(IEnumerable<BaseServiceEntity> entities) : this() {
-            foreach(var entity in entities) {
+        public ServiceHostConfiguration(IEnumerable<BaseServiceEntity> entities)
+            : this()
+        {
+            foreach (var entity in entities)
+            {
                 AddService(entity);
             }
         }
 
-        public BaseServiceEntity this[Type type] {
+        public BaseServiceEntity this[Type type]
+        {
             get { return services.Find(entity => entity.GetType() == type); }
         }
 
-        public void AddService(BaseServiceEntity entity) {
-            if(entity is IVersionOneSettingsConsumer) {
-                var settingsConsumer = (IVersionOneSettingsConsumer) entity;
+        public void AddService(BaseServiceEntity entity)
+        {
+            if (entity is IVersionOneSettingsConsumer)
+            {
+                var settingsConsumer = (IVersionOneSettingsConsumer)entity;
 
-                if(Settings != null) {
+                if (Settings != null)
+                {
                     settingsConsumer.Settings = Settings;
-                } else {
+                }
+                else
+                {
                     Settings = settingsConsumer.Settings;
                     ProxySettings = settingsConsumer.Settings.ProxySettings;
                 }
             }
-            
+
             services.Add(entity);
         }
     }

@@ -1,13 +1,16 @@
 using System.Xml.Serialization;
 using VersionOne.ServiceHost.ConfigurationTool.Validation;
 
-namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
-    public class JiraProjectMapping {
+namespace VersionOne.ServiceHost.ConfigurationTool.Entities
+{
+    public class JiraProjectMapping
+    {
         public const string VersionOneProjectNameProperty = "VersionOneProjectName";
         public const string VersionOneProjectTokenProperty = "VersionOneProjectToken";
         public const string JiraProjectNameProperty = "JiraProjectName";
 
-        public JiraProjectMapping() {
+        public JiraProjectMapping()
+        {
             JiraProject = new Mapping();
             VersionOneProject = new Mapping();
         }
@@ -18,21 +21,24 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities {
         public Mapping VersionOneProject { get; set; }
 
         [XmlIgnore]
-        public string VersionOneProjectName {
+        public string VersionOneProjectName
+        {
             get { return VersionOneProject.Name; }
             set { VersionOneProject.Name = value; }
         }
 
         [XmlIgnore]
         [NonEmptyStringValidator]
-        public string VersionOneProjectToken {
+        public string VersionOneProjectToken
+        {
             get { return VersionOneProject.Id; }
             set { VersionOneProject.Id = value; }
         }
 
         [XmlIgnore]
         [NonEmptyStringValidator]
-        public string JiraProjectName {
+        public string JiraProjectName
+        {
             get { return JiraProject.Name; }
             set { JiraProject.Name = value; }
         }
