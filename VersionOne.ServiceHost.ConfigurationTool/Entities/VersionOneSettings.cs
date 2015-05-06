@@ -48,8 +48,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return applicationUrl; }
             set
             {
-                applicationUrl = value;
-                NotifyPropertyChanged();
+                if (applicationUrl != value)
+                {
+                    applicationUrl = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -59,8 +62,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return accessToken; }
             set
             {
-                accessToken = value;
-                NotifyPropertyChanged();
+                if (accessToken != value)
+                {
+                    accessToken = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -70,8 +76,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return username; }
             set
             {
-                username = value;
-                NotifyPropertyChanged();
+                if (username != value)
+                {
+                    username = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -81,8 +90,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return password; }
             set
             {
-                password = value;
-                NotifyPropertyChanged();
+                if (password != value)
+                {
+                    password = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

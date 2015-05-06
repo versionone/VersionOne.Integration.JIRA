@@ -31,8 +31,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return enabled; }
             set
             {
-                enabled = value;
-                NotifyPropertyChanged();
+                if (enabled != value)
+                {
+                    enabled = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -49,8 +52,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return uri; }
             set
             {
-                uri = value;
-                NotifyPropertyChanged();
+                if (uri != value)
+                {
+                    uri = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -59,8 +65,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return userName; }
             set
             {
-                userName = value;
-                NotifyPropertyChanged();
+                if (userName != value)
+                {
+                    userName = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -69,8 +78,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return password; }
             set
             {
-                password = value;
-                NotifyPropertyChanged();
+                if (password != value)
+                {
+                    password = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -79,8 +91,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return domain; }
             set
             {
-                domain = value;
-                NotifyPropertyChanged();
+                if (domain != value)
+                {
+                    domain = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

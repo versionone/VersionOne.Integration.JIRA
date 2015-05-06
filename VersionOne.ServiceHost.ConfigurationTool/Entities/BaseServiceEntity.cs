@@ -18,8 +18,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return timer; }
             set
             {
-                timer = value;
-                NotifyPropertyChanged();
+                if (timer != value)
+                {
+                    timer = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

@@ -22,8 +22,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return externalIdFieldName; }
             set
             {
-                externalIdFieldName = value;
-                NotifyPropertyChanged();
+                if (externalIdFieldName != value)
+                {
+                    externalIdFieldName = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

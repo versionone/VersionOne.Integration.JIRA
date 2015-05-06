@@ -21,8 +21,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return disabled; }
             set
             {
-                disabled = value;
-                NotifyPropertyChanged();
+                if (disabled != value)
+                {
+                    disabled = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

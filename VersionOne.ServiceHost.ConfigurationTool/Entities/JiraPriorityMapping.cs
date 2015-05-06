@@ -19,6 +19,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
         [XmlElement("JIRAPriority")]
         public Mapping JiraPriority { get; set; }
 
+        [XmlElement("VersionOnePriority")]
         public Mapping VersionOnePriority { get; set; }
 
         [XmlIgnore]

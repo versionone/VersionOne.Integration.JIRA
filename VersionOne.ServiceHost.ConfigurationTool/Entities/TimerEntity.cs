@@ -27,8 +27,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return timeoutMilliseconds; }
             set
             {
-                timeoutMilliseconds = Math.Max(value, minimumTimerIntervalMillis);
-                NotifyPropertyChanged();
+                if (timeoutMilliseconds != value)
+                {
+                    timeoutMilliseconds = Math.Max(value, minimumTimerIntervalMillis);
+                    NotifyPropertyChanged();
+                }
             }
         }
 

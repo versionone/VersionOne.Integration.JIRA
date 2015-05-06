@@ -13,8 +13,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return id; }
             set
             {
-                id = value;
-                NotifyPropertyChanged();
+                if (id != value)
+                {
+                    id = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -24,8 +27,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return name; }
             set
             {
-                name = value;
-                NotifyPropertyChanged();
+                if (name != value)
+                {
+                    name = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
     }

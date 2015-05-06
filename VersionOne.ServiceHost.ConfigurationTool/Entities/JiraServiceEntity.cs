@@ -80,8 +80,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return url; }
             set
             {
-                url = value;
-                NotifyPropertyChanged();
+                if (url != value)
+                {
+                    url = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -92,8 +95,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return userName; }
             set
             {
-                userName = value;
-                NotifyPropertyChanged();
+                if (userName != value)
+                {
+                    userName = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -104,8 +110,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return password; }
             set
             {
-                password = value;
-                NotifyPropertyChanged();
+                if (password != value)
+                {
+                    password = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -117,8 +126,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return projectMappings; }
             set
             {
-                projectMappings = value;
-                NotifyPropertyChanged();
+                if (projectMappings != value)
+                {
+                    projectMappings = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -130,8 +142,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return priorityMappings; }
             set
             {
-                priorityMappings = value;
-                NotifyPropertyChanged();
+                if (priorityMappings != value)
+                {
+                    priorityMappings = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -142,8 +157,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return createDefectFilter; }
             set
             {
-                createDefectFilter = value;
-                NotifyPropertyChanged();
+                if (createDefectFilter != value)
+                {
+                    createDefectFilter = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -154,8 +172,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return createStoryFilter; }
             set
             {
-                createStoryFilter = value;
-                NotifyPropertyChanged();
+                if (createStoryFilter != value)
+                {
+                    createStoryFilter = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -165,8 +186,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return createFieldId; }
             set
             {
-                createFieldId = value;
-                NotifyPropertyChanged();
+                if (createFieldId != value)
+                {
+                    createFieldId = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -176,8 +200,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return createFieldValue; }
             set
             {
-                createFieldValue = value;
-                NotifyPropertyChanged();
+                if (createFieldValue != value)
+                {
+                    createFieldValue = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -187,8 +214,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return closeFieldId; }
             set
             {
-                closeFieldId = value;
-                NotifyPropertyChanged();
+                if (closeFieldId != value)
+                {
+                    closeFieldId = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -198,8 +228,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return closeFieldValue; }
             set
             {
-                closeFieldValue = value;
-                NotifyPropertyChanged();
+                if (closeFieldValue != value)
+                {
+                    closeFieldValue = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -209,8 +242,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return progressWorkflow; }
             set
             {
-                progressWorkflow = value;
-                NotifyPropertyChanged();
+                if (progressWorkflow != value)
+                {
+                    progressWorkflow = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -220,8 +256,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return progressWorkflowClosed; }
             set
             {
-                progressWorkflowClosed = value;
-                NotifyPropertyChanged();
+                if (progressWorkflowClosed != value)
+                {
+                    progressWorkflowClosed = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -231,8 +270,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return assigneeStateChanged; }
             set
             {
-                assigneeStateChanged = value;
-                NotifyPropertyChanged();
+                if (assigneeStateChanged != value)
+                {
+                    assigneeStateChanged = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -245,8 +287,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return urlTemplate; }
             set
             {
-                urlTemplate = value;
-                NotifyPropertyChanged();
+                if (urlTemplate != value)
+                {
+                    urlTemplate = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -256,8 +301,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return urlTitle; }
             set
             {
-                urlTitle = value;
-                NotifyPropertyChanged();
+                if (urlTitle != value)
+                {
+                    urlTitle = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -269,8 +317,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return sourceName; }
             set
             {
-                sourceName = value;
-                NotifyPropertyChanged();
+                if (sourceName != value)
+                {
+                    sourceName = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 
@@ -281,8 +332,11 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             get { return linkField; }
             set
             {
-                linkField = value;
-                NotifyPropertyChanged();
+                if (linkField != value)
+                {
+                    linkField = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

@@ -6,8 +6,21 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
     {
         public const string StringValueProperty = "StringValue";
 
+        private int? numberValue;
+
         [XmlIgnore]
-        public int? NumberValue { get; set; }
+        public int? NumberValue
+        {
+            get { return numberValue; }
+            set
+            {
+                if (numberValue != value)
+                {
+                    numberValue = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         [XmlText]
         public string StringValue
@@ -20,7 +33,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
                     NumberValue = parsedValue;
                 else
                     NumberValue = null;
-                NotifyPropertyChanged();
             }
         }
 
