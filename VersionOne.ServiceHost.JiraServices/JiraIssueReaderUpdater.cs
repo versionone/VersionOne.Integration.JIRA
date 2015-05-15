@@ -160,8 +160,8 @@ namespace VersionOne.ServiceHost.JiraServices {
         }
 
         // TODO check if not found mapping causes the method to return null
-        private MappingInfo ResolveVersionOnePriorityMapping(string jiraPriorityId) {
-            return configuration.PriorityMappings.FirstOrDefault(x => x.Key.Id.Equals(jiraPriorityId)).Value;
+        private MappingInfo ResolveVersionOnePriorityMapping(string jiraPriority) {
+            return configuration.PriorityMappings.FirstOrDefault(x => x.Key.Name.Equals(jiraPriority)).Value;
         }
 
         private bool IsActionAvailable(string workflowId, string issueId) {
