@@ -238,17 +238,19 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
 
         private void grdPriorityMappings_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            var column = grdPriorityMappings.Columns[e.ColumnIndex];
-
-            if (column == colVersionOnePriority)
+            if (e.ColumnIndex >= 0)
             {
-                SetDefaultValue(VersionOnePriorities, e.RowIndex, e.ColumnIndex);
-            }
-            else if (column == colJiraPriority)
-            {
-                SetDefaultValue(JiraPriorities, e.RowIndex, e.ColumnIndex);
-            }
+                var column = grdPriorityMappings.Columns[e.ColumnIndex];
 
+                if (column == colVersionOnePriority)
+                {
+                    SetDefaultValue(VersionOnePriorities, e.RowIndex, e.ColumnIndex);
+                }
+                else if (column == colJiraPriority)
+                {
+                    SetDefaultValue(JiraPriorities, e.RowIndex, e.ColumnIndex);
+                }
+            }
             e.ThrowException = false;
         }
 
@@ -300,6 +302,14 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
         {
             JiraPriorities = priorities;
             BindJiraPriorityColumn();
+
+            if (Model.PriorityMappings.Any(priorityMapping => !priorities.Any(
+                p =>
+                    p.Name.Equals(priorityMapping.JiraPriority.Name) &&
+                    p.Value.Equals(priorityMapping.JiraPriority.Id))))
+            {
+                bsPriorityMappings.Clear();
+            }
         }
     }
 }
