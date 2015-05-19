@@ -13,6 +13,8 @@ namespace VersionOne.JiraConnector.Rest
     {
         private readonly RestClient client;
 
+        private readonly string currentUser;
+
         public JiraRestProxy(string baseUrl)
             : this(baseUrl, string.Empty, string.Empty)
         {
@@ -26,6 +28,8 @@ namespace VersionOne.JiraConnector.Rest
             {
                 client.Authenticator = new HttpBasicAuthenticator(username, password);
             }
+
+            currentUser = username;
         }
 
         public bool Validate()
@@ -33,9 +37,10 @@ namespace VersionOne.JiraConnector.Rest
             var request = new RestRequest
             {
                 Method = Method.GET,
-                Resource = "myself",
+                Resource = "user",
                 RequestFormat = DataFormat.Json
             };
+            request.AddQueryParameter("username", currentUser);
 
             var response = client.Execute(request);
 
