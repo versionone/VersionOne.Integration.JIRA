@@ -80,7 +80,7 @@ namespace VersionOne.ServiceHost.Core.Services
         {
             try
             {
-                var metaVersion = ((MetaModel)Services.MetaModel).Version.ToString();
+                var metaVersion = ((MetaModel)Services.Meta).Version.ToString();
                 var memberOid = Services.LoggedIn.Momentless.ToString();
                 var defaultRole = GetLoggedInMemberRole();
 
@@ -95,10 +95,10 @@ namespace VersionOne.ServiceHost.Core.Services
         private string GetLoggedInMemberRole()
         {
             var query = new Query(Services.LoggedIn);
-            var defaultRoleAttribute = Services.MetaModel.GetAssetType(MemberType).GetAttributeDefinition(DefaultRoleNameProperty);
+            var defaultRoleAttribute = Services.Meta.GetAssetType(MemberType).GetAttributeDefinition(DefaultRoleNameProperty);
             query.Selection.Add(defaultRoleAttribute);
 
-            return Services.Loc(defaultRoleAttribute);
+            return Services.Localization(defaultRoleAttribute);
         }
 
         public virtual void Initialize(XmlElement config, IEventManager eventManager, IProfile profile)
@@ -150,7 +150,7 @@ namespace VersionOne.ServiceHost.Core.Services
         {
             foreach (var neededAssetType in neededassettypes)
             {
-                var assettype = Services.MetaModel.GetAssetType(neededAssetType.Name);
+                var assettype = Services.Meta.GetAssetType(neededAssetType.Name);
 
                 foreach (var attributeDefinitionName in neededAssetType.AttributeDefinitionNames)
                 {
@@ -163,32 +163,32 @@ namespace VersionOne.ServiceHost.Core.Services
 
         protected IAssetType RequestType
         {
-            get { return Services.MetaModel.GetAssetType("Request"); }
+            get { return Services.Meta.GetAssetType("Request"); }
         }
 
         protected IAssetType DefectType
         {
-            get { return Services.MetaModel.GetAssetType("Defect"); }
+            get { return Services.Meta.GetAssetType("Defect"); }
         }
 
         protected IAssetType StoryType
         {
-            get { return Services.MetaModel.GetAssetType("Story"); }
+            get { return Services.Meta.GetAssetType("Story"); }
         }
 
         protected IAssetType ReleaseVersionType
         {
-            get { return Services.MetaModel.GetAssetType("StoryCategory"); }
+            get { return Services.Meta.GetAssetType("StoryCategory"); }
         }
 
         protected IAssetType LinkType
         {
-            get { return Services.MetaModel.GetAssetType("Link"); }
+            get { return Services.Meta.GetAssetType("Link"); }
         }
 
         protected IAssetType NoteType
         {
-            get { return Services.MetaModel.GetAssetType("Note"); }
+            get { return Services.Meta.GetAssetType("Note"); }
         }
 
         protected IAttributeDefinition DefectName
@@ -263,7 +263,7 @@ namespace VersionOne.ServiceHost.Core.Services
 
         protected IOperation RequestInactivate
         {
-            get { return Services.MetaModel.GetOperation("Request.Inactivate"); }
+            get { return Services.Meta.GetOperation("Request.Inactivate"); }
         }
 
         protected IAttributeDefinition StoryName

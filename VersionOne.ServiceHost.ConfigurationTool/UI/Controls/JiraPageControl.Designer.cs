@@ -656,6 +656,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             this.grpPriorityMappings.TabIndex = 1;
             this.grpPriorityMappings.TabStop = false;
             this.grpPriorityMappings.Text = "Priority Mappings";
+            this.grdPriorityMappings.EditMode = DataGridViewEditMode.EditOnEnter;
             // 
             // lblPriorityValidationNote
             // 

@@ -20,7 +20,7 @@ namespace VersionOne.ServerConnector
 
         internal Asset Create(string assetTypeName, IEnumerable<AttributeValue> attributeValues)
         {
-            var assetType = services.MetaModel.GetAssetType(assetTypeName);
+            var assetType = services.Meta.GetAssetType(assetTypeName);
             var asset = services.New(assetType, Oid.Null);
 
             foreach (var attributeValue in attributeValues)

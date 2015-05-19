@@ -10,7 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencie
 		Dependencies\Microsoft.Practices.ObjectBuilder2.dll = Dependencies\Microsoft.Practices.ObjectBuilder2.dll
 		Dependencies\Ninject.dll = Dependencies\Ninject.dll
 		Dependencies\Rhino.Mocks.dll = Dependencies\Rhino.Mocks.dll
-		Common\VersionOne.SDK.APIClient.dll = Common\VersionOne.SDK.APIClient.dll
 	EndProjectSection
 	ProjectSection(FolderStartupServices) = postProject
 		{B4F97281-0DBD-4835-9ED8-7DFB966E87FF} = {B4F97281-0DBD-4835-9ED8-7DFB966E87FF}

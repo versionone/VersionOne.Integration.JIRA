@@ -317,7 +317,7 @@ namespace VersionOne.ServerConnector
         {
             try
             {
-                var type = services.MetaModel.GetAssetType(typeToken);
+                var type = services.Meta.GetAssetType(typeToken);
                 var attributeDefinition = type.GetAttributeDefinition(fieldName);
 
                 if (attributeDefinition.AttributeType != AttributeType.Relation)
@@ -360,7 +360,7 @@ namespace VersionOne.ServerConnector
         {
             try
             {
-                var type = services.MetaModel.GetAssetType(typeName);
+                var type = services.Meta.GetAssetType(typeName);
                 var attributeDefinition = type.GetAttributeDefinition(attributeName);
                 return attributeDefinition != null;
             }
@@ -391,7 +391,7 @@ namespace VersionOne.ServerConnector
         // TODO use filters
         private Asset GetProjectById(string projectId)
         {
-            var scopeType = services.MetaModel.GetAssetType(Workitem.ScopeProperty);
+            var scopeType = services.Meta.GetAssetType(Workitem.ScopeProperty);
             var scopeState = scopeType.GetAttributeDefinition(AssetStateAttribute);
 
             var scopeStateTerm = new FilterTerm(scopeState);
@@ -440,7 +440,7 @@ namespace VersionOne.ServerConnector
                 return;
             }
 
-            var linkType = services.MetaModel.GetAssetType(LinkType);
+            var linkType = services.Meta.GetAssetType(LinkType);
 
             var existingLinks = GetAssetLinks(asset.Oid, Filter.Equal(Link.UrlProperty, link.Url));
 
@@ -463,7 +463,7 @@ namespace VersionOne.ServerConnector
 
         public IList<BuildProject> GetBuildProjects(IFilter filter)
         {
-            var buildProjectType = services.MetaModel.GetAssetType(BuildProjectType);
+            var buildProjectType = services.Meta.GetAssetType(BuildProjectType);
             var terms = filter.GetFilter(buildProjectType);
 
             return queryBuilder.Query(BuildProjectType, terms).Select(asset => new BuildProject(asset)).ToList();
@@ -471,7 +471,7 @@ namespace VersionOne.ServerConnector
 
         public IList<BuildRun> GetBuildRuns(IFilter filter)
         {
-            var buildRunType = services.MetaModel.GetAssetType(BuildRunType);
+            var buildRunType = services.Meta.GetAssetType(BuildRunType);
             var terms = filter.GetFilter(buildRunType);
 
             return queryBuilder.Query(BuildRunType, terms).Select(asset => new BuildRun(asset, queryBuilder.ListPropertyValues, queryBuilder.TypeResolver)).ToList();
@@ -479,7 +479,7 @@ namespace VersionOne.ServerConnector
 
         public IList<ChangeSet> GetChangeSets(IFilter filter)
         {
-            var changeSetType = services.MetaModel.GetAssetType(ChangeSetType);
+            var changeSetType = services.Meta.GetAssetType(ChangeSetType);
             var terms = filter.GetFilter(changeSetType);
 
             return queryBuilder.Query(ChangeSetType, terms).Select(asset => new ChangeSet(asset)).ToList();
@@ -487,7 +487,7 @@ namespace VersionOne.ServerConnector
 
         public IList<PrimaryWorkitem> GetPrimaryWorkitems(IFilter filter, SortBy sortBy = null)
         {
-            var workitemType = services.MetaModel.GetAssetType(PrimaryWorkitemType);
+            var workitemType = services.Meta.GetAssetType(PrimaryWorkitemType);
             var terms = filter.GetFilter(workitemType);
 
             var allMembers = GetMembers(Filter.Empty());
@@ -499,7 +499,7 @@ namespace VersionOne.ServerConnector
 
         public IList<Workitem> GetWorkitems(string type, IFilter filter, SortBy sortBy = null)
         {
-            var workitemType = services.MetaModel.GetAssetType(type);
+            var workitemType = services.Meta.GetAssetType(type);
             var terms = filter.GetFilter(workitemType);
 
             var allMembers = GetMembers(Filter.Empty());
@@ -601,7 +601,7 @@ namespace VersionOne.ServerConnector
 
         private Asset GetProjectByName(string projectName)
         {
-            var scopeType = services.MetaModel.GetAssetType(Workitem.ScopeProperty);
+            var scopeType = services.Meta.GetAssetType(Workitem.ScopeProperty);
             var scopeName = scopeType.GetAttributeDefinition(Entity.NameProperty);
 
             var filter = GroupFilter.And(
@@ -626,7 +626,7 @@ namespace VersionOne.ServerConnector
         //TODO refactor
         private Asset GetRootProject()
         {
-            var scopeType = services.MetaModel.GetAssetType(Workitem.ScopeProperty);
+            var scopeType = services.Meta.GetAssetType(Workitem.ScopeProperty);
             var scopeName = scopeType.GetAttributeDefinition(Entity.NameProperty);
 
             var scopeState = scopeType.GetAttributeDefinition(AssetStateAttribute);
@@ -653,7 +653,7 @@ namespace VersionOne.ServerConnector
 
             if (!string.IsNullOrEmpty(ownerNames))
             {
-                var memberType = services.MetaModel.GetAssetType("Member");
+                var memberType = services.Meta.GetAssetType("Member");
                 var ownerQuery = new Query(memberType);
 
                 var terms = new List<IFilterTerm>();
@@ -676,7 +676,7 @@ namespace VersionOne.ServerConnector
 
         public ICollection<Scope> LookupProjects(string term)
         {
-            var projectType = services.MetaModel.GetAssetType(ScopeType);
+            var projectType = services.Meta.GetAssetType(ScopeType);
             var parentDef = projectType.GetAttributeDefinition("Parent");
             var nameDef = projectType.GetAttributeDefinition(Entity.NameProperty);
             var stateDef = projectType.GetAttributeDefinition(AssetStateAttribute);
@@ -729,8 +729,8 @@ namespace VersionOne.ServerConnector
 
         private IEnumerable<string> GetCustomFields(string assetTypeName, FieldType fieldType)
         {
-            var attrType = services.MetaModel.GetAssetType(AttributeDefinitionType);
-            var assetType = services.MetaModel.GetAssetType(assetTypeName);
+            var attrType = services.Meta.GetAssetType(AttributeDefinitionType);
+            var assetType = services.Meta.GetAssetType(assetTypeName);
             var isCustomAttributeDef = attrType.GetAttributeDefinition("IsCustom");
             var nameAttrDef = attrType.GetAttributeDefinition(Entity.NameProperty);
 
@@ -785,7 +785,7 @@ namespace VersionOne.ServerConnector
 
         private AssetList GetFieldList(IFilterTerm filter, IEnumerable<IAttributeDefinition> selection)
         {
-            var attributeDefinitionAssetType = services.MetaModel.GetAssetType(AttributeDefinitionType);
+            var attributeDefinitionAssetType = services.Meta.GetAssetType(AttributeDefinitionType);
 
             var query = new Query(attributeDefinitionAssetType);
             foreach (var attribute in selection)
@@ -819,9 +819,9 @@ namespace VersionOne.ServerConnector
         {
             try
             {
-                var metaVersion = ((MetaModel)services.MetaModel).Version;
+                var metaVersion = ((MetaModel)services.Meta).Version;
                 var loggedInMember = GetLoggedInMember();
-                var defaultRole = services.Loc(loggedInMember.DefaultRole);
+                var defaultRole = services.Localization(loggedInMember.DefaultRole);
                 logger.LogVersionOneConnectionInformation(LogMessage.SeverityType.Info, metaVersion.ToString(), services.LoggedIn.ToString(), defaultRole);
             }
             catch (Exception ex)

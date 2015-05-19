@@ -129,7 +129,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
         private IDictionary<string, string> QueryPropertyValues(string propertyName)
         {
             var res = new Dictionary<string, string>();
-            var assetType = services.MetaModel.GetAssetType(propertyName);
+            var assetType = services.Meta.GetAssetType(propertyName);
             var valueDef = assetType.GetAttributeDefinition("Name");
             IAttributeDefinition inactiveDef;
 
@@ -184,7 +184,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
         /// <param name="assetTypeToken">AssetType token</param>
         public List<string> GetReferenceFieldList(string assetTypeToken)
         {
-            var attributeDefinitionAssetType = services.MetaModel.GetAssetType("AttributeDefinition");
+            var attributeDefinitionAssetType = services.Meta.GetAssetType("AttributeDefinition");
 
             var nameAttributeDef = attributeDefinitionAssetType.GetAttributeDefinition("Name");
             var assetNameAttributeDef = attributeDefinitionAssetType.GetAttributeDefinition("Asset.AssetTypesMeAndDown.Name");
@@ -216,8 +216,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
         /// <returns>collection of custom list fields</returns>
         public IList<string> GetCustomFields(string assetTypeName, FieldType fieldType)
         {
-            var attrType = services.MetaModel.GetAssetType("AttributeDefinition");
-            var assetType = services.MetaModel.GetAssetType(assetTypeName);
+            var attrType = services.Meta.GetAssetType("AttributeDefinition");
+            var assetType = services.Meta.GetAssetType(assetTypeName);
             var isCustomAttributeDef = attrType.GetAttributeDefinition("IsCustom");
             var nameAttrDef = attrType.GetAttributeDefinition("Name");
 
@@ -272,7 +272,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
 
         private AssetList GetFieldList(IFilterTerm filter, IEnumerable<IAttributeDefinition> selection)
         {
-            var attributeDefinitionAssetType = services.MetaModel.GetAssetType("AttributeDefinition");
+            var attributeDefinitionAssetType = services.Meta.GetAssetType("AttributeDefinition");
 
             var query = new Query(attributeDefinitionAssetType);
             foreach (var attribute in selection)
@@ -288,7 +288,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
         /// </summary>
         public List<string> GetSourceList()
         {
-            var assetType = services.MetaModel.GetAssetType("StorySource");
+            var assetType = services.Meta.GetAssetType("StorySource");
             var nameDef = assetType.GetAttributeDefinition("Name");
             IAttributeDefinition inactiveDef;
 
@@ -309,7 +309,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
 
         public List<ProjectWrapper> GetProjectList()
         {
-            var projectType = services.MetaModel.GetAssetType(ProjectTypeToken);
+            var projectType = services.Meta.GetAssetType(ProjectTypeToken);
             var scopeQuery = new Query(projectType, projectType.GetAttributeDefinition("Parent"));
             var stateTerm = new FilterTerm(projectType.GetAttributeDefinition("AssetState"));
             stateTerm.NotEqual(AssetState.Closed);
@@ -353,7 +353,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
 
             try
             {
-                assetType = services.MetaModel.GetAssetType(assetTypeName);
+                assetType = services.Meta.GetAssetType(assetTypeName);
             }
             catch (MetaException ex)
             {
@@ -416,7 +416,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
 
             try
             {
-                assetType = services.MetaModel.GetAssetType(propertyName);
+                assetType = services.Meta.GetAssetType(propertyName);
             }
             catch (MetaException ex)
             {

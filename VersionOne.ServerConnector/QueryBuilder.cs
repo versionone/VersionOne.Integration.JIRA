@@ -61,7 +61,7 @@ namespace VersionOne.ServerConnector
         {
             try
             {
-                var workitemType = services.MetaModel.GetAssetType(workitemTypeName);
+                var workitemType = services.Meta.GetAssetType(workitemTypeName);
                 var query = new Query(workitemType) { Filter = filter };
 
                 if (sortBy != null)
@@ -81,7 +81,7 @@ namespace VersionOne.ServerConnector
 
         public AssetList Query(string workitemTypeName, IFilter filter)
         {
-            return Query(workitemTypeName, filter.GetFilter(services.MetaModel.GetAssetType(workitemTypeName)));
+            return Query(workitemTypeName, filter.GetFilter(services.Meta.GetAssetType(workitemTypeName)));
         }
 
         private void AddSelection(Query query, string typePrefix, IAssetType type)
@@ -172,7 +172,7 @@ namespace VersionOne.ServerConnector
 
         private string GetFieldType(string typeToken, string fieldName)
         {
-            var type = services.MetaModel.GetAssetType(typeToken);
+            var type = services.Meta.GetAssetType(typeToken);
             var attributeDefinition = type.GetAttributeDefinition(fieldName);
 
             if (attributeDefinition.AttributeType != AttributeType.Relation)
@@ -200,12 +200,12 @@ namespace VersionOne.ServerConnector
 
         public string Localize(string text)
         {
-            return text == null ? "" : services.Loc(text);
+            return text == null ? "" : services.Localization(text);
         }
 
         private Query GetPropertyValuesQuery(string propertyName, out IAttributeDefinition nameDef)
         {
-            var assetType = services.MetaModel.GetAssetType(propertyName);
+            var assetType = services.Meta.GetAssetType(propertyName);
             nameDef = assetType.GetAttributeDefinition(Entity.NameProperty);
 
             IAttributeDefinition inactiveDef;
