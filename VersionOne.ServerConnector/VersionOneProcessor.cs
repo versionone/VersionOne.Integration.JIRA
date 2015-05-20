@@ -305,7 +305,9 @@ namespace VersionOne.ServerConnector
 
         public string GetWorkitemLink(Workitem workitem)
         {
-            return string.Format("{0}/assetdetail.v1?oid={1}", configuration["ApplicationUrl"].InnerText, workitem.Id);
+            string instanceUrl = configuration["ApplicationUrl"].InnerText;
+            if (instanceUrl.LastIndexOf("/") + 1 != instanceUrl.Length) instanceUrl += "/"; 
+            return string.Format("{0}assetdetail.v1?oid={1}", instanceUrl, workitem.Id);
         }
 
         public string GetSummaryLink(Workitem workitem)
