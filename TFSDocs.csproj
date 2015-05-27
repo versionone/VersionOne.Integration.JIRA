@@ -69,6 +69,10 @@
     <Content Include="screenshots\EnableJIRARPC.png" />
     <Content Include="screenshots\JIRAConnection.png" />
     <Content Include="screenshots\JIRACustomField.png" />
+    <Content Include="screenshots\JIRA_AssignedUserFilter.png" />
+    <Content Include="screenshots\JIRA_CustomFieldFilter.png" />
+    <Content Include="screenshots\JIRA_LabelFilter.png" />
+    <Content Include="screenshots\JIRA_TypeAndStatusFilter.png" />
     <Content Include="screenshots\LabelFilter.png" />
     <Content Include="screenshots\MapYourProjects.png" />
     <Content Include="screenshots\sequencediagram.png" />
@@ -84,6 +88,10 @@
     <Content Include="thumbnails\enablejirarpc.png" />
     <Content Include="thumbnails\jiraconnection.png" />
     <Content Include="thumbnails\jiracustomfield.png" />
+    <Content Include="thumbnails\jira_assigneduserfilter.png" />
+    <Content Include="thumbnails\jira_customfieldfilter.png" />
+    <Content Include="thumbnails\jira_labelfilter.png" />
+    <Content Include="thumbnails\jira_typeandstatusfilter.png" />
     <Content Include="thumbnails\labelfilter.png" />
     <Content Include="thumbnails\mapyourprojects.png" />
     <Content Include="thumbnails\sequencediagram.png" />

@@ -47,7 +47,7 @@
         <p>
             JIRA is an Atlassian product for issue tracking, commonly used for both defect and issue tracking. As an issue tracking system, JIRA helps
 			quality assurance and programmers keep track of reported software
-			bugs in their work. JIRA also allow users to enter bug reports
+			bugs in their work. JIRA also allows users to enter bug reports
 			directly (depending on configuration) although it is often used only
 			internally in a company or organization doing software development.
 			As an issue tracking system, JIRA manages the broader notion of
@@ -63,7 +63,7 @@
 			the VersionOne Integration fir JIRA is a bridge that transfers
 			issues in JIRA into defects or stories in VersionOne. The integration creates
 			defects or stories in VersionOne based on issues in JIRA. Using this
-			integration your organization can manage and triage issues reported
+			integration, your organization can manage and triage issues reported
 			by customers and promote them to VersionOne for prioritization,
 			estimation, planning, and implementation once you determine
 			development work is necessary. When the work is completed in
@@ -105,8 +105,7 @@
             </li>
             <li>Atlassian JIRA:
 				<ul>
-                    <li>Tested with 6.3.1. Expected to work with any version higher than 3.12.3.</li>
-                    <li>Requires JIRA RPC Plugin.</li>
+                    <li>Tested with 6.4.3. Expected to work with any version higher than 5.2.</li>
                 </ul>
             </li>
             <li>Integration Server Operating System:
@@ -147,56 +146,7 @@
                 <ol>
                     <li><a href="#VersionOneJIRAIntegration-ConfigureJIRA">Configure JIRA</a></li>
                     <li><a href="#VersionOneJIRAIntegration-ConfigureVersionOne">Configure VersionOne</a></li>
-                    <li><a href="#VersionOneJIRAIntegration-ConfigureServiceHost">Configure ServiceHost</a></li>
-                </ol>
-            </li>
-            <li>Start the Integration
-				<p>
-                    Open up the command prompt, navigate to your installation folder,
-					and run the following command:<br />
-                    <code>VersionOne.ServiceHost.exe</code>
-                </p>
-                <p>
-                    If you have configured your system properly, you should see
-					several [Info] messages followed by a [Startup] message.
-                </p>
-            </li>
-            <li>Test the integration
-				<p>
-                    To ensure the integration is working, perform the following
-					steps:
-                </p>
-                <ol>
-                    <li>Create an Issue in JIRA</li>
-                    <li>Set the appropriate state in order for the issue to move to VersionOne</li>
-                    <li>Verify that the issue appears in VersionOne as a defect</li>
-                    <li>Close the defect in VersionOne</li>
-                    <li>Verify that the JIRA Issue has been updated as expected</li>
-                    <li>Shut down the service host by pressing &quot;Q&quot; in the console window.</li>
-                </ol>
-            </li>
-            <li>Install as a Windows Service
-				<p>
-                    Run the following command from the console window:<br />
-                    <code>VersionOne.ServiceHost.exe --install</code>
-                </p>
-                <p>
-                    This command installs the service so it will will run under
-					the account NT AUTHORITY\Local Service. Local Service must be given
-					access privileges to the directory where the the integration executable was
-					installed so it can store its state and write to log files. Follow
-					the steps below to change the security on the installation
-					directory:
-                </p>
-                <ol>
-                    <li>Right click the installation folder from Windows Explorer.</li>
-                    <li>Select &quot;properties&quot;.</li>
-                    <li>Select the &quot;Security&quot; tab.</li>
-                    <li>Click the &quot;Add&quot; button.</li>
-                    <li>Enter &quot;Local Service&quot; and click &quot;OK&quot;.</li>
-                    <li>Click the &quot;Allow&quot; checkbox for the &quot;Full
-						Control&quot; row .</li>
-                    <li>Click &quot;OK&quot; to save the changes.</li>
+                    <li><a href="#VersionOneJIRAIntegration-ConfigureServiceHost">Configure</a> Integration</li>
                 </ol>
             </li>
         </ol>
@@ -212,20 +162,10 @@
         <p>
             This section describes how to modify your JIRA instance for use
 			with VersionOne. Before you begin you need decide if you want to
-			Assign or Tag the Issues you want visible in VersionOne.
+			Assign or Tag the JIRA Issues you want visible in VersionOne.
         </p>
 
         <ol>
-            <li>Enable JIRA RPC plug-in.
-				<p>
-                    Make sure the JIRA RPC plug-in is enabled. Prior to JIRA 4.3 this
-					may need to be installed and enabled. For versions of JIRA later
-					than 4.3, the RPC plug-in is bundled with JIRA and enabled by
-					default.<br />
-                    <a class="fancybox" href="screenshots/EnableJIRARPC.png" title="Enable JIRA RPC">
-                        <img alt="" src="thumbnails/enablejirarpc.png" /></a>
-                </p>
-            </li>
             <li>Select or Create a JIRA User.
 				<p>
                     The integration requires a valid JIRA User ID and a Password
@@ -242,9 +182,9 @@
 					access to run, there are some validation rules that can only be
 					checked with a JIRA administrator role. To help check first-time
 					configuration, the recommended approach is to elevate the
-					integration user to administrator. After the integration has been
-					verified (Start the Integration in the above steps) and before
-					starting as a service (Install as Windows Service in the above
+					integration user to Administrator. After the integration has been
+					verified (start the integration in the below steps) and before
+					starting as a service (install as Windows Service in the below
 					steps), reduce the JIRA access to Developer Role. Then you can
 					safely ignore log warnings about validation rules that require
 					administrator access.
@@ -269,31 +209,33 @@
                 <ul>
                     <li>Type and Status Filter
 						<p>
-                            The simplest filter is to move all JIRA issues of a certain type
+                            The simplest filter is to move all JIRA Issues of a certain type
 							and state to VersionOne.<br />
-                            <a class="fancybox" href="screenshots/TypeAndStatusFilter.png" title="Type and Status Filter">
-                                <img alt="" src="thumbnails/typeandstatusfilter.png" /></a>
+                            <a class="fancybox" href="screenshots/JIRA_TypeAndStatusFilter.png" title="Type and Status Filter">
+                                <img alt="" src="thumbnails/jira_typeandstatusfilter.png" /></a> 
                     </li>
-                    <li>User or Label Filter
+                    <li>Assigned User or Label Filter
 						<p>
-                            If only a subset of JIRA issues of a type and status should be
+                            If only a subset of JIRA Issues of a type and status should be
 							moved, then you may want to create a filter that transfers all
-							JIRA issues that are associated with the remote user, or you may
-							want to create a filter that transfers all JIRA issues that are
+							JIRA Issues that are associated with the remote user, or you may
+							want to create a filter that transfers all JIRA Issues that are
 							labeled with &quot;versionone&quot;.<br />
 
-                            <a class="fancybox" href="screenshots/UserFilter.png" title="User Filter">
-                                <img alt="" src="thumbnails/userfilter.png" /></a>
+                            <a class="fancybox" href="screenshots/JIRA_AssignedUserFilter.png" title="User Filter">
+                                <img alt="" src="thumbnails/jira_assigneduserfilter.png" /></a>&nbsp;<br /><br />
 
-                            <a class="fancybox" href="screenshots/LabelFilter.png" title="Label Filter">
-                                <img alt="" src="thumbnails/labelfilter.png" /></a>
-                        </p>
+                            <a class="fancybox" href="screenshots/JIRA_LabelFilter.png" title="Label Filter">
+                                <img alt="" src="thumbnails/jira_labelfilter.png" /></a></p>
                     </li>
                     <li>Custom Field or Combination
 						<p>
                             If the JIRA fields above would conflict with existing
-							workflow, you may want to create a custom field and have it used
-							as part of the filter.
+							workflow, you may want to create a custom field and use it
+							as part of the filter.<br />
+
+                            <a class="fancybox" href="screenshots/JIRA_CustomFieldFilter.png" title="Custom Field">
+                                <img alt="" src="thumbnails/jira_customfieldfilter.png" /></a>
                         </p>
                     </li>
                 </ul>
@@ -303,7 +245,7 @@
 				<p>
                     By default the integration puts the VersionOne defect information
 					in the &quot;Comments&quot; section of the Issue. This information
-					includes a URL to the VersionOne defect. You may optionally add
+					includes a URL to the VersionOne asset. You may optionally add
 					another field to hold this data necessary. To do this create the
 					custom field and note the 'fieldId' value. This value is available
 					to the JIRA Administrator. From the &quot;View Custom Fields&quot;
@@ -676,6 +618,61 @@
             </li>
             <li>Save your changes and exit the program</li>
         </ol>
+        <h2>Integration</h2>
+        <ol>
+            <li>Start the Integration
+				<p>
+                    Open up the command prompt, navigate to your installation folder,
+					and run the following command:<br />
+                    <code>VersionOne.ServiceHost.exe</code>
+                </p>
+                <p>
+                    If you have configured your system properly, you should see
+					several [Info] messages followed by a [Startup] message.
+                </p>
+            </li>
+            <li>Test the integration
+				<p>
+                    To ensure the integration is working, perform the following
+					steps:
+                </p>
+                <ol>
+                    <li>Create an Issue in JIRA</li>
+                    <li>Set the appropriate state in order for the issue to move to VersionOne</li>
+                    <li>Verify that the issue appears in VersionOne as a defect</li>
+                    <li>Close the defect in VersionOne</li>
+                    <li>Verify that the JIRA Issue has been updated as expected</li>
+                    <li>Shut down the service host by pressing &quot;Q&quot; in the console window.</li>
+                </ol>
+            </li>
+            <li>Install as a Windows Service
+				<p>
+                    Run the following command from the console window:<br />
+                    <code>VersionOne.ServiceHost.exe --install</code>
+                </p>
+                <p>
+                    This command installs the service so it will will run under
+					the account NT AUTHORITY\Local Service. Local Service must be given
+					access privileges to the directory where the the integration executable was
+					installed so it can store its state and write to log files. Follow
+					the steps below to change the security on the installation
+					directory:
+                </p>
+                <ol>
+                    <li>Right click the installation folder from Windows Explorer.</li>
+                    <li>Select &quot;properties&quot;.</li>
+                    <li>Select the &quot;Security&quot; tab.</li>
+                    <li>Click the &quot;Add&quot; button.</li>
+                    <li>Enter &quot;Local Service&quot; and click &quot;OK&quot;.</li>
+                    <li>Click the &quot;Allow&quot; checkbox for the &quot;Full
+						Control&quot; row .</li>
+                    <li>Click &quot;OK&quot; to save the changes.</li>
+                </ol>
+            </li>
+        </ol>
+
+        <p>
+            &nbsp;</p>
     </div>
 </body>
 </html>
