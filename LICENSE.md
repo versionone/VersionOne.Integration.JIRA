@@ -1,4 +1,4 @@
-# VersionOne Integration for JIRA
+# VersionOne IssueSync for JIRA
 Copyright (c) 2015 VersionOne, Inc.
 All rights reserved.
 
