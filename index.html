@@ -10,6 +10,22 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="scripts/jquery.fancybox.js"></script>
 
+    <style type="text/css">
+        .auto-style1 {
+            width: 343px;
+        }
+        .auto-style2 {
+            width: 343px;
+            height: 34px;
+        }
+        .auto-style3 {
+            height: 34px;
+        }
+        .auto-style4 {
+            height: 51px;
+        }
+    </style>
+
     </head>
 
 <body>
@@ -203,8 +219,11 @@
 					issues will be transferred to VersionOne. By using a JIRA filter,
 					you can make the integration fit with your existing JIRA workflow
 					and fields. The details of writing such a filter are beyond the
-					scope of this document. However, the following are some simple
+					scope of this document; however, the following are some simple
 					examples.
+                </p>
+                <p>
+                    *NOTE: A separate filter is needed for creating a Defect in VersionOne and for creating a Story in VersionOne.&nbsp;
                 </p>
                 <ul>
                     <li>Type and Status Filter
@@ -220,7 +239,7 @@
 							moved, then you may want to create a filter that transfers all
 							JIRA Issues that are associated with the remote user, or you may
 							want to create a filter that transfers all JIRA Issues that are
-							labeled with &quot;versionone&quot;.<br />
+							labeled with &quot;versionone&quot;. Please note that the label value must already exist on an Issue in order to create this type of filter. <br />
 
                             <a class="fancybox" href="screenshots/JIRA_AssignedUserFilter.png" title="User Filter">
                                 <img alt="" src="thumbnails/jira_assigneduserfilter.png" /></a>&nbsp;<br /><br />
@@ -247,10 +266,9 @@
 					in the &quot;Comments&quot; section of the Issue. This information
 					includes a URL to the VersionOne asset. You may optionally add
 					another field to hold this data necessary. To do this create the
-					custom field and note the 'fieldId' value. This value is available
+					custom field and note the 'fieldId' value in the URL. This value is available
 					to the JIRA Administrator. From the &quot;View Custom Fields&quot;
-					page, select the &quot;Screens&quot; link under the settings &quot;Cog&quot; for the desired custom field. In the URL,
-					note the 'fieldId' value.<br />
+					page, select the &quot;Screens&quot; link under the settings &quot;gear&quot; for the desired custom field.<br />
 
                     <a class="fancybox" href="screenshots/JIRACustomField.png" title="JIRA Custom Field">
                         <img alt="" src="thumbnails/jiracustomfield.png" /></a>
@@ -276,9 +294,9 @@
             <li>Determine where to store the JIRA ID
 				<p>
                     The integration needs a text field in VersionOne to store the JIRA
-					identifier. By default this is the <em>Reference</em> field. If you
+					identifier; by default this is the <em>Reference</em> field. If you
 					are already using this field, you'll need to create a custom text
-					field and note the name.
+					field in VersionOne and note the name.
                 </p>
             </li>
         </ol>
@@ -303,31 +321,36 @@
 				<p>
                     <a class="fancybox" href="screenshots/VersionOneConnection.png" title="VersionOne Connection">
                         <img alt="" src="thumbnails/versiononeconnection.png" /></a>
+                    </p>
+                <p>
                     The following table
 					describes the fields on this tab:
                 </p>
                 <table>
                     <tbody>
                         <tr>
-                            <th>Field</th>
+                            <th class="auto-style1">Field</th>
                             <th>Description</th>
                         </tr>
                         <tr>
-                            <td>Server URL</td>
-                            <td>This is the URL to your VersionOne server</td>
+                            <td class="auto-style1"> Authentication</td>
+                            <td> The method your VersionOne instance uses to authenticate with VersionOne server.</td>
                         </tr>
                         <tr>
-                            <td>Username</td>
-                            <td>VersionOne user that will create defects</td>
+                            <td class="auto-style2"> Access Token</td>
+                            <td class="auto-style3"> The Access Token provided by VersionOne for your application</td>
                         </tr>
                         <tr>
-                            <td>Password</td>
-                            <td>Password for the specified user</td>
+                            <td class="auto-style1">Server URL</td>
+                            <td>This is the URL to your VersionOne server.</td>
                         </tr>
                         <tr>
-                            <td>Use Windows Integrated Authentication</td>
-                            <td>Check this box if you VersionOne server is configured to
-								use Windows Integrated Authentication</td>
+                            <td class="auto-style1">Username</td>
+                            <td>VersionOne user that will create Defects and/or Stories.</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1">Password</td>
+                            <td>Password for the specified VersionOne user.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -345,34 +368,35 @@
                         <tr>
                             <td>Use Proxy For Connection</td>
                             <td>Determines if the integration tries to connect through a
-								Proxy</td>
+								Proxy.</td>
                         </tr>
                         <tr>
                             <td>Proxy URL</td>
-                            <td>This is the URL to your Proxy Server</td>
+                            <td>This is the URL to your Proxy Server.</td>
                         </tr>
                         <tr>
                             <td>Proxy Username</td>
-                            <td>The username that will get you past this proxy</td>
+                            <td>The username that will get you past this Proxy.</td>
                         </tr>
                         <tr>
                             <td>Proxy Password</td>
-                            <td>The password for the Proxy Username</td>
+                            <td>The password for the Proxy Username.</td>
                         </tr>
                         <tr>
                             <td>Proxy Domain</td>
-                            <td>Name of Proxy Domain</td>
+                            <td>Name of the Proxy Domain.</td>
                         </tr>
                     </tbody>
                 </table>
             </li>
-            <li>Once the VersionOne parameters are specified, press Verify
-				button to continue.</li>
+            <li>Once the VersionOne parameters are specified, press the Validate
+				button to continue.&nbsp; You should see a &quot;VersionOne setting are valid&quot; message appear before you can advance to the next step.</li>
             <li>In the Workitems section, specify the VersionOne field that
 				will hold the JIRA ID.
 				<p>
-                    <a class="fancybox" href="screenshots/WorkitemsConfig.png" title="Workitems Configuration">
-                        <img alt="" src="thumbnails/workitemsconfig.png" /></a>
+                    <a class="fancybox" href="screenshots/Config_V1Workitems.png" title="Workitems Configuration">
+                        <img alt="" src="thumbnails/config_v1workitems.png" />
+                    </a>
                 </p>
                 <p>The following table describes the fields on this tab:</p>
                 <table>
@@ -383,12 +407,12 @@
                         </tr>
                         <tr>
                             <td>Reference Field Name</td>
-                            <td>Defect field used to hold JIRA ID. By default this is
+                            <td>VersionOne field used to hold JIRA ID; by default this is
 								the Reference field.</td>
                         </tr>
                         <tr>
                             <td>Disabled</td>
-                            <td>Check this box to disable polling VersionOne for defect
+                            <td>Check this box to disable polling VersionOne for Defect and/or Story
 								updates.</td>
                         </tr>
                     </tbody>
@@ -397,8 +421,9 @@
             <li><b>On the JIRA tab specify your JIRA connection details
 					and the Issue transfer behavior.</b><br class="atl-forced-newline" />
 
-                <a class="fancybox" href="screenshots/JIRAConnection.png" title="JIRA Connection">
-                    <img alt="" src="thumbnails/jiraconnection.png" /></a>
+                <a class="fancybox" href="screenshots/Config_JIRASettings.png" title="JIRA Connection">
+                    <img alt="" src="thumbnails/config_jirasettings.png" />
+                </a>
 
                 <ol>
                     <li>Configure the JIRA connection
@@ -411,15 +436,13 @@
                                 <tr>
                                     <td>Disabled</td>
                                     <td>Check this box if you want to disable polling JIRA for
-										new Issues</td>
+										new Issues.</td>
                                 </tr>
                                 <tr>
                                     <td>JIRA URL</td>
-                                    <td>Fully qualified URL to your JIRA instance
+                                    <td>Fully qualified URL to your JIRA instance.
 										<p class='info'>
-                                            Don't forget /rpc/soap/jirasoapservice-v2
-											.
-                                        </p>
+                                            Don't forget /rest/api/latest </p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -434,8 +457,8 @@
                             </tbody>
                         </table>
                     </li>
-                    <li>Click Verify to ensure the connection parameters are
-						correct.</li>
+                    <li>Click the Validate button to ensure the connection parameters are
+						correct.&nbsp; You should see a &quot;Connection setting are valid...&quot; message appear as confirmation.</li>
                     <li>Configure VersionOne Workitem attributes<br />
                         <table>
                             <tbody>
@@ -454,10 +477,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>URL Template</td>
-                                    <td>Template for URL to access specific Issue in JIRA.
-										#key# is replaced with the JIRA Issue ID. This field is used
-										to create links from VersionOne to JIRA</td>
+                                    <td class="auto-style4">URL Template</td>
+                                    <td class="auto-style4">Template for URL to access specific Issue in JIRA.
+										/browse/#key# is replaced with the JIRA Issue ID. This field is used
+										to create links from VersionOne to JIRA.</td>
                                 </tr>
                                 <tr>
                                     <td>URL Title</td>
@@ -476,12 +499,12 @@
                                 <tr>
                                     <td>Poll Interval</td>
                                     <td>Determines how frequently the integration polls JIRA
-										looking for issues.</td>
+										looking for issues in minutes.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </li>
-                    <li>Configure Find Jira Issues<br />
+                    <li>Configure Find JIRA Issues<br />
                         <table>
                             <tbody>
                                 <tr>
@@ -491,17 +514,17 @@
                                 <tr>
                                     <td>Create Defect Filter ID</td>
                                     <td>JIRA identifier for the filter used to determine which
-										issues are pushed to VersionOne as defects.</td>
+										issues are pushed to VersionOne as Defects.</td>
                                 </tr>
                                 <tr>
                                     <td>Create Story Filter ID</td>
                                     <td>JIRA identifier for the filter used to determine which
-										issues are pushed to VersionOne as stories.</td>
+										issues are pushed to VersionOne as Stories.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </li>
-                    <li>Configure Update Jira Issue<br />
+                    <li>Configure Update JIRA Issue<br />
                         <table>
                             <tbody>
                                 <tr>
@@ -510,36 +533,36 @@
                                 </tr>
                                 <tr>
                                     <td>Link to VersionOne Field ID</td>
-                                    <td>Custom field in JIRA used to hold VersionOne URL. If
-										blank, the URL will be created in the comments.</td>
+                                    <td>Custom field Id in JIRA used to hold VersionOne URL. If
+										blank, the URL will be created in the comments field of JIRA.</td>
                                 </tr>
                                 <tr>
                                     <td>Create Field ID</td>
-                                    <td>Name of the JIRA Custom Field to update after a defect
+                                    <td>Name of the JIRA Custom Field to update after a Defect
 										is <em>created</em> in VersionOne.
-                                    </td>
+                                        If left blank, the JIRA Issue Status field will be updated.</td>
                                 </tr>
                                 <tr>
                                     <td>Create Field Value</td>
-                                    <td>Value to set in "Create Field ID" after a defect is <em>created</em>
+                                    <td>Value to set in "Create Field ID" after a Defect is <em>created</em>
                                         in VersionOne.
-                                    </td>
+                                        If left blan, the JIRA Issue Status field will be updated to IN PROGRESS.</td>
                                 </tr>
                                 <tr>
                                     <td>Close Field ID</td>
                                     <td>Name of the JIRA custom field to update after a the
-										VersionOne defect is <em>closed</em>.
-                                    </td>
+										VersionOne Defect is <em>closed</em>.
+                                        If left blank, the JIRA Issue Status field will be updated.</td>
                                 </tr>
                                 <tr>
                                     <td>Close Field Value</td>
                                     <td>Value to set in "Closed Field ID" after a the
 										VersionOne defect is <em>closed</em>.
-                                    </td>
+                                        If left blan, the JIRA Issue Status field will be updated to RESOLVED.</td>
                                 </tr>
                                 <tr>
                                     <td>Assignee State Changed</td>
-                                    <td>The name of the JIRA user to assign the issue once
+                                    <td>The name of the JIRA user to assign the Issue once
 										it's closed in VersionOne. A value of -1 will cause JIRA to
 										set the assignee based on workflow rules.</td>
                                 </tr>
@@ -560,34 +583,35 @@
             </li>
             <li>Map your Projects
 				<p>
-                    Project Mapping allows you to specify where defects are created in
+                    Project Mapping allows you to specify where Defects and Stories are created in
 					VersionOne. The algorithm for selecting a project is as follows:
 					First, the integration looks for the JIRA Project Name in the map.
-					If it exists, the defect is created in the corresponding VersionOne
-					Project. If the JIRA Project Name is not found, the integration
+					If it exists, the Defect/Story is created in the corresponding VersionOne
+					project. If the JIRA Project Name is not found, the integration
 					attempts to find a VersionOne Project with the same name. If found,
-					the integration creates the defect in the VersionOne project with a
+					the integration creates the Defect/Story in the VersionOne project with a
 					matching name. If it cannot find a VersionOne project with a name
 					that matches the JIRA Project, the integration will create the
-					defect in the root level node of the VersionOne Project tree or in
-					the first Project in the list if there are multiple top level
+					Defect/Story in the root level node of the VersionOne Project Tree or in
+					the first project in the list if there are multiple top level
 					nodes.<br />
 
-                    <a class="fancybox" href="screenshots/MapYourProjects.png" title="Project Mappings">
-                        <img alt="" src="thumbnails/mapyourprojects.png" /></a>
+                    <a class="fancybox" href="screenshots/Config_Mappings.png" title="Project Mappings">
+                        <img alt="" src="thumbnails/config_mappings.png" />
+                    </a>
                 </p>
-                <p>To add a Project mapping you need to do the following:</p>
+                <p>To add a Project Mapping you need to do the following:</p>
                 <ol>
-                    <li>Click on the <b>Project and Priority Mapping</b> tab
+                    <li>Click on the <b>Project and Priority Mappings</b> tab
                     </li>
                     <li>In the Project Mapping grid, select a VersionOne Project
-						value from the dropdown</li>
+						value from the dropdown list.</li>
                     <li>Supply the corresponding JIRA Project name.<br />
-                        To
-						remove a mapping:
                     </li>
-                    <li>Select the desired row.</li>
-                    <li>Click the Delete current row button</li>
+                    <li>To
+						remove a mapping:
+                    Select the desired row.</li>
+                    <li>Click the Delete selected row button</li>
                 </ol>
             </li>
             <li>Map your Priority Values
@@ -599,20 +623,21 @@
 					value. If the JIRA Priority value is not found, the VersionOne
 					defect value is not set.<br />
 
-                    <a class="fancybox" href="screenshots/MapYourProjects.png" title="Project Mappings">
-                        <img alt="" src="thumbnails/mapyourprojects.png" /></a>
+                    <a class="fancybox" href="screenshots/Config_Mappings.png" title="Project Mappings">
+                        <img alt="" src="thumbnails/config_mappings.png" />
+                    </a>
                 </p>
                 <p>To add a Priority mapping you need to do the following:</p>
                 <ol>
-                    <li>Click on the <b>Project and Priority Mapping</b> tab
+                    <li>Click on the <b>Project and Priority Mappings</b> tab.
                     </li>
                     <li>In the Priority Mappings grid, select a VersionOne
-						Priority value from the dropdown</li>
-                    <li>Supply the corresponding JIRA Project value name.<br />
-                        To remove a mapping:
+						Priority value from the dropdown.</li>
+                    <li>Select the corresponding JIRA Priority value. Note that one VersionOne priority value may map to more than one JIRA priority value.<br />
                     </li>
-                    <li>Select the desired row.</li>
-                    <li>Click the Delete current row button</li>
+                    <li>To remove a mapping:
+                    Select the desired row.</li>
+                    <li>Click the Delete selected row button.</li>
                 </ol>
             </li>
             <li>Save your changes and exit the program</li>
@@ -621,14 +646,7 @@
         <ol>
             <li>Start the Integration
 				<p>
-                    Open up the command prompt, navigate to your installation folder,
-					and run the following command:<br />
-                    <code>VersionOne.ServiceHost.exe</code>
-                </p>
-                <p>
-                    If you have configured your system properly, you should see
-					several [Info] messages followed by a [Startup] message.
-                </p>
+                    Navigate to your installation folder and double-click VersionOne.ServiceHost.exe.&nbsp; A command window will open. If you have configured your system properly, you should see several [Info] messages followed by a [Startup] message.</p>
             </li>
             <li>Test the integration
 				<p>
@@ -637,10 +655,11 @@
                 </p>
                 <ol>
                     <li>Create an Issue in JIRA</li>
-                    <li>Set the appropriate state in order for the issue to move to VersionOne</li>
-                    <li>Verify that the issue appears in VersionOne as a defect</li>
-                    <li>Close the defect in VersionOne</li>
-                    <li>Verify that the JIRA Issue has been updated as expected</li>
+                    <li>Set the appropriate criteria based on your specified filter in order for the Issue to move to VersionOne.</li>
+                    <li>Verify that the Issue appears in VersionOne as either a Defect or Story (depending on the Issue Type you selected in JIRA).</li>
+                    <li>Verify that the JIRA Issue Status has been updated to IN PROGRESS.</li>
+                    <li>Close the Defect/Story in VersionOne.</li>
+                    <li>Verify that the JIRA Issue Status has been updated to RESOLVED.</li>
                     <li>Shut down the service host by pressing &quot;Q&quot; in the console window.</li>
                 </ol>
             </li>
@@ -659,7 +678,7 @@
                 </p>
                 <ol>
                     <li>Right click the installation folder from Windows Explorer.</li>
-                    <li>Select &quot;properties&quot;.</li>
+                    <li>Select &quot;Properties&quot;.</li>
                     <li>Select the &quot;Security&quot; tab.</li>
                     <li>Click the &quot;Add&quot; button.</li>
                     <li>Enter &quot;Local Service&quot; and click &quot;OK&quot;.</li>
@@ -670,6 +689,19 @@
             </li>
         </ol>
 
+        <h2>
+            Troubleshooting Tips</h2>
+        <ul>
+            <li>If you cannot connect to VersionOne:<ul>
+                <li>&nbsp;Verify the URL of your VersionOne instance.</li>
+                <li>Verify that you have chosen the correct uthentication type for your VersionOne instance.<ul>
+                    <li>If your authenication type is Access Token and your token is entered into the appropriate box and you are unable to connect, you may need to get a new Access Token from VersionOne. Check with your administrator. </li>
+                    </ul>
+                </li>
+                </ul>
+            </li>
+            <li></li>
+        </ul>
         <p>
             &nbsp;</p>
     </div>
