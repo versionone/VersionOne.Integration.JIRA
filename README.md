@@ -9,7 +9,7 @@ VersionOne IssueSync for JIRA is a free and open-source integration that creates
 
 * .NET Framework 4.5.1
 
-## Integration Files
+## Integration Binary Files
 
 The binaries for this integration can be downloaded from the [VersionOne Application Catalog](http://appcatalog.versionone.com/VersionOne.Integration.JIRA) which contains the following:
 
