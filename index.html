@@ -30,15 +30,18 @@
         <ul>
             <li><a href='#VersionOneJIRAIntegration-Description'>Description</a></li>
             <li><a href='#VersionOneJIRAIntegration-SystemRequirements'>System Requirements</a></li>
+            <li><a href='#VersionOneJIRAIntegration-Download'>Download</a></li>
+            <li><a href='#VersionOneJIRAIntegration-Upgrade'>Upgrade</a></li>
             <li><a href='#VersionOneJIRAIntegration-Installation'>Installation</a></li>
             <li>
                 <a href='#VersionOneJIRAIntegration-Configuration'>Configuration</a>
                 <ul>
                     <li><a href='#VersionOneJIRAIntegration-ConfigureJIRA'>Configure JIRA </a></li>
                     <li><a href='#VersionOneJIRAIntegration-ConfigureVersionOne'>Configure VersionOne </a></li>
-                    <li><a href='#VersionOneJIRAIntegration-ConfiguretheIntegration'>Configure the Integration </a></li>
+                    <li><a href='#VersionOneJIRAIntegration-ConfigureIntegration'>Configure Integration </a></li>
                 </ul>
             </li>
+            <li><a href='#VersionOneJIRAIntegration-Technology'>Technology</a></li>
         </ul>
 
         <h2>
@@ -94,10 +97,7 @@ end
             <script type="text/javascript" src="http://www.websequencediagrams.com/service.js"></script>
         </p>
 
-        <h2>
-            <a name="VersionOneJIRAIntegration-SystemRequirements"></a>System
-            Requirements
-        </h2>
+        <h2><a name="VersionOneJIRAIntegration-SystemRequirements"></a>System Requirements</h2>
 
         <ul>
             <li>Integration<ul>
@@ -117,17 +117,28 @@ end
             </li>
         </ul>
 
+        <h2><a name="VersionOneJIRAIntegration-Download"></a>Download</h2>
+        <p>
+            The latest version of the integration is available in the <a href="http://appcatalog.versionone.com/VersionOne.Integration.JIRA">VersionOne Application Catalog</a>.
+        </p>
+
+        <h2><a name="VersionOneJIRAIntegration-Upgrade"></a>Upgrade</h2>
+        <p>
+            If you already have the integration running in your environment, you should backup the existing integration before installing the current version.
+        </p>
+
         <h2>
             <a name="VersionOneJIRAIntegration-Installation"></a>Installation
         </h2>
 
         <p>
-            These installation instructions assume that JIRA is already
-            installed, configured, and working properly.</p>
+            These installation instructions assume that JIRA and VersionOne are already
+            installed, configured, and working properly.
+        </p>
         <ol>
             <li>Determine Install Location
                 <p>
-                    The integration can be installed on any Windows system with network access to
+                    The integration can be installed on any Windows system with HTTP access to
                     both VersionOne and JIRA. Exact placement should be determined by
                     your internal software management requirements. The integration
                     system must meet the System Requirements stated above.
@@ -290,10 +301,7 @@ end
             </li>
         </ol>
 
-        <h3>
-            <a name="VersionOneJIRAIntegration-ConfigureServiceHost"></a>Configure
-            the Integration
-        </h3>
+        <h3><a name="VersionOneJIRAIntegration-ConfigureServiceHost"></a>Configure Integration</h3>
 
         <p>
             To configure the JIRA integration you need to run the ServiceHost
@@ -650,7 +658,8 @@ end
             </li>
             <li>Save your changes and exit the program</li>
         </ol>
-        <h2>Integration</h2>
+
+        <h2>Configure Integration</h2>
         <ol>
             <li>Start the Integration
                 <p>
@@ -704,9 +713,14 @@ end
             </li>
         </ol>
 
-        <p>
-            &nbsp;
-        </p>
+        <h1><a name="VersionOneJIRAIntegration-Technology"></a>Technology</h1>
+        <ul>
+            <li>The VersionOne IssueSync for JIRA was developed in C# using Visual Studio 2013.</li>
+            <li>The TFS Listener Installer was developed using <a href="http://wix.sourceforge.net/index.html">WIX</a>.</li>
+            <li>Source code is available in a <a href="https://github.com/versionone/VersionOne.Integration.JIRA">GitHub repo</a>.</li>
+            <li>Previous releases of this integration are available in the <a href="http://appcatalog.versionone.com/VersionOne.Integration.JIRA">VersionOne Application Catalog</a>.
+            </li>
+        </ul>
     </div>
 </body>
 </html>
