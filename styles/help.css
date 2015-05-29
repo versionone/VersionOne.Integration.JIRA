@@ -107,8 +107,7 @@ ol li {
 
 ol li * {
 	color: #454545;
-	font-weight: 700;
-}
+	}
 
 ol li ol li {
 	font-weight: normal;
