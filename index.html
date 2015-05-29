@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>VersionOne Integration for JIRA</title>
+    <title>VersionOne IssueSync for JIRA</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="styles/help.css" type="text/css" />
     <link type="text/css" rel="stylesheet" href="styles/jquery.fancybox.css" />
@@ -37,18 +37,19 @@
     </script>
 
     <div class="main">
-        <h1>VersionOne Integration for JIRA</h1>
+        <h1>VersionOne IssueSync for JIRA</h1>
         <h2>Introduction</h2>
         <p>
-            The VersionOne Integration for JIRA creates stories and defects in VersionOne based on issues found in JIRA. Using this integration, your organization 
-            can manage and triage issues reported by customers and promote them to VersionOne.
+            VersionOne IssueSync for JIRA (formerely known as the VersionOne Integration for JIRA) creates stories and defects in VersionOne based on issues orginating in JIRA. Using this integration, your organization
+            can manage and triage issues reported by customers and promote them to VersionOne for the product team to address.
         </p>
         <h2>Contents</h2>
         <ul>
             <li><a href='#VersionOneJIRAIntegration-Description'>Description</a></li>
             <li><a href='#VersionOneJIRAIntegration-SystemRequirements'>System Requirements</a></li>
             <li><a href='#VersionOneJIRAIntegration-Installation'>Installation</a></li>
-            <li><a href='#VersionOneJIRAIntegration-Configuration'>Configuration</a>
+            <li>
+                <a href='#VersionOneJIRAIntegration-Configuration'>Configuration</a>
                 <ul>
                     <li><a href='#VersionOneJIRAIntegration-ConfigureJIRA'>Configure JIRA </a></li>
                     <li><a href='#VersionOneJIRAIntegration-ConfigureVersionOne'>Configure VersionOne </a></li>
@@ -62,56 +63,58 @@
         </h2>
         <p>
             JIRA is an Atlassian product for issue tracking, commonly used for both defect and issue tracking. As an issue tracking system, JIRA helps
-			quality assurance and programmers keep track of reported software
-			bugs in their work. JIRA also allows users to enter bug reports
-			directly (depending on configuration) although it is often used only
-			internally in a company or organization doing software development.
-			As an issue tracking system, JIRA manages the broader notion of
-			issues needed by an organization. In this context, JIRA may be used
-			in an organization's customer support call center to create, update,
-			and resolve reported customer issues, or even issues reported by that
-			organization's other employees.
+            quality assurance and programmers keep track of reported software
+            bugs in their work. JIRA also allows users to enter bug reports
+            directly (depending on configuration) although it is often used only
+            internally in a company or organization doing software development.
+            As an issue tracking system, JIRA manages the broader notion of
+            issues needed by an organization. In this context, JIRA may be used
+            in an organization's customer support call center to create, update,
+            and resolve reported customer issues, or even issues reported by that
+            organization's other employees.
         </p>
 
         <p>
             For agile development teams using JIRA and VersionOne, who need
-			to integrate their issue management with agile project management,
-			the VersionOne Integration fir JIRA is a bridge that transfers
-			issues in JIRA into defects or stories in VersionOne. The integration creates
-			defects or stories in VersionOne based on issues in JIRA. Using this
-			integration, your organization can manage and triage issues reported
-			by customers and promote them to VersionOne for prioritization,
-			estimation, planning, and implementation once you determine
-			development work is necessary. When the work is completed in
-			VersionOne, the integration updates JIRA to reflect this change.
+            to integrate their issue management with agile project management,
+            the VersionOne Integration fir JIRA is a bridge that transfers
+            issues in JIRA into defects or stories in VersionOne. The integration creates
+            defects or stories in VersionOne based on issues in JIRA. Using this
+            integration, your organization can manage and triage issues reported
+            by customers and promote them to VersionOne for prioritization,
+            estimation, planning, and implementation once you determine
+            development work is necessary. When the work is completed in
+            VersionOne, the integration updates JIRA to reflect this change.
         </p>
 
         <p>
             Once the integration is installed and configured, JIRA users
-			can specify which issues require engineering attention and they will
-			automatically appear as stories or defects in VersionOne.
-			Additionally, when the story or defect is closed in VersionOne, the
-			integration updates the JIRA issue to reflect this change. JIRA
-			issues that require engineering attention are identified using
-			filters.
+            can specify which issues require engineering attention and they will
+            automatically appear as stories or defects in VersionOne.
+            Additionally, when the story or defect is closed in VersionOne, the
+            integration updates the JIRA issue to reflect this change. JIRA
+            issues that require engineering attention are identified using
+            filters.
         </p>
 
         <p>
             The following sequence diagram illustrates how the integration interacts with
-			JIRA and VersionOne.<br />
+            JIRA and VersionOne.<br />
             <br />
             <a class="fancybox" href="screenshots/sequencediagram.png" title="Sequence Diagram">
-                <img alt="" src="thumbnails/sequencediagram.png" /></a>
+                <img alt="" src="thumbnails/sequencediagram.png" />
+            </a>
         </p>
 
         <h2>
             <a name="VersionOneJIRAIntegration-SystemRequirements"></a>System
-			Requirements
+            Requirements
         </h2>
 
         <ul>
-            <li>VersionOne:
-				<ul>
+            <li>
+                VersionOne:
+                <ul>
                     <li>Tested with VersionOne 14.2.2.6056. Expected to work with any version higher than 7.3.</li>
                     <li>Compatible with all VersionOne Editions.</li>
                     <li>Compatible with all Methodology choices.</li>
@@ -119,13 +122,15 @@
                     <li>A member with <a href="http://community.versionone.com/Help-Center/Version101/Current/Administration/Roles-Project-Membership">Team Member role</a>, or higher, on integrated projects.</li>
                 </ul>
             </li>
-            <li>Atlassian JIRA:
-				<ul>
+            <li>
+                Atlassian JIRA:
+                <ul>
                     <li>Tested with 6.4.3. Expected to work with any version higher than 5.2.</li>
                 </ul>
             </li>
-            <li>Integration Server Operating System:
-				<ul>
+            <li>
+                Integration Server Operating System:
+                <ul>
                     <li>Tested with Windows Server 2012. Expected to work with Windows Server 2008 or higher, provided the required version of .NET Framework can be installed (see below)</li>
                     <li>Tested with .NET Framework 4.5. Expected to work with any subsequent version.</li>
                     <li>Bi-directional network access between this Integration and JIRA. This usually means TCP/IP port 443 for https.</li>
@@ -140,25 +145,28 @@
 
         <p>
             These installation instructions assume that JIRA is already
-			installed, configured, and working properly.
+            installed, configured, and working properly.
         </p>
         <ol>
-            <li>Determine Install Location
-				<p>
+            <li>
+                Determine Install Location
+                <p>
                     The integration can be installed on any server with network access to
-					both VersionOne and JIRA. Exact placement should be determined by
-					your internal software management requirements. The integration
-					server must meet the System Requirements stated above.
+                    both VersionOne and JIRA. Exact placement should be determined by
+                    your internal software management requirements. The integration
+                    server must meet the System Requirements stated above.
                 </p>
             </li>
-            <li>Extract Files
-				<p>
+            <li>
+                Extract Files
+                <p>
                     Download the integration using the link above and extract it into a
-					folder of your choice.
+                    folder of your choice.
                 </p>
             </li>
-            <li>Configure
-				<p>Configuration for the JIRA Integration is a 3 step process.</p>
+            <li>
+                Configure
+                <p>Configuration for the JIRA Integration is a 3 step process.</p>
                 <ol>
                     <li><a href="#VersionOneJIRAIntegration-ConfigureJIRA">Configure JIRA</a></li>
                     <li><a href="#VersionOneJIRAIntegration-ConfigureVersionOne">Configure VersionOne</a></li>
@@ -177,53 +185,52 @@
 
         <p>
             This section describes how to modify your JIRA instance for use
-			with VersionOne. Before you begin you need decide if you want to
-			Assign or Tag the JIRA Issues you want visible in VersionOne.
+            with VersionOne. Before you begin you need decide if you want to
+            Assign or Tag the JIRA Issues you want visible in VersionOne.
         </p>
 
         <ol>
-            <li>Select or Create a JIRA User.
-				<p>
+            <li>
+                Select or Create a JIRA User.
+                <p>
                     The integration requires a valid JIRA User ID and a Password
-					in order to connect. This user must have sufficient rights to
-					accept work and modify issues (i.e. must be assigned to the
-					Developer Role on the project). This user must also have rights to
-					the actions being performed by the integration (for example, the
-					user must have rights to Close Issues). The default value in
-					configuration is username &quot;remote&quot; and password
-					&quot;remote&quot; but these can be changed to suit your needs.
+                    in order to connect. This user must have sufficient rights to
+                    accept work and modify issues (i.e. must be assigned to the
+                    Developer Role on the project). This user must also have rights to
+                    the actions being performed by the integration (for example, the
+                    user must have rights to Close Issues). The default value in
+                    configuration is username &quot;remote&quot; and password
+                    &quot;remote&quot; but these can be changed to suit your needs.
                 </p>
                 <p class='info'>
                     Although the integration does not require administrator
-					access to run, there are some validation rules that can only be
-					checked with a JIRA administrator role. To help check first-time
-					configuration, the recommended approach is to elevate the
-					integration user to Administrator. After the integration has been
-					verified (start the integration in the below steps) and before
-					starting as a service (install as Windows Service in the below
-					steps), reduce the JIRA access to Developer Role. Then you can
-					safely ignore log warnings about validation rules that require
-					administrator access.
+                    access to run, there are some validation rules that can only be
+                    checked with a JIRA administrator role. To help check first-time
+                    configuration, the recommended approach is to elevate the
+                    integration user to Administrator. After the integration has been
+                    verified (start the integration in the below steps) and before
+                    starting as a service (install as Windows Service in the below
+                    steps), reduce the JIRA access to Developer Role. Then you can
+                    safely ignore log warnings about validation rules that require
+                    administrator access.
                 </p>
             </li>
 
-            <li>Create Filters for Defect and Story
-				<p class='info'>
+            <li>
+                Create Filters for Defect and Story
+                <p class='info'>
                     These filters must be available through the
-					credentials used by the integration; hence, it is recommended that
-					you create these filters using the same credentials to avoid the
-					complexity of shared filters.
+                    credentials used by the integration; hence, it is recommended that
+                    you create these filters using the same credentials to avoid the
+                    complexity of shared filters.
                 </p>
                 <p>
                     The results of a JIRA filter are used to determine which JIRA
-					issues will be transferred to VersionOne. By using a JIRA filter,
-					you can make the integration fit with your existing JIRA workflow
-					and fields. The details of writing such a filter are beyond the
-					scope of this document; however, the following are some simple
-					examples.
-                </p>
-                <p>
-                    *NOTE: A separate filter is needed for creating a Defect in VersionOne and for creating a Story in VersionOne.&nbsp;
+                    issues will be transferred to VersionOne. By using a JIRA filter,
+                    you can make the integration fit with your existing JIRA workflow
+                    and fields. The details of writing such a filter are beyond the
+                    scope of this document. However, the following are some simple
+                    examples.
                 </p>
                 <ul>
                     <li>Type and Status Filter
@@ -242,19 +249,24 @@
 							labeled with &quot;versionone&quot;. Please note that the label value must already exist on an Issue in order to create this type of filter. <br />
 
                             <a class="fancybox" href="screenshots/JIRA_AssignedUserFilter.png" title="User Filter">
-                                <img alt="" src="thumbnails/jira_assigneduserfilter.png" /></a>&nbsp;<br /><br />
+                                <img alt="" src="thumbnails/jira_assigneduserfilter.png" />
+                            </a>&nbsp;<br /><br />
 
                             <a class="fancybox" href="screenshots/JIRA_LabelFilter.png" title="Label Filter">
-                                <img alt="" src="thumbnails/jira_labelfilter.png" /></a></p>
+                                <img alt="" src="thumbnails/jira_labelfilter.png" />
+                            </a>
+                        </p>
                     </li>
-                    <li>Custom Field or Combination
-						<p>
+                    <li>
+                        Custom Field or Combination
+                        <p>
                             If the JIRA fields above would conflict with existing
-							workflow, you may want to create a custom field and use it
-							as part of the filter.<br />
+                            workflow, you may want to create a custom field and use it
+                            as part of the filter.<br />
 
                             <a class="fancybox" href="screenshots/JIRA_CustomFieldFilter.png" title="Custom Field">
-                                <img alt="" src="thumbnails/jira_customfieldfilter.png" /></a>
+                                <img alt="" src="thumbnails/jira_customfieldfilter.png" />
+                            </a>
                         </p>
                     </li>
                 </ul>
@@ -271,24 +283,27 @@
 					page, select the &quot;Screens&quot; link under the settings &quot;gear&quot; for the desired custom field.<br />
 
                     <a class="fancybox" href="screenshots/JIRACustomField.png" title="JIRA Custom Field">
-                        <img alt="" src="thumbnails/jiracustomfield.png" /></a>
+                        <img alt="" src="thumbnails/jiracustomfield.png" />
+                    </a>
                 </p>
             </li>
         </ol>
 
         <h3>
             <a name="VersionOneJIRAIntegration-ConfigureVersionOne"></a>Configure
-			VersionOne
+            VersionOne
         </h3>
         <p class='info'>
             Skip this step if you are configuring a VersionOne
-			Team Edition instance.
+            Team Edition instance.
         </p>
         <ol>
-            <li>Add &quot;JIRA&quot; to the list of valid Source:
-				<p>
+            <li>
+                Add &quot;JIRA&quot; to the list of valid Source:
+                <p>
                     <a class="fancybox" href="screenshots/StorySource.png" title="Story Source">
-                        <img alt="" src="thumbnails/storysource.png" /></a>
+                        <img alt="" src="thumbnails/storysource.png" />
+                    </a>
                 </p>
             </li>
             <li>Determine where to store the JIRA ID
@@ -303,17 +318,17 @@
 
         <h3>
             <a name="VersionOneJIRAIntegration-ConfigureServiceHost"></a>Configure
-			the Integration
+            the Integration
         </h3>
 
         <p>
             To configure the JIRA integration you need to run the ServiceHost
-			configuration tool:<br />
+            configuration tool:<br />
             <code>ServiceHostConfigTool.exe</code>
         </p>
         <p>
             The following section describes how to configure your JIRA
-			integration using the configuration tool.
+            integration using the configuration tool.
         </p>
         <ol>
             <li>On the General tab specify your VersionOne connection
