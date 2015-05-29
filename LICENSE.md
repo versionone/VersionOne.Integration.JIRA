@@ -1,6 +1,6 @@
-# VersionOne Integration for JIRA
-Copyright (c) 2015 VersionOne, Inc.
-All rights reserved.
+# VersionOne IssueSync for JIRA
+
+Copyright (c) 2008-2015 [VersionOne](http://versionone.com/). All rights reserved.
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are 
