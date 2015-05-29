@@ -105,10 +105,14 @@ ol li {
 	margin-bottom: 2em;
 }
 
-ol li * {
-	color: #454545;
+ol li p {
 	font-weight: normal;
 }
+
+ol li * {
+	color: #454545;
+    font-weight: normal;
+	}
 
 ol li ol li {
 	font-weight: normal;
