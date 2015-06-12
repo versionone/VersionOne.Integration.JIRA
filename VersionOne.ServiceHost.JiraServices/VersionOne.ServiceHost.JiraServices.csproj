@@ -93,6 +93,9 @@
     <Reference Include="VersionOne.ServiceHost.Core">
       <HintPath>..\packages\VersionOne.ServiceHost.Core.2.0.0.0\lib\net451\VersionOne.ServiceHost.Core.dll</HintPath>
     </Reference>
+    <Reference Include="VersionOne.ServiceHost.ServerConnector">
+      <HintPath>..\packages\VersionOne.ServiceHost.ServerConnector.2.0.0.0\lib\net451\VersionOne.ServiceHost.ServerConnector.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IJiraIssueProcessor.cs" />
@@ -115,10 +118,6 @@
     <ProjectReference Include="..\VersionOne.JiraConnector\VersionOne.JiraConnector.csproj">
       <Project>{57F712AE-9E25-4578-BB06-71AFE3121DEB}</Project>
       <Name>VersionOne.JiraConnector</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServerConnector\VersionOne.ServerConnector.csproj">
-      <Project>{19a13ca5-7461-4453-8a5e-9c5a7a55c4d5}</Project>
-      <Name>VersionOne.ServerConnector</Name>
     </ProjectReference>
     <ProjectReference Include="..\VersionOne.ServiceHost.WorkitemServices\VersionOne.ServiceHost.WorkitemServices.csproj">
       <Project>{76b6d3f1-16f8-43a9-a2b7-ddadafe70d0d}</Project>
@@ -160,6 +159,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)$(SolutionName)\$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)$(SolutionName)\$(OutDir)
+copy $(TargetDir)$(SolutionName).ServerConnector.dll $(SolutionDir)$(SolutionName)\$(OutDir)</PostBuildEvent>
   </PropertyGroup>
 </Project>

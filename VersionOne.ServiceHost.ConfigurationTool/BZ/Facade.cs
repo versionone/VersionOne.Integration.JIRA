@@ -1,16 +1,15 @@
+using log4net;
+using Microsoft.Practices.EnterpriseLibrary.Validation;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.Practices.EnterpriseLibrary.Validation;
-using VersionOne.ServerConnector.Entities;
+using System.Linq;
+using System.Text.RegularExpressions;
+using VersionOne.JiraConnector;
 using VersionOne.ServiceHost.ConfigurationTool.DL;
 using VersionOne.ServiceHost.ConfigurationTool.Entities;
 using VersionOne.ServiceHost.ConfigurationTool.Validation;
-using log4net;
-using System.Text.RegularExpressions;
-using VersionOne.JiraConnector;
-
+using VersionOne.ServiceHost.ServerConnector.Entities;
 using JiraServiceConnector = VersionOne.ServiceHost.ConfigurationTool.DL.JiraConnector;
 
 namespace VersionOne.ServiceHost.ConfigurationTool.BZ {

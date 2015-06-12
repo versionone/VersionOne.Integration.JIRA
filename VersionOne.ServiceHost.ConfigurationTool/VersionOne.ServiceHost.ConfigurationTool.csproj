@@ -111,6 +111,9 @@
     <Reference Include="VersionOne.ServiceHost.Core">
       <HintPath>..\packages\VersionOne.ServiceHost.Core.2.0.0.0\lib\net451\VersionOne.ServiceHost.Core.dll</HintPath>
     </Reference>
+    <Reference Include="VersionOne.ServiceHost.ServerConnector">
+      <HintPath>..\packages\VersionOne.ServiceHost.ServerConnector.2.0.0.0\lib\net451\VersionOne.ServiceHost.ServerConnector.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\DependsOnServiceAttribute.cs" />
@@ -283,10 +286,6 @@
     <ProjectReference Include="..\VersionOne.JiraConnector\VersionOne.JiraConnector.csproj">
       <Project>{57F712AE-9E25-4578-BB06-71AFE3121DEB}</Project>
       <Name>VersionOne.JiraConnector</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServerConnector\VersionOne.ServerConnector.csproj">
-      <Project>{19A13CA5-7461-4453-8A5E-9C5A7A55C4D5}</Project>
-      <Name>VersionOne.ServerConnector</Name>
     </ProjectReference>
     <ProjectReference Include="..\VersionOne.ServiceHost.JiraServices\VersionOne.ServiceHost.JiraServices.csproj">
       <Project>{7CFCE842-CC70-4902-AB69-2A87EFE354BE}</Project>

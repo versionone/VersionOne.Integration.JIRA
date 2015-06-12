@@ -93,6 +93,9 @@
     <Reference Include="VersionOne.ServiceHost.Core">
       <HintPath>..\packages\VersionOne.ServiceHost.Core.2.0.0.0\lib\net451\VersionOne.ServiceHost.Core.dll</HintPath>
     </Reference>
+    <Reference Include="VersionOne.ServiceHost.ServerConnector">
+      <HintPath>..\packages\VersionOne.ServiceHost.ServerConnector.2.0.0.0\lib\net451\VersionOne.ServiceHost.ServerConnector.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClosedWorkitemsSource.cs" />
@@ -119,12 +122,6 @@
     <Compile Include="Exceptions\NoProjectsAccessibleException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkitemWriterServiceConfiguration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VersionOne.ServerConnector\VersionOne.ServerConnector.csproj">
-      <Project>{19a13ca5-7461-4453-8a5e-9c5a7a55c4d5}</Project>
-      <Name>VersionOne.ServerConnector</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using VersionOne.ServerConnector;
-using VersionOne.ServerConnector.Entities;
-using VersionOne.ServerConnector.Filters;
+using VersionOne.ServiceHost.ServerConnector;
+using VersionOne.ServiceHost.ServerConnector.Entities;
+using VersionOne.ServiceHost.ServerConnector.Filters;
 using VersionOne.ServiceHost.Core.Logging;
-using WorkitemEntity = VersionOne.ServerConnector.Entities.Workitem;
+using WorkitemEntity = VersionOne.ServiceHost.ServerConnector.Entities.Workitem;
 
 namespace VersionOne.ServiceHost.WorkitemServices {
     public class ClosedExternalWorkitemQuerier {

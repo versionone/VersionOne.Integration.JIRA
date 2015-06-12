@@ -1,5 +1,5 @@
 /*(c) Copyright 2012, VersionOne, Inc. All rights reserved. (c)*/
-using VersionOne.ServerConnector;
+using VersionOne.ServiceHost.ServerConnector;
 
 namespace VersionOne.ServiceHost.WorkitemServices {
     public class ClosedWorkitemsSource {

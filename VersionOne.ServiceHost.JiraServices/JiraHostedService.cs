@@ -6,7 +6,7 @@ using System.Xml;
 using Ninject;
 using VersionOne.JiraConnector;
 using VersionOne.Profile;
-using VersionOne.ServerConnector;
+using VersionOne.ServiceHost.ServerConnector;
 using VersionOne.ServiceHost.Core.Services;
 using VersionOne.ServiceHost.Core.Utility;
 using VersionOne.ServiceHost.Eventing;
