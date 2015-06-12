@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--(c) Copyright 2012, VersionOne, Inc. All rights reserved. (c)-->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,7 +61,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
-      <HintPath>..\Dependencies\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -78,6 +77,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="VersionOne.SDK.APIClient">
       <HintPath>..\packages\VersionOne.SDK.APIClient.15.0.0.0\lib\net451\VersionOne.SDK.APIClient.dll</HintPath>
+    </Reference>
+    <Reference Include="VersionOne.ServiceHost.Core">
+      <HintPath>..\packages\VersionOne.ServiceHost.Core.2.0.0.0\lib\net451\VersionOne.ServiceHost.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -131,12 +133,6 @@
     <Compile Include="VersionOneException.cs" />
     <Compile Include="VersionOneProcessor.cs" />
     <Compile Include="Entities\Workitem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VersionOne.ServiceHost.Core\VersionOne.ServiceHost.Core.csproj">
-      <Project>{F432BAC8-27ED-4C2C-8E06-EF806A5B0D79}</Project>
-      <Name>VersionOne.ServiceHost.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

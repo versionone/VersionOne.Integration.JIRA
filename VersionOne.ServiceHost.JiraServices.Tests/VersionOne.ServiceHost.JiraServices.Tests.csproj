@@ -35,11 +35,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Rhino.Mocks.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="VersionOne.SDK.APIClient">
+      <HintPath>..\packages\VersionOne.SDK.APIClient.15.0.0.0\lib\net451\VersionOne.SDK.APIClient.dll</HintPath>
+    </Reference>
+    <Reference Include="VersionOne.ServiceHost.Core">
+      <HintPath>..\packages\VersionOne.ServiceHost.Core.2.0.0.0\lib\net451\VersionOne.ServiceHost.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -71,10 +86,6 @@
       <Project>{57f712ae-9e25-4578-bb06-71afe3121deb}</Project>
       <Name>VersionOne.JiraConnector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServiceHost.Core\VersionOne.ServiceHost.Core.csproj">
-      <Project>{f432bac8-27ed-4c2c-8e06-ef806a5b0d79}</Project>
-      <Name>VersionOne.ServiceHost.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VersionOne.ServiceHost.JiraServices\VersionOne.ServiceHost.JiraServices.csproj">
       <Project>{7cfce842-cc70-4902-ab69-2a87efe354be}</Project>
       <Name>VersionOne.ServiceHost.JiraServices</Name>
@@ -83,6 +94,9 @@
       <Project>{76b6d3f1-16f8-43a9-a2b7-ddadafe70d0d}</Project>
       <Name>VersionOne.ServiceHost.WorkitemServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
