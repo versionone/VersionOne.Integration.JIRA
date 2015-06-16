@@ -96,6 +96,10 @@
     <Reference Include="VersionOne.ServiceHost.ServerConnector">
       <HintPath>..\packages\VersionOne.ServiceHost.ServerConnector.2.0.0.0\lib\net451\VersionOne.ServiceHost.ServerConnector.dll</HintPath>
     </Reference>
+    <Reference Include="VersionOne.ServiceHost.WorkitemServices, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\VersionOne.ServiceHost.WorkitemServices.2.0.0.0\lib\net451\VersionOne.ServiceHost.WorkitemServices.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IJiraIssueProcessor.cs" />
@@ -118,10 +122,6 @@
     <ProjectReference Include="..\VersionOne.JiraConnector\VersionOne.JiraConnector.csproj">
       <Project>{57F712AE-9E25-4578-BB06-71AFE3121DEB}</Project>
       <Name>VersionOne.JiraConnector</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServiceHost.WorkitemServices\VersionOne.ServiceHost.WorkitemServices.csproj">
-      <Project>{76b6d3f1-16f8-43a9-a2b7-ddadafe70d0d}</Project>
-      <Name>VersionOne.ServiceHost.WorkitemServices</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
