@@ -1,4 +1,4 @@
-$path = Resolve-Path ".\VersionOne.ServiceHost\bin\Debug\VersionOne.ServiceHost.exe.config"
+$path = Resolve-Path ".\VersionOne.ServiceHost\bin\Release\VersionOne.ServiceHost.exe.config"
 
 function Clean-ConfigFile {
 	$xml = [xml](Get-Content $path)
