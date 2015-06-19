@@ -96,7 +96,13 @@ end
 </pre>
             </div>
             <script type="text/javascript" src="http://www.websequencediagrams.com/service.js"></script>
-        </p>
+
+        <h2><a name=""></a>Limitations</h2>
+        <ul>
+            <li>Defects can only originate in JIRA, defects created in VersionOne are not sent to JIRA. The flow of data between the systems is not bi-directional.</li>
+            <li>Only a limited set of data fields are brought into VersionOne from JIRA. Please see the data field mappings section for more information.</li>
+            <li>Does not allow adding of other fields.</li>
+        </ul>
 
         <h2><a name="VersionOneJIRAIntegration-SystemRequirements"></a>System Requirements</h2>
 
@@ -107,8 +113,8 @@ end
             </li>
             <li>VersionOne:
                 <ul>
-                    <li>7.3 and higher, all editions. 15.0 or higher if using access tokens for VersionOne authentication.</li>
-                    <li>A member account with a Team Member <a href="https://community.versionone.com/Help-Center/Administration/Roles-Project-Membership/Project_Roles">project role</a> or higher permissions.</li>
+                    <li>14.0 and higher, all editions. 15.0 or higher if using access tokens for VersionOne authentication.</li>
+                    <li>A member account with a Team Member <a href="https://community.versionone.com/Help-Center/Administration/Roles-Project-Membership/Project_Roles">project role</a> or higher permissions. The member must also be assigned to the VersionOne project that is mapped to the JIRA project.</li>
                 </ul>
             </li>
             <li>JIRA:
@@ -541,12 +547,12 @@ end
                                 <tr>
                                     <td>Progress Workflow Created</td>
                                     <td>The JIRA Workflow Transition ID to set once it's
-										created in VersionOne.</td>
+										created in VersionOne. This ID typically equates to IN PROGRESS. Verify the value to use with your JIRA administrator.</td>
                                 </tr>
                                 <tr>
                                     <td>Progress Workflow Closed</td>
                                     <td>The JIRA Workflow Transition ID to set once it's
-										closed in VersionOne.</td>
+										closed in VersionOne. This ID typically equates to RESOLVED. Verify the value to use with your JIRA administrator.</td>
                                 </tr>
                             </tbody>
                         </table>
