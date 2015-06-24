@@ -160,6 +160,6 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)$(SolutionName)\$(OutDir)
-copy $(TargetDir)$(SolutionName).ServerConnector.dll $(SolutionDir)$(SolutionName)\$(OutDir)</PostBuildEvent>
+copy $(TargetDir)$(SolutionName).*.dll $(SolutionDir)$(SolutionName)\$(OutDir)</PostBuildEvent>
   </PropertyGroup>
 </Project>
