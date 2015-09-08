@@ -1,4 +1,3 @@
-/*(c) Copyright 2012, VersionOne, Inc. All rights reserved. (c)*/
 using System;
 using System.Runtime.InteropServices;
 using System.ServiceProcess;
@@ -71,11 +70,12 @@ namespace VersionOne.ServiceHost {
         public static bool InstallService(string svcPath, string svcName, string svcDispName, string svcUsername, string svcPassword) {
             var scm = OpenSCManager(null, null, ScManagerCreateService);
 
-            if (scm.ToInt32() != 0) {
+            // 09-08-2015 Fixed D-09804. Changed from scm.ToInt32() to scm.ToInt64().
+            if (scm.ToInt64() != 0) {
                 var svc = CreateService(scm, svcName, svcDispName, ServiceAllAccess, ServiceWin32OwnProcess,
                                         ServiceAutoStart, ServiceErrorNormal, svcPath, null, 0, null,
                                         svcUsername, svcPassword);
-                var installed = svc.ToInt32() != 0;
+                var installed = svc.ToInt64() != 0;
                 CloseServiceHandle(scm);
                 return installed;
             }
@@ -98,10 +98,11 @@ namespace VersionOne.ServiceHost {
         public static bool UnInstallService(string svcName) {
             var scHandle = OpenSCManager(null, null, GenericWrite);
 
-            if(scHandle.ToInt32() != 0) {
+            // 09-08-2015 Fixed D-09804. Changed from scm.ToInt32() to scm.ToInt64().
+            if(scHandle.ToInt64() != 0) {
                 var svcHandle = OpenService(scHandle, svcName, Delete);
                 
-                if (svcHandle.ToInt32() != 0) {
+                if (svcHandle.ToInt64() != 0) {
                     var i = DeleteService(svcHandle);
                     CloseServiceHandle(scHandle);
                     return i != 0;

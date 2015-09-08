@@ -1,4 +1,3 @@
-/*(c) Copyright 2012, VersionOne, Inc. All rights reserved. (c)*/
 using System;
 using System.IO;
 using System.Reflection;
@@ -32,11 +31,11 @@ namespace VersionOne.ServiceHost {
                 } catch { }
 
                 if(ServiceUtil.UnInstallService(Config.ShortName))
-                    Console.WriteLine("Service Uninstall Successful");
+                    Console.WriteLine("Service uninstall successful");
                 else
-                    Console.WriteLine("Service Uninstall Failed");
+                    Console.WriteLine("Service uninstall failed");
             } catch(Exception ex) {
-                throw new ApplicationException("Uninstall Failed - " + ex.Message);
+                throw new ApplicationException("Uninstall failed - " + ex.Message);
             }
         }
 
@@ -44,16 +43,16 @@ namespace VersionOne.ServiceHost {
             try {
                 if(ServiceUtil.InstallService("\"" + Assembly.GetEntryAssembly().Location + "\" --service",
                                                Config.ShortName, Config.LongName, ServiceUtil.LocalService, null)) {
-                    Console.WriteLine("Service Installation Successful");
+                    Console.WriteLine("Service installation successful!");
                 } else {
-                    Console.WriteLine("Service Installation Failed");
+                    Console.WriteLine("Service installation failed");
                 }
 
                 try {
                     ServiceUtil.StartService(Config.ShortName);
                 } catch { }
             } catch(Exception ex) {
-                throw new ApplicationException("Install Failed - " + ex.Message);
+                throw new ApplicationException("Install failed - " + ex.Message);
             }
         }
 
