@@ -8,8 +8,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
     {
         private AuthenticationTypes authenticationType;
         private string url;
-        private string username;
-        private string password;
+  //      private string username;
+  //      private string password;
         private bool useProxy;
         private string proxyUri;
         private string proxyUsername;
@@ -27,15 +27,15 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
             get { return url; }
         }
 
-        public string Username
-        {
-            get { return username; }
-        }
+        //public string Username
+        //{
+        //    get { return username; }
+        //}
 
-        public string Password
-        {
-            get { return password; }
-        }
+        //public string Password
+        //{
+        //    get { return password; }
+        //}
 
         public bool UserProxy
         {
@@ -75,16 +75,17 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
         /// <param name="password">VersionOne password.</param>
         /// <param name="authenticationType">VersionOne authentication type</param>
         public ConnectionValidationEventArgs(string url, string username, string password, AuthenticationTypes authenticationType)
+//         public ConnectionValidationEventArgs(string url, AuthenticationTypes authenticationType)
         {
             this.authenticationType = authenticationType;
             this.url = url;
-            this.username = username;
-            this.password = password;
+//            this.username = username;
+//            this.password = password;
             this.useProxy = false;
             this.versionOneSettings.AuthenticationType = authenticationType;
             this.versionOneSettings.ApplicationUrl = url;
-            this.versionOneSettings.Username = username;
-            this.versionOneSettings.Password = password;
+            //this.versionOneSettings.Username = username;
+            //this.versionOneSettings.Password = password;
         }
 
         /// <summary>
@@ -95,8 +96,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
         {
             this.authenticationType = connectionSettings.AuthenticationType;
             this.url = connectionSettings.ApplicationUrl;
-            this.username = connectionSettings.Username;
-            this.password = connectionSettings.Password;
+            //this.username = connectionSettings.Username;
+            //this.password = connectionSettings.Password;
             this.useProxy = connectionSettings.ProxySettings.Enabled;
             this.proxyDomain = connectionSettings.ProxySettings.Domain;
             this.proxyUri = connectionSettings.ProxySettings.Uri;

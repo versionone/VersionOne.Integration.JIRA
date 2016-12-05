@@ -59,8 +59,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
         {
             var url = settings.ApplicationUrl;
             var accessToken = settings.AccessToken;
-            var username = settings.Username;
-            var password = settings.Password;
+//            var username = settings.Username;
+//            var password = settings.Password;
 
             try
             {
@@ -74,15 +74,15 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
                     case AuthenticationTypes.AccessToken:
                         connectorWithAuth = connector.WithAccessToken(accessToken);
                         break;
-                    case AuthenticationTypes.Basic:
-                        connectorWithAuth = connector.WithUsernameAndPassword(username, password);
-                        break;
-                    case AuthenticationTypes.Integrated:
-                        connectorWithAuth = connector.WithWindowsIntegrated();
-                        break;
-                    case AuthenticationTypes.IntegratedWithCredentials:
-                        connectorWithAuth = connector.WithWindowsIntegrated(username, password);
-                        break;
+                    //case AuthenticationTypes.Basic:
+                    //    connectorWithAuth = connector.WithUsernameAndPassword(username, password);
+                    //    break;
+                    //case AuthenticationTypes.Integrated:
+                    //    connectorWithAuth = connector.WithWindowsIntegrated();
+                    //    break;
+                    //case AuthenticationTypes.IntegratedWithCredentials:
+                    //    connectorWithAuth = connector.WithWindowsIntegrated(username, password);
+                    //    break;
                     default:
                         throw new Exception("Invalid authentication type");
                 }

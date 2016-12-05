@@ -14,13 +14,13 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
     public class VersionOneSettings : INotifyPropertyChanged
     {
         public const string AccessTokenAuthProperty = "AccessTokenAuth";
-        public const string BasicAuthProperty = "BasicAuth";
-        public const string IntegratedAuthProperty = "IntegratedAuth";
+       // public const string BasicAuthProperty = "BasicAuth";
+       // public const string IntegratedAuthProperty = "IntegratedAuth";
 
         public const string ApplicationUrlProperty = "ApplicationUrl";
         public const string AccessTokenProperty = "AccessToken";
-        public const string UsernameProperty = "Username";
-        public const string PasswordProperty = "Password";
+        //public const string UsernameProperty = "Username";
+        //public const string PasswordProperty = "Password";
 
         private string applicationUrl;
         private string accessToken;
