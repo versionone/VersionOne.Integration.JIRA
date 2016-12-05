@@ -25,10 +25,10 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
         private void InitializeComponent() {
             this.lblV1ConnectionValidationResult = new System.Windows.Forms.Label();
             this.btnVerifyV1Connection = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
+            //this.txtPassword = new System.Windows.Forms.TextBox();
+            //this.lblPassword = new System.Windows.Forms.Label();
+            //this.txtUsername = new System.Windows.Forms.TextBox();
+            //this.lblUsername = new System.Windows.Forms.Label();
             this.txtServerUrl = new System.Windows.Forms.TextBox();
             this.lblServerUrl = new System.Windows.Forms.Label();
             this.chkUseProxy = new System.Windows.Forms.CheckBox();
@@ -42,12 +42,14 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             this.txtProxyDomain = new System.Windows.Forms.TextBox();
             this.lblAccessToken = new System.Windows.Forms.Label();
             this.txtAccessToken = new System.Windows.Forms.TextBox();
-            this.gbAuthentication = new System.Windows.Forms.GroupBox();
-            this.rbtnIntegratedWithCredentialsAuth = new System.Windows.Forms.RadioButton();
-            this.rbtnAccessTokenAuth = new System.Windows.Forms.RadioButton();
-            this.rbtnIntegratedAuth = new System.Windows.Forms.RadioButton();
-            this.rbtnBasicAuth = new System.Windows.Forms.RadioButton();
-            this.gbAuthentication.SuspendLayout();
+           // this.gbAuthentication = new System.Windows.Forms.GroupBox();
+
+            //this.rbtnAccessTokenAuth = new System.Windows.Forms.RadioButton();
+            
+            //this.rbtnIntegratedWithCredentialsAuth = new System.Windows.Forms.RadioButton();
+            //this.rbtnIntegratedAuth = new System.Windows.Forms.RadioButton();
+            //this.rbtnBasicAuth = new System.Windows.Forms.RadioButton();
+            //this.gbAuthentication.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblV1ConnectionValidationResult
@@ -72,36 +74,36 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(106, 189);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(375, 20);
-            this.txtPassword.TabIndex = 8;
-            this.txtPassword.UseSystemPasswordChar = true;
+            //this.txtPassword.Location = new System.Drawing.Point(106, 189);
+            //this.txtPassword.Name = "txtPassword";
+            //this.txtPassword.Size = new System.Drawing.Size(375, 20);
+            //this.txtPassword.TabIndex = 8;
+            //this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(17, 192);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(53, 13);
-            this.lblPassword.TabIndex = 7;
-            this.lblPassword.Text = "Password";
+            //this.lblPassword.AutoSize = true;
+            //this.lblPassword.Location = new System.Drawing.Point(17, 192);
+            //this.lblPassword.Name = "lblPassword";
+            //this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            //this.lblPassword.TabIndex = 7;
+            //this.lblPassword.Text = "Password";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(106, 154);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(375, 20);
-            this.txtUsername.TabIndex = 6;
+            //this.txtUsername.Location = new System.Drawing.Point(106, 154);
+            //this.txtUsername.Name = "txtUsername";
+            //this.txtUsername.Size = new System.Drawing.Size(375, 20);
+            //this.txtUsername.TabIndex = 6;
             // 
             // lblUsername
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(17, 157);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(55, 13);
-            this.lblUsername.TabIndex = 5;
-            this.lblUsername.Text = "Username";
+            //this.lblUsername.AutoSize = true;
+            //this.lblUsername.Location = new System.Drawing.Point(17, 157);
+            //this.lblUsername.Name = "lblUsername";
+            //this.lblUsername.Size = new System.Drawing.Size(55, 13);
+            //this.lblUsername.TabIndex = 5;
+            //this.lblUsername.Text = "Username";
             // 
             // txtServerUrl
             // 
@@ -212,66 +214,66 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             // 
             // gbAuthentication
             // 
-            this.gbAuthentication.Controls.Add(this.rbtnIntegratedWithCredentialsAuth);
-            this.gbAuthentication.Controls.Add(this.rbtnAccessTokenAuth);
-            this.gbAuthentication.Controls.Add(this.rbtnIntegratedAuth);
-            this.gbAuthentication.Controls.Add(this.rbtnBasicAuth);
-            this.gbAuthentication.Location = new System.Drawing.Point(20, 18);
-            this.gbAuthentication.Name = "gbAuthentication";
-            this.gbAuthentication.Size = new System.Drawing.Size(461, 57);
-            this.gbAuthentication.TabIndex = 0;
-            this.gbAuthentication.TabStop = false;
-            this.gbAuthentication.Text = "Authentication";
+           //// this.gbAuthentication.Controls.Add(this.rbtnIntegratedWithCredentialsAuth);
+           // this.gbAuthentication.Controls.Add(this.rbtnAccessTokenAuth);
+           // //this.gbAuthentication.Controls.Add(this.rbtnIntegratedAuth);
+           // //this.gbAuthentication.Controls.Add(this.rbtnBasicAuth);
+           // this.gbAuthentication.Location = new System.Drawing.Point(20, 18);
+           // this.gbAuthentication.Name = "gbAuthentication";
+           // this.gbAuthentication.Size = new System.Drawing.Size(461, 50);
+           // this.gbAuthentication.TabIndex = 0;
+           // this.gbAuthentication.TabStop = false;
+           // this.gbAuthentication.Text = "Access Token Authentication";
             // 
             // rbtnIntegratedWithCredentialsAuth
             // 
-            this.rbtnIntegratedWithCredentialsAuth.AutoSize = true;
-            this.rbtnIntegratedWithCredentialsAuth.Location = new System.Drawing.Point(305, 24);
-            this.rbtnIntegratedWithCredentialsAuth.Name = "rbtnIntegratedWithCredentialsAuth";
-            this.rbtnIntegratedWithCredentialsAuth.Size = new System.Drawing.Size(132, 17);
-            this.rbtnIntegratedWithCredentialsAuth.TabIndex = 4;
-            this.rbtnIntegratedWithCredentialsAuth.TabStop = true;
-            this.rbtnIntegratedWithCredentialsAuth.Text = "NTLM with Credentials";
-            this.rbtnIntegratedWithCredentialsAuth.UseVisualStyleBackColor = true;
+            //this.rbtnIntegratedWithCredentialsAuth.AutoSize = true;
+            //this.rbtnIntegratedWithCredentialsAuth.Location = new System.Drawing.Point(305, 24);
+            //this.rbtnIntegratedWithCredentialsAuth.Name = "rbtnIntegratedWithCredentialsAuth";
+            //this.rbtnIntegratedWithCredentialsAuth.Size = new System.Drawing.Size(132, 17);
+            //this.rbtnIntegratedWithCredentialsAuth.TabIndex = 4;
+            //this.rbtnIntegratedWithCredentialsAuth.TabStop = true;
+            //this.rbtnIntegratedWithCredentialsAuth.Text = "NTLM with Credentials";
+            //this.rbtnIntegratedWithCredentialsAuth.UseVisualStyleBackColor = true;
             // 
             // rbtnAccessTokenAuth
             // 
-            this.rbtnAccessTokenAuth.AutoSize = true;
-            this.rbtnAccessTokenAuth.Location = new System.Drawing.Point(21, 24);
-            this.rbtnAccessTokenAuth.Name = "rbtnAccessTokenAuth";
-            this.rbtnAccessTokenAuth.Size = new System.Drawing.Size(94, 17);
-            this.rbtnAccessTokenAuth.TabIndex = 1;
-            this.rbtnAccessTokenAuth.TabStop = true;
-            this.rbtnAccessTokenAuth.Text = "Access Token";
-            this.rbtnAccessTokenAuth.UseVisualStyleBackColor = true;
+            //this.rbtnAccessTokenAuth.AutoSize = true;
+            //this.rbtnAccessTokenAuth.Location = new System.Drawing.Point(21, 24);
+            //this.rbtnAccessTokenAuth.Name = "rbtnAccessTokenAuth";
+            //this.rbtnAccessTokenAuth.Size = new System.Drawing.Size(94, 17);
+            //this.rbtnAccessTokenAuth.TabIndex = 1;
+            //this.rbtnAccessTokenAuth.TabStop = true;
+            //this.rbtnAccessTokenAuth.Text = "Access Token";
+            //this.rbtnAccessTokenAuth.UseVisualStyleBackColor = true;
             // 
             // rbtnIntegratedAuth
             // 
-            this.rbtnIntegratedAuth.AutoSize = true;
-            this.rbtnIntegratedAuth.Location = new System.Drawing.Point(222, 24);
-            this.rbtnIntegratedAuth.Name = "rbtnIntegratedAuth";
-            this.rbtnIntegratedAuth.Size = new System.Drawing.Size(55, 17);
-            this.rbtnIntegratedAuth.TabIndex = 3;
-            this.rbtnIntegratedAuth.TabStop = true;
-            this.rbtnIntegratedAuth.Text = "NTLM";
-            this.rbtnIntegratedAuth.UseVisualStyleBackColor = true;
+            //this.rbtnIntegratedAuth.AutoSize = true;
+            //this.rbtnIntegratedAuth.Location = new System.Drawing.Point(222, 24);
+            //this.rbtnIntegratedAuth.Name = "rbtnIntegratedAuth";
+            //this.rbtnIntegratedAuth.Size = new System.Drawing.Size(55, 17);
+            //this.rbtnIntegratedAuth.TabIndex = 3;
+            //this.rbtnIntegratedAuth.TabStop = true;
+            //this.rbtnIntegratedAuth.Text = "NTLM";
+            //this.rbtnIntegratedAuth.UseVisualStyleBackColor = true;
             // 
             // rbtnBasicAuth
             // 
-            this.rbtnBasicAuth.AutoSize = true;
-            this.rbtnBasicAuth.Location = new System.Drawing.Point(143, 24);
-            this.rbtnBasicAuth.Name = "rbtnBasicAuth";
-            this.rbtnBasicAuth.Size = new System.Drawing.Size(51, 17);
-            this.rbtnBasicAuth.TabIndex = 2;
-            this.rbtnBasicAuth.TabStop = true;
-            this.rbtnBasicAuth.Text = "Basic";
-            this.rbtnBasicAuth.UseVisualStyleBackColor = true;
+            //this.rbtnBasicAuth.AutoSize = true;
+            //this.rbtnBasicAuth.Location = new System.Drawing.Point(143, 24);
+            //this.rbtnBasicAuth.Name = "rbtnBasicAuth";
+            //this.rbtnBasicAuth.Size = new System.Drawing.Size(51, 17);
+            //this.rbtnBasicAuth.TabIndex = 2;
+            //this.rbtnBasicAuth.TabStop = true;
+            //this.rbtnBasicAuth.Text = "Basic";
+            //this.rbtnBasicAuth.UseVisualStyleBackColor = true;
             // 
             // V1SettingsPageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.gbAuthentication);
+           // this.Controls.Add(this.gbAuthentication);
             this.Controls.Add(this.txtAccessToken);
             this.Controls.Add(this.lblAccessToken);
             this.Controls.Add(this.txtProxyDomain);
@@ -285,16 +287,16 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
             this.Controls.Add(this.chkUseProxy);
             this.Controls.Add(this.lblV1ConnectionValidationResult);
             this.Controls.Add(this.btnVerifyV1Connection);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.lblUsername);
+//            this.Controls.Add(this.txtPassword);
+//            this.Controls.Add(this.lblPassword);
+//            this.Controls.Add(this.txtUsername);
+//            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtServerUrl);
             this.Controls.Add(this.lblServerUrl);
             this.Name = "V1SettingsPageControl";
             this.Size = new System.Drawing.Size(540, 440);
-            this.gbAuthentication.ResumeLayout(false);
-            this.gbAuthentication.PerformLayout();
+         //   this.gbAuthentication.ResumeLayout(false);
+         //   this.gbAuthentication.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,10 +306,10 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
 
         private System.Windows.Forms.Label lblV1ConnectionValidationResult;
         private System.Windows.Forms.Button btnVerifyV1Connection;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label lblUsername;
+        //private System.Windows.Forms.TextBox txtPassword;
+        //private System.Windows.Forms.Label lblPassword;
+        //private System.Windows.Forms.TextBox txtUsername;
+        //private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtServerUrl;
         private System.Windows.Forms.Label lblServerUrl;
         private System.Windows.Forms.CheckBox chkUseProxy;
@@ -321,10 +323,10 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls {
         private System.Windows.Forms.TextBox txtProxyDomain;
         private System.Windows.Forms.Label lblAccessToken;
         private System.Windows.Forms.TextBox txtAccessToken;
-        private System.Windows.Forms.GroupBox gbAuthentication;
-        private System.Windows.Forms.RadioButton rbtnAccessTokenAuth;
-        private System.Windows.Forms.RadioButton rbtnIntegratedAuth;
-        private System.Windows.Forms.RadioButton rbtnBasicAuth;
-        private System.Windows.Forms.RadioButton rbtnIntegratedWithCredentialsAuth;
+      //  private System.Windows.Forms.GroupBox gbAuthentication;
+      //  private System.Windows.Forms.RadioButton rbtnAccessTokenAuth;
+        //private System.Windows.Forms.RadioButton rbtnIntegratedAuth;
+        //private System.Windows.Forms.RadioButton rbtnBasicAuth;
+        //private System.Windows.Forms.RadioButton rbtnIntegratedWithCredentialsAuth;
     }
 }

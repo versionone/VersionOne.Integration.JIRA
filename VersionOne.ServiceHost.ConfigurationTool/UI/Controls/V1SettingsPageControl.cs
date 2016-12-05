@@ -18,10 +18,10 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
             InitializeComponent();
 
             btnVerifyV1Connection.Click += btnVerifyV1Connection_Click;
-            rbtnAccessTokenAuth.CheckedChanged += radioButtons_CheckedChanged;
-            rbtnBasicAuth.CheckedChanged += radioButtons_CheckedChanged;
-            rbtnIntegratedAuth.CheckedChanged += radioButtons_CheckedChanged;
-            rbtnIntegratedWithCredentialsAuth.CheckedChanged += radioButtons_CheckedChanged;
+          //  rbtnAccessTokenAuth.CheckedChanged += radioButtons_CheckedChanged;
+         //   rbtnBasicAuth.CheckedChanged += radioButtons_CheckedChanged;
+          //  rbtnIntegratedAuth.CheckedChanged += radioButtons_CheckedChanged;
+           // rbtnIntegratedWithCredentialsAuth.CheckedChanged += radioButtons_CheckedChanged;
             chkUseProxy.CheckedChanged += chkUseProxy_CheckedChanged;
 
             AddValidationProvider(typeof(VersionOneSettings));
@@ -29,36 +29,36 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
 
             AddControlTextValidation<VersionOneSettings>(txtServerUrl, VersionOneSettings.ApplicationUrlProperty);
             AddControlTextValidation<VersionOneSettings>(txtAccessToken, VersionOneSettings.AccessTokenProperty);
-            AddControlTextValidation<VersionOneSettings>(txtUsername, VersionOneSettings.UsernameProperty);
-            AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
+          //  AddControlTextValidation<VersionOneSettings>(txtUsername, VersionOneSettings.UsernameProperty);
+          //  AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
 
             CheckProxyForm();
         }
 
         public override void DataBind()
         {
-            switch (Model.Settings.AuthenticationType)
-            {
-                case AuthenticationTypes.AccessToken:
-                    rbtnAccessTokenAuth.Checked = true;
-                    break;
-                case AuthenticationTypes.Basic:
-                    rbtnBasicAuth.Checked = true;
-                    break;
-                case AuthenticationTypes.Integrated:
-                    rbtnIntegratedAuth.Checked = true;
-                    break;
-                case AuthenticationTypes.IntegratedWithCredentials:
-                    rbtnIntegratedWithCredentialsAuth.Checked = true;
-                    break;
-                default:
-                    throw new Exception("You must set an authentication type in config file"); // TODO: check error message
-            }
+            //switch (Model.Settings.AuthenticationType)
+            //{
+                //case AuthenticationTypes.AccessToken:
+                //    rbtnAccessTokenAuth.Checked = true;
+                //    break;
+                //case AuthenticationTypes.Basic:
+                //    rbtnBasicAuth.Checked = true;
+                //    break;
+                //case AuthenticationTypes.Integrated:
+                //    rbtnIntegratedAuth.Checked = true;
+                //    break;
+                //case AuthenticationTypes.IntegratedWithCredentials:
+                //    rbtnIntegratedWithCredentialsAuth.Checked = true;
+                //    break;
+            //    default:
+            //        throw new Exception("You must set an authentication type in config file"); // TODO: check error message
+            //}
 
             AddControlBinding(txtServerUrl, Model.Settings, VersionOneSettings.ApplicationUrlProperty);
             AddControlBinding(txtAccessToken, Model.Settings, VersionOneSettings.AccessTokenProperty);
-            AddControlBinding(txtUsername, Model.Settings, VersionOneSettings.UsernameProperty);
-            AddControlBinding(txtPassword, Model.Settings, VersionOneSettings.PasswordProperty);
+          //  AddControlBinding(txtUsername, Model.Settings, VersionOneSettings.UsernameProperty);
+          //  AddControlBinding(txtPassword, Model.Settings, VersionOneSettings.PasswordProperty);
             AddControlBinding(chkUseProxy, Model.ProxySettings, ProxyConnectionSettings.EnabledProperty);
             AddControlBinding(txtProxyUri, Model.ProxySettings, ProxyConnectionSettings.UriProperty);
             AddControlBinding(txtProxyUsername, Model.ProxySettings, ProxyConnectionSettings.UsernameProperty);
@@ -114,8 +114,8 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
             {
                 ApplicationUrl = txtServerUrl.Text,
                 AccessToken = txtAccessToken.Text,
-                Username = txtUsername.Text,
-                Password = txtPassword.Text,
+            //    Username = txtUsername.Text,
+              //  Password = txtPassword.Text,
                 ProxySettings = new ProxyConnectionSettings
                 {
                     Enabled = chkUseProxy.Checked,
@@ -126,14 +126,14 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 }
             };
 
-            if (rbtnAccessTokenAuth.Checked)
+         //   if (rbtnAccessTokenAuth.Checked)
                 settings.AuthenticationType = AuthenticationTypes.AccessToken;
-            else if (rbtnBasicAuth.Checked)
-                settings.AuthenticationType = AuthenticationTypes.Basic;
-            else if (rbtnIntegratedAuth.Checked)
-                settings.AuthenticationType = AuthenticationTypes.Integrated;
-            else if (rbtnIntegratedWithCredentialsAuth.Checked)
-                settings.AuthenticationType = AuthenticationTypes.IntegratedWithCredentials;
+            //else if (rbtnBasicAuth.Checked)
+            //    settings.AuthenticationType = AuthenticationTypes.Basic;
+            //else if (rbtnIntegratedAuth.Checked)
+            //    settings.AuthenticationType = AuthenticationTypes.Integrated;
+            //else if (rbtnIntegratedWithCredentialsAuth.Checked)
+            //    settings.AuthenticationType = AuthenticationTypes.IntegratedWithCredentials;
 
             lblV1ConnectionValidationResult.Text = string.Empty;
 
@@ -142,41 +142,41 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
 
         private void radioButtons_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbtnAccessTokenAuth.Checked)
-            {
-                AddControlTextValidation<VersionOneSettings>(txtAccessToken, VersionOneSettings.AccessTokenProperty);
-                RemoveControlValidation<VersionOneSettings>(txtUsername);
-                RemoveControlValidation<VersionOneSettings>(txtPassword);
-                Model.Settings.AuthenticationType = AuthenticationTypes.AccessToken;
-                Model.Settings.Username = string.Empty;
-                Model.Settings.Password = string.Empty;
-            }
-            else if (rbtnBasicAuth.Checked)
-            {
-                AddControlTextValidation<VersionOneSettings>(txtUsername, VersionOneSettings.UsernameProperty);
-                AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
-                RemoveControlValidation<VersionOneSettings>(txtAccessToken);
-                Model.Settings.AuthenticationType = AuthenticationTypes.Basic;
-                Model.Settings.AccessToken = string.Empty;
-            }
-            else if (rbtnIntegratedAuth.Checked)
-            {
-                RemoveControlValidation<VersionOneSettings>(txtAccessToken);
-                RemoveControlValidation<VersionOneSettings>(txtUsername);
-                RemoveControlValidation<VersionOneSettings>(txtPassword);
-                Model.Settings.AuthenticationType = AuthenticationTypes.Integrated;
-                Model.Settings.AccessToken = string.Empty;
-                Model.Settings.Username = string.Empty;
-                Model.Settings.Password = string.Empty;
-            }
-            else if (rbtnIntegratedWithCredentialsAuth.Checked)
-            {
-                AddControlTextValidation<VersionOneSettings>(txtUsername, VersionOneSettings.UsernameProperty);
-                AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
-                RemoveControlValidation<VersionOneSettings>(txtAccessToken);
-                Model.Settings.AuthenticationType = AuthenticationTypes.IntegratedWithCredentials;
-                Model.Settings.AccessToken = string.Empty;
-            }
+            //if (rbtnAccessTokenAuth.Checked)
+            //{
+            //    AddControlTextValidation<VersionOneSettings>(txtAccessToken, VersionOneSettings.AccessTokenProperty);
+               // RemoveControlValidation<VersionOneSettings>(txtUsername);
+               // RemoveControlValidation<VersionOneSettings>(txtPassword);
+           Model.Settings.AuthenticationType = AuthenticationTypes.AccessToken;
+               // Model.Settings.Username = string.Empty;
+               // Model.Settings.Password = string.Empty;
+            //}
+            //else if (rbtnBasicAuth.Checked)
+            //{
+            //    AddControlTextValidation<VersionOneSettings>(txtUsername, VersionOneSettings.UsernameProperty);
+            //    AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
+            //    RemoveControlValidation<VersionOneSettings>(txtAccessToken);
+            //    Model.Settings.AuthenticationType = AuthenticationTypes.Basic;
+            //    Model.Settings.AccessToken = string.Empty;
+            //}
+            //else if (rbtnIntegratedAuth.Checked)
+            //{
+            //    RemoveControlValidation<VersionOneSettings>(txtAccessToken);
+            //    RemoveControlValidation<VersionOneSettings>(txtUsername);
+            //    RemoveControlValidation<VersionOneSettings>(txtPassword);
+            //    Model.Settings.AuthenticationType = AuthenticationTypes.Integrated;
+            //    Model.Settings.AccessToken = string.Empty;
+            //    Model.Settings.Username = string.Empty;
+            //    Model.Settings.Password = string.Empty;
+            //}
+            //else if (rbtnIntegratedWithCredentialsAuth.Checked)
+            //{
+            //    AddControlTextValidation<VersionOneSettings>(txtUsername, VersionOneSettings.UsernameProperty);
+            //    AddControlTextValidation<VersionOneSettings>(txtPassword, VersionOneSettings.PasswordProperty);
+            //    RemoveControlValidation<VersionOneSettings>(txtAccessToken);
+            //    Model.Settings.AuthenticationType = AuthenticationTypes.IntegratedWithCredentials;
+            //    Model.Settings.AccessToken = string.Empty;
+            //}
 
             ErrorProvider.Clear();
             UpdateTextBoxesState();
@@ -189,9 +189,9 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
 
         private void UpdateTextBoxesState()
         {
-            txtAccessToken.Enabled = rbtnAccessTokenAuth.Checked;
-            txtUsername.Enabled = rbtnBasicAuth.Checked || rbtnIntegratedWithCredentialsAuth.Checked;
-            txtPassword.Enabled = rbtnBasicAuth.Checked || rbtnIntegratedWithCredentialsAuth.Checked;
+         //   txtAccessToken.Enabled = rbtnAccessTokenAuth.Checked;
+            //txtUsername.Enabled = rbtnBasicAuth.Checked || rbtnIntegratedWithCredentialsAuth.Checked;
+            //txtPassword.Enabled = rbtnBasicAuth.Checked || rbtnIntegratedWithCredentialsAuth.Checked;
         }
 
         #endregion
