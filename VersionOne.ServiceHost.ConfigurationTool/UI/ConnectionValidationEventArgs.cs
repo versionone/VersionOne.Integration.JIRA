@@ -8,8 +8,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
     {
         private AuthenticationTypes authenticationType;
         private string url;
-  //      private string username;
-  //      private string password;
         private bool useProxy;
         private string proxyUri;
         private string proxyUsername;
@@ -26,16 +24,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
         {
             get { return url; }
         }
-
-        //public string Username
-        //{
-        //    get { return username; }
-        //}
-
-        //public string Password
-        //{
-        //    get { return password; }
-        //}
 
         public bool UserProxy
         {
@@ -79,13 +67,9 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
         {
             this.authenticationType = authenticationType;
             this.url = url;
-//            this.username = username;
-//            this.password = password;
             this.useProxy = false;
             this.versionOneSettings.AuthenticationType = authenticationType;
             this.versionOneSettings.ApplicationUrl = url;
-            //this.versionOneSettings.Username = username;
-            //this.versionOneSettings.Password = password;
         }
 
         /// <summary>
@@ -96,8 +80,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI
         {
             this.authenticationType = connectionSettings.AuthenticationType;
             this.url = connectionSettings.ApplicationUrl;
-            //this.username = connectionSettings.Username;
-            //this.password = connectionSettings.Password;
             this.useProxy = connectionSettings.ProxySettings.Enabled;
             this.proxyDomain = connectionSettings.ProxySettings.Domain;
             this.proxyUri = connectionSettings.ProxySettings.Uri;
