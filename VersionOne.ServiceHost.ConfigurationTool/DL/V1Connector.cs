@@ -69,23 +69,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
                     .WithUserAgentHeader("VersionOne.Integration.JIRASync", Assembly.GetEntryAssembly().GetName().Version.ToString());
 
                 ICanSetProxyOrEndpointOrGetConnector connectorWithAuth;
-                switch (settings.AuthenticationType)
-                {
-                    case AuthenticationTypes.AccessToken:
-                        connectorWithAuth = connector.WithAccessToken(accessToken);
-                        break;
-                    //case AuthenticationTypes.Basic:
-                    //    connectorWithAuth = connector.WithUsernameAndPassword(username, password);
-                    //    break;
-                    //case AuthenticationTypes.Integrated:
-                    //    connectorWithAuth = connector.WithWindowsIntegrated();
-                    //    break;
-                    //case AuthenticationTypes.IntegratedWithCredentials:
-                    //    connectorWithAuth = connector.WithWindowsIntegrated(username, password);
-                    //    break;
-                    default:
-                        throw new Exception("Invalid authentication type");
-                }
+				connectorWithAuth = connector.WithAccessToken(accessToken);
 
                 if (settings.ProxySettings.Enabled)
                     connectorWithAuth.WithProxy(GetProxy(settings.ProxySettings));
