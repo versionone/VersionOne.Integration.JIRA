@@ -8,7 +8,9 @@ namespace VersionOne.ServerConnector {
     public interface IVersionOneProcessor {
         bool ValidateConnection();
 
-        Member GetLoggedInMember();
+	    bool ValidateIsAccessToken();
+
+		Member GetLoggedInMember();
         ICollection<Member> GetMembers(IFilter filter);
         
         IList<FeatureGroup> GetFeatureGroups(IFilter filters, IFilter childrenFilters);

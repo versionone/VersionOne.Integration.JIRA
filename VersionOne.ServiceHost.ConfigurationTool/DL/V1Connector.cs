@@ -51,16 +51,24 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
             return IsConnected;
         }
 
-        /// <summary>
-        /// Create connection to V1 server.
-        /// </summary>
-        /// <param name="settings">Connection settings</param>
-        public void Connect(VersionOneSettings settings)
+		public bool ValidateIsAccessToken(VersionOneSettings settings)
+		{
+
+			if (settings.AccessToken == null)
+			{
+				return false;
+			}
+
+			return true;
+		}
+		/// <summary>
+		/// Create connection to V1 server.
+		/// </summary>
+		/// <param name="settings">Connection settings</param>
+		public void Connect(VersionOneSettings settings)
         {
             var url = settings.ApplicationUrl;
-            var accessToken = settings.AccessToken;
-//            var username = settings.Username;
-//            var password = settings.Password;
+			var accessToken = settings.AccessToken;
 
             try
             {

@@ -120,6 +120,17 @@ namespace VersionOne.ServerConnector
             return true;
         }
 
+		public bool ValidateIsAccessToken()
+		{
+			var settings = VersionOneSettings.FromXmlElement(configuration);
+
+			if ((settings.AccessToken == null) || (settings.AccessToken == ""))
+			{
+				return false;
+			}
+
+			return true;
+		}
         public Member GetLoggedInMember()
         {
             return GetMembers(Filter.Empty()).FirstOrDefault(item => item.Asset.Oid.Equals(services.LoggedIn));

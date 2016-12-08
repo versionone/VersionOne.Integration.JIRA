@@ -4,7 +4,14 @@ using VersionOne.ServiceHost.Core.Logging;
 namespace VersionOne.ServerConnector.StartupValidation {
     public class V1ConnectionValidator : BaseValidator {
         public override bool Validate() {
-            Log(LogMessage.SeverityType.Info, "Validating connection to VersionOne");
+			Log(LogMessage.SeverityType.Info, "Validating connection to VersionOne is using Access Token");
+	        if (!V1Processor.ValidateIsAccessToken())
+	        {
+				Log(LogMessage.SeverityType.Error, "Authentication to VersionOne must use Access Token.");
+				return false;
+			}
+
+			Log(LogMessage.SeverityType.Info, "Validating connection to VersionOne");
             V1Processor.LogConnectionConfiguration();
 
             if(!V1Processor.ValidateConnection()) {
