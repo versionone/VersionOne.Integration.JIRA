@@ -33,7 +33,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             set { }
         }
 
-        public AuthenticationTypes AuthenticationType { get; set; }
+        public string AuthenticationType { get; set; }
 
         [HelpString(HelpResourceKey = "V1PageVersionOneUrl")]
         [NonEmptyStringValidator]

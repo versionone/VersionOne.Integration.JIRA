@@ -11,7 +11,7 @@ namespace VersionOne.ServiceHost.Core.Configuration
     {
         private const string DefaultApiVersion = "6.5.0.0";
 
-        public AuthenticationTypes AuthenticationType { get; set; }
+        public string AuthenticationType { get; set; }
 
         [XmlElement("ApplicationUrl")]
         public string Url { get; set; }

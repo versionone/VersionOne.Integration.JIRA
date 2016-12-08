@@ -98,8 +98,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.UI.Controls
                 }
             };
 
-            settings.AuthenticationType = AuthenticationTypes.AccessToken;
-            
             lblV1ConnectionValidationResult.Text = string.Empty;
 
             ValidationRequested(this, new ConnectionValidationEventArgs(settings));

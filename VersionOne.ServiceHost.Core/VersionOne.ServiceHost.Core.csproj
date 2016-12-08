@@ -96,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonModeFactory.cs" />
-    <Compile Include="Configuration\AuthenticationTypes.cs" />
     <Compile Include="Configuration\InstallerConfiguration.cs" />
     <Compile Include="Configuration\ProxySettings.cs" />
     <Compile Include="Configuration\VersionOneSettings.cs" />
