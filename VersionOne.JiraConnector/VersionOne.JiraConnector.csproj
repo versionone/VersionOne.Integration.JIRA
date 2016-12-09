@@ -141,6 +141,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)$(SolutionName)\$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)$(SolutionName)\$(OutDir)
+copy "$(SolutionDir)Dependencies\*" "$(SolutionDir)$(SolutionName)\$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
