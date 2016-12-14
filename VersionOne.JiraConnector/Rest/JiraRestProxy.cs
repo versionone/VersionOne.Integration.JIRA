@@ -215,7 +215,7 @@ namespace VersionOne.JiraConnector.Rest
                 return;
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
-            throw new JiraException("Status Desc: " + response.StatusDescription + " Request.Body: " + body.ToString(), new Exception(response.Content));
+            throw new JiraException("Status Desc: " + response.StatusDescription + " issueKey: " + issueKey + " transition: " + action + " assignee: " + assignee, new Exception(response.Content));
         }
 
         public IEnumerable<Item> GetAvailableActions(string issueId)
