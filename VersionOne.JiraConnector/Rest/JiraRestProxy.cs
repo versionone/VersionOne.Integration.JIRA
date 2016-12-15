@@ -205,8 +205,8 @@ namespace VersionOne.JiraConnector.Rest
 
             dynamic body = new ExpandoObject();
             ((IDictionary<string, object>)body).Add("transition", new { id = action });
-//            if (assignee != null)
-//                ((IDictionary<string, object>)body).Add("fields", new { assignee = new { name = assignee } });
+            if (assignee != null)
+                ((IDictionary<string, object>)body).Add("fields", new { assignee = new { name = assignee } });
             request.AddBody(body);
 
             var response = client.Execute(request);
@@ -215,7 +215,7 @@ namespace VersionOne.JiraConnector.Rest
                 return;
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 throw new JiraLoginException();
-            throw new JiraException("Status Desc: " + response.StatusDescription + " issueKey: " + issueKey + " transition: " + action + " assignee: " + assignee, new Exception(response.Content));
+            throw new JiraException(response.StatusDescription, new Exception(response.Content));
         }
 
         public IEnumerable<Item> GetAvailableActions(string issueId)
