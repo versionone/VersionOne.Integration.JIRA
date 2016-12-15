@@ -51,16 +51,24 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
             return IsConnected;
         }
 
-        /// <summary>
-        /// Create connection to V1 server.
-        /// </summary>
-        /// <param name="settings">Connection settings</param>
-        public void Connect(VersionOneSettings settings)
+		public bool ValidateIsAccessToken(VersionOneSettings settings)
+		{
+
+			if (settings.AccessToken == null)
+			{
+				return false;
+			}
+
+			return true;
+		}
+		/// <summary>
+		/// Create connection to V1 server.
+		/// </summary>
+		/// <param name="settings">Connection settings</param>
+		public void Connect(VersionOneSettings settings)
         {
             var url = settings.ApplicationUrl;
-            var accessToken = settings.AccessToken;
-            var username = settings.Username;
-            var password = settings.Password;
+			var accessToken = settings.AccessToken;
 
             try
             {
@@ -69,23 +77,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
                     .WithUserAgentHeader("VersionOne.Integration.JIRASync", Assembly.GetEntryAssembly().GetName().Version.ToString());
 
                 ICanSetProxyOrEndpointOrGetConnector connectorWithAuth;
-                switch (settings.AuthenticationType)
-                {
-                    case AuthenticationTypes.AccessToken:
-                        connectorWithAuth = connector.WithAccessToken(accessToken);
-                        break;
-                    case AuthenticationTypes.Basic:
-                        connectorWithAuth = connector.WithUsernameAndPassword(username, password);
-                        break;
-                    case AuthenticationTypes.Integrated:
-                        connectorWithAuth = connector.WithWindowsIntegrated();
-                        break;
-                    case AuthenticationTypes.IntegratedWithCredentials:
-                        connectorWithAuth = connector.WithWindowsIntegrated(username, password);
-                        break;
-                    default:
-                        throw new Exception("Invalid authentication type");
-                }
+				connectorWithAuth = connector.WithAccessToken(accessToken);
 
                 if (settings.ProxySettings.Enabled)
                     connectorWithAuth.WithProxy(GetProxy(settings.ProxySettings));

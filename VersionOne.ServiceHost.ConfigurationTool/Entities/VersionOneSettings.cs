@@ -14,18 +14,12 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
     public class VersionOneSettings : INotifyPropertyChanged
     {
         public const string AccessTokenAuthProperty = "AccessTokenAuth";
-        public const string BasicAuthProperty = "BasicAuth";
-        public const string IntegratedAuthProperty = "IntegratedAuth";
 
         public const string ApplicationUrlProperty = "ApplicationUrl";
         public const string AccessTokenProperty = "AccessToken";
-        public const string UsernameProperty = "Username";
-        public const string PasswordProperty = "Password";
 
         private string applicationUrl;
         private string accessToken;
-        private string username;
-        private string password;
 
         public VersionOneSettings()
         {
@@ -39,7 +33,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
             set { }
         }
 
-        public AuthenticationTypes AuthenticationType { get; set; }
+        public string AuthenticationType { get; set; }
 
         [HelpString(HelpResourceKey = "V1PageVersionOneUrl")]
         [NonEmptyStringValidator]
@@ -65,34 +59,6 @@ namespace VersionOne.ServiceHost.ConfigurationTool.Entities
                 if (accessToken != value)
                 {
                     accessToken = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        [NonEmptyStringValidator]
-        public string Username
-        {
-            get { return username; }
-            set
-            {
-                if (username != value)
-                {
-                    username = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        [NonEmptyStringValidator]
-        public string Password
-        {
-            get { return password; }
-            set
-            {
-                if (password != value)
-                {
-                    password = value;
                     NotifyPropertyChanged();
                 }
             }

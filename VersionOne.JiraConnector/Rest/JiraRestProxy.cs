@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using RestSharp.Authenticators;
 using VersionOne.JiraConnector.Exceptions;
 
 namespace VersionOne.JiraConnector.Rest

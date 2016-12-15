@@ -86,23 +86,8 @@ namespace VersionOne.ServerConnector
                 .WithUserAgentHeader("VersionOne.Integration.JIRASync", Assembly.GetEntryAssembly().GetName().Version.ToString());
 
             ICanSetProxyOrEndpointOrGetConnector connectorWithAuth;
-            switch (settings.AuthenticationType)
-            {
-                case AuthenticationTypes.AccessToken:
-                    connectorWithAuth = connector.WithAccessToken(settings.AccessToken);
-                    break;
-                case AuthenticationTypes.Basic:
-                    connectorWithAuth = connector.WithUsernameAndPassword(settings.Username, settings.Password);
-                    break;
-                case AuthenticationTypes.Integrated:
-                    connectorWithAuth = connector.WithWindowsIntegrated();
-                    break;
-                case AuthenticationTypes.IntegratedWithCredentials:
-                    connectorWithAuth = connector.WithWindowsIntegrated(settings.Username, settings.Password);
-                    break;
-                default:
-                    throw new Exception("Invalid authentication type");
-            }
+
+			connectorWithAuth = connector.WithAccessToken(settings.AccessToken);
 
             if (settings.ProxySettings.Enabled)
                 connectorWithAuth.WithProxy(
@@ -135,6 +120,17 @@ namespace VersionOne.ServerConnector
             return true;
         }
 
+		public bool ValidateIsAccessToken()
+		{
+			var settings = VersionOneSettings.FromXmlElement(configuration);
+
+			if ((settings.AccessToken == null) || (settings.AccessToken == ""))
+			{
+				return false;
+			}
+
+			return true;
+		}
         public Member GetLoggedInMember()
         {
             return GetMembers(Filter.Empty()).FirstOrDefault(item => item.Asset.Oid.Equals(services.LoggedIn));
