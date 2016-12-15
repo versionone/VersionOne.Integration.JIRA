@@ -203,6 +203,8 @@ namespace VersionOne.JiraConnector.Rest
             };
             request.AddUrlSegment("issueIdOrKey", issueKey);
 
+	        request.AddHeader("Authorization", "Basic YWRtaW46VDBmejVlQjRyTXV4");
+
             dynamic body = new ExpandoObject();
             ((IDictionary<string, object>)body).Add("transition", new { id = action });
             if (assignee != null)
