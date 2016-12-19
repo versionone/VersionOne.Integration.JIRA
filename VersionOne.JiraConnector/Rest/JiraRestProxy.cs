@@ -103,16 +103,40 @@ namespace VersionOne.JiraConnector.Rest
             dynamic body;
             if (type.ToString().Equals("array"))
             {
-                dynamic operation = new ExpandoObject();
-                ((IDictionary<string, object>)operation).Add(fieldName, new List<dynamic>
-                {
-                    new
-                    {
-                        set = new List<string> { fieldValue }
-                    }
-                });
-                body = new { update = operation };
-            }
+				var custom = fieldMeta.schema["custom"];
+
+				if (custom != null && (custom.ToString().Equals("com.atlassian.jira.plugin.system.customfieldtypes:multiselect")))
+				{
+					dynamic operation = new ExpandoObject();
+					((IDictionary<string, object>)operation).Add(fieldName, new List<dynamic>
+					{
+						new
+						{
+							set = new List<object> { new { value = fieldValue} }
+						}
+					});
+					body = new { update = operation };
+				}
+				else if (custom != null && (custom.ToString().Equals("com.atlassian.jira.plugin.system.customfieldtypes:select") ||
+					custom.ToString().Equals("com.atlassian.jira.plugin.system.customfieldtypes:multicheckboxes")))
+				{
+					dynamic field = new ExpandoObject();
+					((IDictionary<string, object>)field).Add(fieldName, new { value = fieldValue });
+					body = new { fields = field };
+				}
+				else
+				{
+					dynamic operation = new ExpandoObject();
+					((IDictionary<string, object>)operation).Add(fieldName, new List<dynamic>
+					{
+						new
+						{
+							set = new List<string> { fieldValue }
+						}
+					});
+					body = new { update = operation };
+				}
+			}
             else
             {
                 dynamic field = new ExpandoObject();
