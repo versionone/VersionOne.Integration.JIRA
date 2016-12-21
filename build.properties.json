@@ -4,6 +4,6 @@
     "configuration": "Release",
     "platform": "Any CPU",  
     "organizationName": "VersionOne, Inc.",    
-    "version" : "8.4.1.0",
+    "version" : "9.0.0.0",
     "release" : "RELEASE"
 }
