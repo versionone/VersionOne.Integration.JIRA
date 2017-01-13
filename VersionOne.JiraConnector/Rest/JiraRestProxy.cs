@@ -117,13 +117,6 @@ namespace VersionOne.JiraConnector.Rest
                     });
                     body = new { update = operation };
                 }
-                else if (custom != null && (custom.ToString().Equals("com.atlassian.jira.plugin.system.customfieldtypes:select") ||
-                    custom.ToString().Equals("com.atlassian.jira.plugin.system.customfieldtypes:multicheckboxes")))
-                {
-                    dynamic field = new ExpandoObject();
-                    ((IDictionary<string, object>)field).Add(fieldName, new { value = fieldValue });
-                    body = new { fields = field };
-                }
                 else
                 {
                     dynamic operation = new ExpandoObject();
