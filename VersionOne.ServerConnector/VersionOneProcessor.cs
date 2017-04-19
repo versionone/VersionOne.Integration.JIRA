@@ -94,7 +94,7 @@ namespace VersionOne.ServerConnector
                     new ProxyProvider(
                         new Uri(settings.ProxySettings.Url), settings.ProxySettings.Username, settings.ProxySettings.Password, settings.ProxySettings.Domain));
 
-            services = new Services(connectorWithAuth.Build());
+            services = new Services(connectorWithAuth.UseOAuthEndpoints().Build());
 
             queryBuilder.Setup(services);
         }
