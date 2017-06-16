@@ -44,7 +44,7 @@ namespace VersionOne.ServiceHost.Core.Services
                                 new ProxyProvider(
                                     new Uri(settings.ProxySettings.Url), settings.ProxySettings.Username, settings.ProxySettings.Password, settings.ProxySettings.Domain));
 
-                        services = new SDK.APIClient.Services(connectorWithAuth.Build());
+                        services = new SDK.APIClient.Services(connectorWithAuth.UseOAuthEndpoints().Build());
 
                         if (!services.LoggedIn.IsNull)
                             LogVersionOneConnectionInformation();

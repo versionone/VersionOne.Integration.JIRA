@@ -82,7 +82,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool.DL
                 if (settings.ProxySettings.Enabled)
                     connectorWithAuth.WithProxy(GetProxy(settings.ProxySettings));
 
-                services = new Services(connectorWithAuth.Build());
+                services = new Services(connectorWithAuth.UseOAuthEndpoints().Build());
 
                 if (!services.LoggedIn.IsNull)
                 {
