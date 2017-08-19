@@ -58,7 +58,19 @@ namespace VersionOne.JiraConnector.Rest
 			//throw new NotImplementedException();
 		}
 
-		public Issue[] GetIssuesFromFilter(string issueFilterId)
+		private class GetResult<T>
+		{
+			public GetResult(T[] items, int totalAvailable)
+			{
+				Items = items;
+				TotalAvailable = totalAvailable;
+			}
+			public T[] Items { get; private set; }
+			public int TotalAvailable { get; private set; }
+		}
+
+		private GetResult<Issue> GetIssuesFromFilterByPage(string issueFilterId,
+			int pageSize = 10, int startAt = 0)
 		{
 			var request = new RestRequest
 			{
@@ -67,23 +79,53 @@ namespace VersionOne.JiraConnector.Rest
 				RequestFormat = DataFormat.Json
 			};
 			request.AddQueryParameter("jql", $"filter={issueFilterId}");
-			request.AddQueryParameter("maxResults", "10");
+			request.AddQueryParameter("maxResults", pageSize.ToString());
+			request.AddQueryParameter("startAt", startAt.ToString());
 
 			var response = client.Execute(request);
-
-			//var allResults = new List<Issue>();
 
 			if (response.StatusCode.Equals(HttpStatusCode.OK))
 			{
 				dynamic data = JObject.Parse(response.Content);
-				var total = (int) data.total;
+				var total = (int)data.total;
 				var results = ((JArray)data.issues).Select(CreateIssue);
-				return results.ToArray();
-				//allResults.AddRange(results);
+				var result = new GetResult<Issue>(results.ToArray(), total);
+				return result;
 			}
+
 			if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
 				throw new JiraLoginException();
 			throw new JiraException(response.StatusDescription, new Exception(response.Content));
+		}
+
+		public Issue[] GetIssuesFromFilter(string issueFilterId)
+		{
+			const int pageSize = 10;
+			var issues = new List<Issue>();
+
+			var firstResult = GetIssuesFromFilterByPage(issueFilterId, pageSize);
+			issues.AddRange(firstResult.Items);
+			if (firstResult.TotalAvailable <= pageSize) return issues.ToArray();
+
+			var timesToRepeat = CalculateTimesToRepeat(firstResult, pageSize);
+
+			for (var i = 1; i <= timesToRepeat; i++)
+			{
+				var startAt = i * pageSize;
+				var result = GetIssuesFromFilterByPage(issueFilterId, pageSize, startAt);
+				issues.AddRange(result.Items);
+			}
+
+			return issues.ToArray();
+		}
+
+		private static int CalculateTimesToRepeat(GetResult<Issue> firstResult, int pageSize)
+		{
+			var remainingItems = firstResult.TotalAvailable - pageSize;
+			var timesToRepeat = remainingItems / pageSize;
+			var remainder = remainingItems % pageSize;
+			if (remainder > 0) timesToRepeat++;
+			return timesToRepeat;
 		}
 
 		public Issue UpdateIssue(string issueKey, string fieldName, string fieldValue)
