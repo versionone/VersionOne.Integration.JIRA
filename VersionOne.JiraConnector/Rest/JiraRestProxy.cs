@@ -58,9 +58,9 @@ namespace VersionOne.JiraConnector.Rest
 			//throw new NotImplementedException();
 		}
 
-		private class GetResult<T>
+		private class JiraResults<T>
 		{
-			public GetResult(T[] items, int totalAvailable)
+			public JiraResults(T[] items, int totalAvailable)
 			{
 				Items = items;
 				TotalAvailable = totalAvailable;
@@ -69,7 +69,7 @@ namespace VersionOne.JiraConnector.Rest
 			public int TotalAvailable { get; private set; }
 		}
 
-		private GetResult<Issue> GetIssuesFromFilterByPage(string issueFilterId,
+		private JiraResults<Issue> GetIssuesFromFilterByPage(string issueFilterId,
 			int pageSize = 10, int startAt = 0)
 		{
 			var request = new RestRequest
@@ -89,7 +89,7 @@ namespace VersionOne.JiraConnector.Rest
 				dynamic data = JObject.Parse(response.Content);
 				var total = (int)data.total;
 				var results = ((JArray)data.issues).Select(CreateIssue);
-				var result = new GetResult<Issue>(results.ToArray(), total);
+				var result = new JiraResults<Issue>(results.ToArray(), total);
 				return result;
 			}
 
@@ -119,7 +119,7 @@ namespace VersionOne.JiraConnector.Rest
 			return issues.ToArray();
 		}
 
-		private static int CalculateTimesToRepeat(GetResult<Issue> firstResult, int pageSize)
+		private static int CalculateTimesToRepeat(JiraResults<Issue> firstResult, int pageSize)
 		{
 			var remainingItems = firstResult.TotalAvailable - pageSize;
 			var timesToRepeat = remainingItems / pageSize;
