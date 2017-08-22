@@ -88,7 +88,7 @@ namespace VersionOne.JiraConnector.Rest
 	        var firstResponseContent = GetIssuesFromFilterByPage(issueFilterId);
 	        var jiraIssues = new JiraIssues(JObject.Parse(firstResponseContent));
 
-	        if (jiraIssues.TotalAvailable <= pageSize) return jiraIssues.Issues;
+	        if (jiraIssues.TotalAvailableOnJiraServer <= pageSize) return jiraIssues.Issues;
 
 	        var timesToRepeat = CalculateAdditionalPages(jiraIssues);
 
@@ -104,7 +104,7 @@ namespace VersionOne.JiraConnector.Rest
 
         private static int CalculateAdditionalPages(JiraIssues issues)
 		{
-			var remainingItems = issues.TotalAvailable - pageSize;
+			var remainingItems = issues.TotalAvailableOnJiraServer - pageSize;
 			var timesToRepeat = remainingItems / pageSize;
 			var remainder = remainingItems % pageSize;
 			if (remainder > 0) timesToRepeat++;
@@ -348,45 +348,5 @@ namespace VersionOne.JiraConnector.Rest
 				throw new JiraLoginException();
 			throw new JiraException(response.StatusDescription, new Exception(response.Content));
 		}
-
-	    private class JiraIssues
-	    {
-	        public JiraIssues(dynamic responseContent)
-	        {
-	            Issues = ConvertToIssues(responseContent);
-	            TotalAvailable = (int)responseContent.total;
-	        }
-
-	        public Issue[] Issues { get; private set; }
-	        public int TotalAvailable { get; private set; }
-
-	        public void AddIssues(dynamic responseContent)
-	        {
-	            var allIssues = new List<Issue>();
-	            allIssues.AddRange(Issues);
-	            allIssues.AddRange(ConvertToIssues(responseContent));
-	            Issues = allIssues.ToArray();
-	        }
-
-	        private static Issue[] ConvertToIssues(dynamic responseContent)
-	        {
-	            return ((JArray)responseContent.issues).Select(CreateIssue).ToArray();
-	        }
-
-	        private static Issue CreateIssue(dynamic data)
-	        {
-	            return new Issue
-	            {
-	                Id = data.id,
-	                Key = data.key,
-	                Summary = data.fields.summary,
-	                Description = data.fields.description,
-	                Project = data.fields.project != null ? data.fields.project.name : string.Empty,
-	                IssueType = data.fields.issuetype != null ? data.fields.issuetype.name : string.Empty,
-	                Assignee = data.fields.assignee != null ? data.fields.assignee.name : string.Empty,
-	                Priority = data.fields.priority != null ? data.fields.priority.name : string.Empty
-	            };
-	        }
-	    }
-    }
+	}
 }
