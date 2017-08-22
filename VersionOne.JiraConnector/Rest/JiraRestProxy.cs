@@ -99,7 +99,7 @@ namespace VersionOne.JiraConnector.Rest
 		    }
 		}
 
-        private IRestResponse GetIssuesFromFilterByPage(string issueFilterId, int startAtPage = 0)
+        private string GetIssuesFromFilterByPage(string issueFilterId, int pageNumber = 0)
 	    {
 	        var request = new RestRequest
 	        {
@@ -109,13 +109,13 @@ namespace VersionOne.JiraConnector.Rest
 	        };
 	        request.AddQueryParameter("jql", $"filter={issueFilterId}");
 	        request.AddQueryParameter("maxResults", pageSize.ToString());
-	        request.AddQueryParameter("startAt", startAtPage.ToString());
+	        request.AddQueryParameter("startAt", pageNumber.ToString());
 
 	        var response = client.Execute(request);
 
 	        if (response.StatusCode.Equals(HttpStatusCode.OK))
 	        {
-	            return response;
+	            return response.Content;
 	        }
 
 	        if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
@@ -125,8 +125,8 @@ namespace VersionOne.JiraConnector.Rest
 
 	    public Issue[] GetIssuesFromFilter(string issueFilterId)
 	    {
-	        var firstResponse = GetIssuesFromFilterByPage(issueFilterId);
-	        var jiraIssues = new JiraIssues(JObject.Parse(firstResponse.Content));
+	        var firstResponseContent = GetIssuesFromFilterByPage(issueFilterId);
+	        var jiraIssues = new JiraIssues(JObject.Parse(firstResponseContent));
 
 	        if (jiraIssues.TotalAvailable <= pageSize) return jiraIssues.Issues;
 
@@ -134,9 +134,9 @@ namespace VersionOne.JiraConnector.Rest
 
 	        for (var i = 1; i <= timesToRepeat; i++)
 	        {
-	            var startAtPage = i * pageSize;
-	            var response = GetIssuesFromFilterByPage(issueFilterId, startAtPage);
-	            jiraIssues.AddIssues(JObject.Parse(response.Content));
+	            var pageNumber = i * pageSize;
+	            var responseContent = GetIssuesFromFilterByPage(issueFilterId, pageNumber);
+	            jiraIssues.AddIssues(JObject.Parse(responseContent));
             }
 
 	        return jiraIssues.Issues;
