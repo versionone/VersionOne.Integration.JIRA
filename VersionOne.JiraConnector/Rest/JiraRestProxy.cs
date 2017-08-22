@@ -12,7 +12,8 @@ namespace VersionOne.JiraConnector.Rest
 {
 	public class JiraRestProxy : IJiraConnector
 	{
-		private readonly RestClient client;
+	    private const int pageSize = 10;
+	    private readonly RestClient client;
 
 		private readonly string currentUser;
 
@@ -85,8 +86,7 @@ namespace VersionOne.JiraConnector.Rest
 		    }
         }
 
-		private JiraIssues GetIssuesFromFilterByPage(string issueFilterId,
-			int pageSize = 10, int startAt = 0)
+		private JiraIssues GetIssuesFromFilterByPage(string issueFilterId, int startAtPage = 0)
 		{
 			var request = new RestRequest
 			{
@@ -96,7 +96,7 @@ namespace VersionOne.JiraConnector.Rest
 			};
 			request.AddQueryParameter("jql", $"filter={issueFilterId}");
 			request.AddQueryParameter("maxResults", pageSize.ToString());
-			request.AddQueryParameter("startAt", startAt.ToString());
+			request.AddQueryParameter("startAt", startAtPage.ToString());
 
 			var response = client.Execute(request);
 
@@ -112,26 +112,25 @@ namespace VersionOne.JiraConnector.Rest
 
 		public Issue[] GetIssuesFromFilter(string issueFilterId)
 		{
-			const int pageSize = 10;
-			var issues = new List<Issue>();
+		    var issues = new List<Issue>();
 
 			var firstResult = GetIssuesFromFilterByPage(issueFilterId, pageSize);
 			issues.AddRange(firstResult.Issues);
 			if (firstResult.TotalAvailable <= pageSize) return issues.ToArray();
 
-			var timesToRepeat = CalculateAdditionalPages(firstResult, pageSize);
+			var timesToRepeat = CalculateAdditionalPages(firstResult);
 
 			for (var i = 1; i <= timesToRepeat; i++)
 			{
-				var startAt = i * pageSize;
-				var result = GetIssuesFromFilterByPage(issueFilterId, pageSize, startAt);
+				var startAtPage = i * pageSize;
+				var result = GetIssuesFromFilterByPage(issueFilterId, startAtPage);
 				issues.AddRange(result.Issues);
 			}
 
 			return issues.ToArray();
 		}
 
-		private static int CalculateAdditionalPages(JiraIssues issues, int pageSize)
+		private static int CalculateAdditionalPages(JiraIssues issues)
 		{
 			var remainingItems = issues.TotalAvailable - pageSize;
 			var timesToRepeat = remainingItems / pageSize;
