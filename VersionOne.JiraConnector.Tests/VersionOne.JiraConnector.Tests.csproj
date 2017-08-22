@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEEA880C-A390-498B-A750-BFBF1871D627}</ProjectGuid>
+    <ProjectGuid>{A24CF22A-7ADC-4C78-A453-486C2A2DC6F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VersionOne.ServiceHost.JiraServices.Tests</RootNamespace>
-    <AssemblyName>VersionOne.ServiceHost.JiraServices.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>VersionOne.JiraConnector.Tests</RootNamespace>
+    <AssemblyName>VersionOne.JiraConnector.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -35,9 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Rhino.Mocks.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -54,16 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BaseJiraTests.cs" />
-    <Compile Include="JiraConnectionValidatorTests.cs" />
-    <Compile Include="JiraCustomFieldValidatorTests.cs" />
-    <Compile Include="JiraFilterValidatorTests.cs" />
-    <Compile Include="JiraHostedServiceTests.cs" />
-    <Compile Include="JiraPriorityValidatorTests.cs" />
-    <Compile Include="JiraProjectValidatorTests.cs" />
-    <Compile Include="JiraProxyTests.cs" />
-    <Compile Include="JiraReaderServiceTests.cs" />
-    <Compile Include="MappingValidatorTests.cs" />
+    <Compile Include="JiraIssuesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,18 +62,9 @@
       <Project>{57f712ae-9e25-4578-bb06-71afe3121deb}</Project>
       <Name>VersionOne.JiraConnector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServiceHost.Core\VersionOne.ServiceHost.Core.csproj">
-      <Project>{f432bac8-27ed-4c2c-8e06-ef806a5b0d79}</Project>
-      <Name>VersionOne.ServiceHost.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServiceHost.JiraServices\VersionOne.ServiceHost.JiraServices.csproj">
-      <Project>{7cfce842-cc70-4902-ab69-2a87efe354be}</Project>
-      <Name>VersionOne.ServiceHost.JiraServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VersionOne.ServiceHost.WorkitemServices\VersionOne.ServiceHost.WorkitemServices.csproj">
-      <Project>{76b6d3f1-16f8-43a9-a2b7-ddadafe70d0d}</Project>
-      <Name>VersionOne.ServiceHost.WorkitemServices</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

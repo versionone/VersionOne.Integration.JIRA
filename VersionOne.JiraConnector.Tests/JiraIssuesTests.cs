@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using VersionOne.JiraConnector.Rest;
 
-namespace VersionOne.ServiceHost.JiraServices.Tests
+namespace VersionOne.JiraConnector.Tests
 {
     [TestClass]
     public class JiraIssuesTests
