@@ -13,12 +13,9 @@ namespace VersionOne.JiraConnector.Tests
         [TestInitialize]
         public virtual void SetUp()
         {
-            var content = new JObject();
-            content.Add("total", new JValue(10));
-            
-            var issues = new JArray();
-            issues.Add(CreateIssue1());
-            issues.Add(CreateIssue2());
+            var content = new JObject {{"total", new JValue(10)}};
+
+            var issues = new JArray {CreateIssue1(), CreateIssue2()};
 
             content.Add("issues", issues);
             _jirraIssues = new JiraIssues(content);
@@ -33,8 +30,6 @@ namespace VersionOne.JiraConnector.Tests
         [TestMethod]
         public void WhenAddingInAllIssuesTheyShouldBeRetrievable()
         {
-            var issue2Found = false;
-
             var issue1 = _jirraIssues.Issues.Where(issue => issue.Id == "123");
             var issue2 = _jirraIssues.Issues.Where(issue => issue.Id == "987");
             
@@ -46,9 +41,7 @@ namespace VersionOne.JiraConnector.Tests
         public void AddingInAdditionalIssuesShouldPlaceThemInTheIssuesCollection()
         {
             var content = new JObject();
-            var issues = new JArray();
-            issues.Add(CreateIssue3());
-            issues.Add(CreateIssue4());
+            var issues = new JArray {CreateIssue3(), CreateIssue4()};
 
             content.Add("issues", issues);
             _jirraIssues.AddIssues(content);
@@ -61,7 +54,7 @@ namespace VersionOne.JiraConnector.Tests
         }
 
 
-        private JToken CreateIssue1()
+        private static JToken CreateIssue1()
         {
             var issue = new JObject
             {
@@ -81,7 +74,7 @@ namespace VersionOne.JiraConnector.Tests
             return issue;
         }
 
-        private JToken CreateIssue2()
+        private static JToken CreateIssue2()
         {
             var issue = new JObject
             {
@@ -102,7 +95,7 @@ namespace VersionOne.JiraConnector.Tests
             return issue;
         }
 
-        private JToken CreateIssue3()
+        private static JToken CreateIssue3()
         {
             var issue = new JObject
             {
@@ -122,7 +115,7 @@ namespace VersionOne.JiraConnector.Tests
             return issue;
         }
 
-        private JToken CreateIssue4()
+        private static JToken CreateIssue4()
         {
             var issue = new JObject
             {
