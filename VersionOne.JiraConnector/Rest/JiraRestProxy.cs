@@ -63,14 +63,27 @@ namespace VersionOne.JiraConnector.Rest
 		{
 		    public JiraIssues(dynamic responseContent)
 		    {
-		        Issues = ((JArray)responseContent.issues).Select(CreateIssue).ToArray();
+		        Issues = ConvertToIssues(responseContent);
                 TotalAvailable = (int)responseContent.total;
 		    }
 
             public Issue[] Issues { get; private set; }
 			public int TotalAvailable { get; private set; }
 
-		    private static Issue CreateIssue(dynamic data)
+		    public void AddIssues(dynamic responseContent)
+		    {
+		        var allIssues = new List<Issue>();
+		        allIssues.AddRange(Issues);
+		        allIssues.AddRange(ConvertToIssues(responseContent));
+		        Issues = allIssues.ToArray();
+		    }
+
+            private static Issue[] ConvertToIssues(dynamic responseContent)
+		    {
+		        return ((JArray)responseContent.issues).Select(CreateIssue).ToArray();
+		    }
+
+            private static Issue CreateIssue(dynamic data)
 		    {
 		        return new Issue
 		        {
@@ -84,53 +97,52 @@ namespace VersionOne.JiraConnector.Rest
 		            Priority = data.fields.priority != null ? data.fields.priority.name : string.Empty
 		        };
 		    }
-        }
-
-		private JiraIssues GetIssuesFromFilterByPage(string issueFilterId, int startAtPage = 0)
-		{
-			var request = new RestRequest
-			{
-				Method = Method.GET,
-				Resource = "search",
-				RequestFormat = DataFormat.Json
-			};
-			request.AddQueryParameter("jql", $"filter={issueFilterId}");
-			request.AddQueryParameter("maxResults", pageSize.ToString());
-			request.AddQueryParameter("startAt", startAtPage.ToString());
-
-			var response = client.Execute(request);
-
-			if (response.StatusCode.Equals(HttpStatusCode.OK))
-			{
-			    return new JiraIssues(JObject.Parse(response.Content));
-			}
-
-			if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
-				throw new JiraLoginException();
-			throw new JiraException(response.StatusDescription, new Exception(response.Content));
 		}
 
-		public Issue[] GetIssuesFromFilter(string issueFilterId)
-		{
-		    var issues = new List<Issue>();
+        private IRestResponse GetIssuesFromFilterByPage(string issueFilterId, int startAtPage = 0)
+	    {
+	        var request = new RestRequest
+	        {
+	            Method = Method.GET,
+	            Resource = "search",
+	            RequestFormat = DataFormat.Json
+	        };
+	        request.AddQueryParameter("jql", $"filter={issueFilterId}");
+	        request.AddQueryParameter("maxResults", pageSize.ToString());
+	        request.AddQueryParameter("startAt", startAtPage.ToString());
 
-			var firstResult = GetIssuesFromFilterByPage(issueFilterId, pageSize);
-			issues.AddRange(firstResult.Issues);
-			if (firstResult.TotalAvailable <= pageSize) return issues.ToArray();
+	        var response = client.Execute(request);
 
-			var timesToRepeat = CalculateAdditionalPages(firstResult);
+	        if (response.StatusCode.Equals(HttpStatusCode.OK))
+	        {
+	            return response;
+	        }
 
-			for (var i = 1; i <= timesToRepeat; i++)
-			{
-				var startAtPage = i * pageSize;
-				var result = GetIssuesFromFilterByPage(issueFilterId, startAtPage);
-				issues.AddRange(result.Issues);
-			}
+	        if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
+	            throw new JiraLoginException();
+	        throw new JiraException(response.StatusDescription, new Exception(response.Content));
+	    }
 
-			return issues.ToArray();
-		}
+	    public Issue[] GetIssuesFromFilter(string issueFilterId)
+	    {
+	        var firstResponse = GetIssuesFromFilterByPage(issueFilterId);
+	        var jiraIssues = new JiraIssues(JObject.Parse(firstResponse.Content));
 
-		private static int CalculateAdditionalPages(JiraIssues issues)
+	        if (jiraIssues.TotalAvailable <= pageSize) return jiraIssues.Issues;
+
+	        var timesToRepeat = CalculateAdditionalPages(jiraIssues);
+
+	        for (var i = 1; i <= timesToRepeat; i++)
+	        {
+	            var startAtPage = i * pageSize;
+	            var response = GetIssuesFromFilterByPage(issueFilterId, startAtPage);
+	            jiraIssues.AddIssues(JObject.Parse(response.Content));
+            }
+
+	        return jiraIssues.Issues;
+	    }
+
+        private static int CalculateAdditionalPages(JiraIssues issues)
 		{
 			var remainingItems = issues.TotalAvailable - pageSize;
 			var timesToRepeat = remainingItems / pageSize;
