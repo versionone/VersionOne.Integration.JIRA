@@ -58,18 +58,34 @@ namespace VersionOne.JiraConnector.Rest
 			//throw new NotImplementedException();
 		}
 
-		private class JiraResults<T>
+		private class JiraIssues
 		{
-			public JiraResults(T[] items, int totalAvailable)
-			{
-				Items = items;
-				TotalAvailable = totalAvailable;
-			}
-			public T[] Items { get; private set; }
-			public int TotalAvailable { get; private set; }
-		}
+		    public JiraIssues(dynamic responseContent)
+		    {
+		        Issues = ((JArray)responseContent.issues).Select(CreateIssue).ToArray();
+                TotalAvailable = (int)responseContent.total;
+		    }
 
-		private JiraResults<Issue> GetIssuesFromFilterByPage(string issueFilterId,
+            public Issue[] Issues { get; private set; }
+			public int TotalAvailable { get; private set; }
+
+		    private static Issue CreateIssue(dynamic data)
+		    {
+		        return new Issue
+		        {
+		            Id = data.id,
+		            Key = data.key,
+		            Summary = data.fields.summary,
+		            Description = data.fields.description,
+		            Project = data.fields.project != null ? data.fields.project.name : string.Empty,
+		            IssueType = data.fields.issuetype != null ? data.fields.issuetype.name : string.Empty,
+		            Assignee = data.fields.assignee != null ? data.fields.assignee.name : string.Empty,
+		            Priority = data.fields.priority != null ? data.fields.priority.name : string.Empty
+		        };
+		    }
+        }
+
+		private JiraIssues GetIssuesFromFilterByPage(string issueFilterId,
 			int pageSize = 10, int startAt = 0)
 		{
 			var request = new RestRequest
@@ -86,11 +102,7 @@ namespace VersionOne.JiraConnector.Rest
 
 			if (response.StatusCode.Equals(HttpStatusCode.OK))
 			{
-				dynamic data = JObject.Parse(response.Content);
-				var total = (int)data.total;
-				var results = ((JArray)data.issues).Select(CreateIssue);
-				var result = new JiraResults<Issue>(results.ToArray(), total);
-				return result;
+			    return new JiraIssues(JObject.Parse(response.Content));
 			}
 
 			if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
@@ -104,24 +116,24 @@ namespace VersionOne.JiraConnector.Rest
 			var issues = new List<Issue>();
 
 			var firstResult = GetIssuesFromFilterByPage(issueFilterId, pageSize);
-			issues.AddRange(firstResult.Items);
+			issues.AddRange(firstResult.Issues);
 			if (firstResult.TotalAvailable <= pageSize) return issues.ToArray();
 
-			var timesToRepeat = CalculateTimesToRepeat(firstResult, pageSize);
+			var timesToRepeat = CalculateAdditionalPages(firstResult, pageSize);
 
 			for (var i = 1; i <= timesToRepeat; i++)
 			{
 				var startAt = i * pageSize;
 				var result = GetIssuesFromFilterByPage(issueFilterId, pageSize, startAt);
-				issues.AddRange(result.Items);
+				issues.AddRange(result.Issues);
 			}
 
 			return issues.ToArray();
 		}
 
-		private static int CalculateTimesToRepeat(JiraResults<Issue> firstResult, int pageSize)
+		private static int CalculateAdditionalPages(JiraIssues issues, int pageSize)
 		{
-			var remainingItems = firstResult.TotalAvailable - pageSize;
+			var remainingItems = issues.TotalAvailable - pageSize;
 			var timesToRepeat = remainingItems / pageSize;
 			var remainder = remainingItems % pageSize;
 			if (remainder > 0) timesToRepeat++;
@@ -359,27 +371,11 @@ namespace VersionOne.JiraConnector.Rest
 
 			if (response.StatusCode.Equals(HttpStatusCode.OK))
 			{
-				dynamic data = JObject.Parse(response.Content);
-				return CreateIssue(data);
-			}
+			    return new JiraIssues(JObject.Parse(response.Content)).Issues.First();
+            }
 			if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
 				throw new JiraLoginException();
 			throw new JiraException(response.StatusDescription, new Exception(response.Content));
-		}
-
-		private Issue CreateIssue(dynamic data)
-		{
-			return new Issue
-			{
-				Id = data.id,
-				Key = data.key,
-				Summary = data.fields.summary,
-				Description = data.fields.description,
-				Project = data.fields.project != null ? data.fields.project.name : string.Empty,
-				IssueType = data.fields.issuetype != null ? data.fields.issuetype.name : string.Empty,
-				Assignee = data.fields.assignee != null ? data.fields.assignee.name : string.Empty,
-				Priority = data.fields.priority != null ? data.fields.priority.name : string.Empty
-			};
 		}
 	}
 }
