@@ -12,7 +12,7 @@ namespace VersionOne.JiraConnector.Rest
 {
 	public class JiraRestProxy : IJiraConnector
 	{
-	    private const int pageSize = 10;
+	    private const int pageSize = 1000;
 	    private readonly RestClient client;
 
 		private readonly string currentUser;
