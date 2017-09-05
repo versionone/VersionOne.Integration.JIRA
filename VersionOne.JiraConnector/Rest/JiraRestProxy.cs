@@ -67,7 +67,7 @@ namespace VersionOne.JiraConnector.Rest
 	            Resource = "search",
 	            RequestFormat = DataFormat.Json
 	        };
-	        request.AddQueryParameter("jql", $"filter={issueFilterId}");
+	        request.AddQueryParameter("jql", string.Format("filter={0}", issueFilterId));
 	        request.AddQueryParameter("maxResults", pageSize.ToString());
 	        request.AddQueryParameter("startAt", pageNumber.ToString());
 
