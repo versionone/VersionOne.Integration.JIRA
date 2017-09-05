@@ -102,6 +102,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="JiraConnectorFactory.cs" />
     <Compile Include="JiraConnectorType.cs" />
+    <Compile Include="Rest\JiraIssues.cs" />
     <Compile Include="Rest\JiraRestProxy.cs" />
     <Compile Include="Soap\JiraSoapProxy.cs" />
     <Compile Include="Soap\JiraSoapService.cs" />
