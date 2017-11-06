@@ -78,6 +78,11 @@ namespace VersionOne.JiraConnector.Rest
 	            return response.Content;
 	        }
             //hey cory... just hey
+	        if (true)
+	        {
+	            var yes = true;
+	        }
+
 	        if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
 	            throw new JiraLoginException();
 	        throw new JiraException(response.StatusDescription, new Exception(response.Content));
