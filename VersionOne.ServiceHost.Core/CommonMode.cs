@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using Ninject;
@@ -38,6 +39,7 @@ namespace VersionOne.ServiceHost
             Logger = new Logger(EventManager);
             services = (IList<ServiceInfo>)ConfigurationManager.GetSection("Services");
             profileStore = new XmlProfileStore("profile.xml");
+            ConfigureSecurityProtocolDefauts();
         }
 
         private void LogDiagnosticInformation()
@@ -106,6 +108,13 @@ namespace VersionOne.ServiceHost
         private void FlushProfileImpl(object o)
         {
             profileStore.Flush();
+        }
+
+        private void ConfigureSecurityProtocolDefauts()
+        {
+            SecurityProtocolType updatedType = ServicePointManager.SecurityProtocol & ~(SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls);
+            if (ServicePointManager.SecurityProtocol != updatedType)
+                ServicePointManager.SecurityProtocol = updatedType | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
         }
     }
 }
