@@ -4,7 +4,7 @@ param(
 )
 
 function DownloadSetup {
-    $source = "https://raw.github.com/openAgile/psake-tools/master/setup.ps1"  
+    $source = "https://raw.github.com/openAgile/psake-tools/fixing_ci/setup.ps1"  
     Invoke-WebRequest -Uri $source -OutFile setup.ps1
 }
 
