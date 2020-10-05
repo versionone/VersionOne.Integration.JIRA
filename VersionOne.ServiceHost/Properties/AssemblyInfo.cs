@@ -3,6 +3,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("VersionOne.ServiceHost")]
-[assembly: AssemblyCompanyAttribute("VersionOne")]
-[assembly: AssemblyCopyrightAttribute("Copyright © 2015")]
+[assembly: AssemblyCompanyAttribute("Digital.ai Software, Inc.")]
+[assembly: AssemblyCopyrightAttribute("Copyright © 2020, Digital.ai Software, Inc.")]
 [assembly: ComVisibleAttribute(false)]
