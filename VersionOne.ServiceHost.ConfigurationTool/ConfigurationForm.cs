@@ -243,7 +243,7 @@ namespace VersionOne.ServiceHost.ConfigurationTool
         {
             var assembly = Assembly.GetEntryAssembly();
             var copyrightAttribute = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>();
-            var description = string.Format("VersionOne ServiceHost configuration utility, version {0}.\n{1}", controller.ApplicationVersion, copyrightAttribute?.Copyright);
+            var description = string.Format("VersionOne ServiceHost configuration utility, version {0}.\n{1}", controller.ApplicationVersion, copyrightAttribute.Copyright);
             MessageBox.Show(description);
         }
         #endregion
