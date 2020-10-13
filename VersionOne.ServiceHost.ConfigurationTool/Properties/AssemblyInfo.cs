@@ -17,4 +17,3 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyVersion("8.0.55555.*")]
-[assembly: AssemblyInformationalVersion("8.0")]

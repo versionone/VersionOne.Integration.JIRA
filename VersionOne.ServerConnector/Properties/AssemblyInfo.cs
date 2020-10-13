@@ -8,3 +8,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompanyAttribute("Digital.ai Software, Inc.")]
 [assembly: ComVisibleAttribute(false)]
 [assembly: AssemblyCopyrightAttribute("Copyright © 2020, Digital.ai Software, Inc.")]
+
+[assembly: AssemblyVersion("1.0.0.0")]

@@ -8,4 +8,3 @@ using System.Runtime.InteropServices;
 [assembly: ComVisibleAttribute(false)]
 
 [assembly: AssemblyVersion("8.0.55555.*")]
-[assembly: AssemblyInformationalVersion("8.0")]
