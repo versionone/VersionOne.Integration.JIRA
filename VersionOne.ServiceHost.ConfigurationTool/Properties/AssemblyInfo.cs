@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VersionOne.ServiceHost.ConfigurationTool")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("VersionOne")]
-[assembly: AssemblyCopyright("Copyright © 2015")]
+[assembly: AssemblyCompany("Digital.ai Software, Inc.")]
+[assembly: AssemblyCopyright("Copyright © 2020, Digital.ai Software, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -17,4 +17,3 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyVersion("8.0.55555.*")]
-[assembly: AssemblyInformationalVersion("8.0")]

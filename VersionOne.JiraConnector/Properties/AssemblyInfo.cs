@@ -9,9 +9,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VersionOne.JiraConnector")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("VersionOne")]
+[assembly: AssemblyCompany("Digital.ai Software, Inc.")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © 2015")]
+[assembly: AssemblyCopyright("Copyright © 2020, Digital.ai Software, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,3 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("8.0.2107.0")]
-[assembly: AssemblyInformationalVersion("8.0")]

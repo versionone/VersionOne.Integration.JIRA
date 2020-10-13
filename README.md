@@ -1,6 +1,6 @@
 # VersionOne IssueSync for JIRA
 
-Copyright (c) 2008-2015 [VersionOne](http://versionone.com/). All rights reserved.
+Copyright (c) 2020 [Digital.ai Software, Inc](http://Digital.ai/). All rights reserved.
 
 VersionOne IssueSync for JIRA is a free and open-source integration that creates stories and defects in VersionOne based on issues found in JIRA. Using this integration, an organization can manage and triage issues reported by customers and promote them to VersionOne for their product team to address.
 
@@ -26,5 +26,5 @@ While we strive to make the integration as easy to use as possible, you may stil
 
 - [StackOverflow](http://stackoverflow.com/questions/tagged/versionone): For asking questions of the VersionOne Developer Community.  
 - [VersionOne Support](): Our support team is well versed in the integration. 
-- [VersionOne Technical Services](http://www.versionone.com/training/technical_services/): A paid support offering, this team provides API training, development pairing, and complete custom development services.  
+- [VersionOne Technical Services](https://digital.ai/product-consulting-and-implementation/professional-services/): A paid support offering, this team provides API training, development pairing, and complete custom development services.  
 
